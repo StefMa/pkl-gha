@@ -1,0 +1,14 @@
+amends "pkl:Project"
+
+package {
+  name = "com.github.action"
+  baseUri = "package://github.com/stefma/pkl-gha"
+  version = "0.0.1"
+  packageZipUrl = "https://github.com/stefma/pkl-gha/releases/download/\(name)@\(version)/\(name)@\(version).zip"
+  sourceCode = "https://github.com/stefma/pkl-gha"
+  // apiTests = import*("tests/**.pkl").keys.toListing() // Doesn't work
+  exclude  {
+    "examples/**"
+    "tests/**"
+  }
+}

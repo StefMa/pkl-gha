@@ -1,0 +1,12 @@
+module com.github.GitHubAction.tests
+
+amends "pkl:test"
+
+examples {
+  ["basic.pkl"] {
+    import("../examples/TestWorkflow.pkl").output.text
+  }
+  ["updateWikiReadme.pkl"] {
+    import("../examples/UpdateWikiReadme.pkl").output.text
+  }
+}

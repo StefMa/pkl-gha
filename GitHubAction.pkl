@@ -1,0 +1,158 @@
+module com.github.GitHubAction
+
+// JSON Schema defination:
+// https://json.schemastore.org/github-workflow.json
+
+// Definitions
+
+// Trigger
+abstract class Trigger {
+  hidden name: String
+}
+
+class Push extends Trigger {
+  branches: Listing<String>?
+ `branches-ignore`: Listing<String>?
+  tags: Listing<String>?
+  `tags-ignore`: Listing<String>?
+  paths: Listing<String>?
+  `paths-ignore`: Listing<String>?
+}
+
+class WorkflowDispatch extends Trigger {
+  inputs: Mapping<String, Input>?
+}
+class Input {
+  description: String
+  deprecatedMessage: String?
+  required: Boolean?
+  default: String?
+  type: InputType?
+  options: Listing<String>?
+}
+typealias InputType = "boolean"|"string"|"choice"|"environment"|"number"
+
+class PullRequest extends Trigger {
+  types: Listing<PullRequestTypes>
+}
+typealias PullRequestTypes =
+  "assigned"
+  |"unassigned"
+  |"review_requested"
+  |"review_request_removed"
+  |"labeled"
+  |"unlabeled"
+  |"opened"
+  |"edited"
+  |"closed"
+  |"reopened"
+  |"synchronize"
+  |"ready_for_review"
+  |"locked"
+  |"unlocked"
+  |"ready_for_review"
+  |"converted_to_draft"
+  |"demilestoned"
+  |"milestoned"
+  |"review_requested"
+  |"review_request_removed"
+  |"auto_merge_enabled"
+  |"auto_merge_disabled"
+
+// On
+class On {
+  push: Push?
+  workflow_dispatch: WorkflowDispatch?
+  pull_request: PullRequest?
+}
+
+// Environment Variables
+typealias EnvironmentVariables = Mapping<String, String>
+
+// Permissions
+class Permissions {
+  actions: Permission?
+  checks: Permission?
+  contents: Permission?
+  deployments: Permission?
+  `id-token`: Permission?
+  issues: Permission?
+  discussions: Permission?
+  packages: Permission?
+  pages: Permission?
+  `pull-requests`: Permission?
+  `repository-projects`: Permission?
+  `security-events`: Permission?
+  statuses: Permission?
+}
+typealias Permission = "read"|"write"|"none"
+
+// Concurrency
+class Concurrency {
+  group: String
+  `cancel-in-progress`: Boolean
+}
+
+// Jobs
+class Job {
+  `runs-on`: Machine|String
+  `if`: String?
+  steps: Listing<Step>
+  env: EnvironmentVariables?
+  concurrency: Concurrency?
+}
+
+// Machines, part of Jobs
+abstract class Machine {
+  name: String
+}
+class UbuntuLatest extends Machine {
+  name = "ubuntu-latest"
+}
+class MacOsLatest extends Machine {
+  name = "macos-latest"
+}
+class WindowsLatest extends Machine {
+  name = "windows-latest"
+}
+
+// Steps, part of Jobs
+open class Step {
+  name: String?
+  id: String?
+  `if`: String?
+  env: EnvironmentVariables?
+  `working-directory`: String?
+}
+
+class RunStep extends Step {
+  run: String
+}
+
+class UsesStep extends Step {
+  uses: String
+  with: Mapping<String, String>?
+}
+
+// Templating
+
+name: String
+
+on: On
+
+env: EnvironmentVariables?
+
+concurrency: Concurrency?
+
+permissions: (Permissions|"read-all"|"write-all")?
+
+jobs: Mapping<String, Job>
+
+// Output
+output {
+  renderer = new YamlRenderer {
+    converters {
+      ["runs-on"] = (runsOn: String|Machine) -> if (runsOn is Machine) runsOn.name else runsOn
+    }
+  }
+}

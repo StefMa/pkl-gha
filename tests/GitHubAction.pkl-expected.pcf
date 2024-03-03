@@ -1,0 +1,95 @@
+examples {
+  ["basic.pkl"] {
+    """
+    name: PrintHelloWorld
+    'on':
+      push:
+        branches:
+        - master
+        - develop
+        tags-ignore:
+        - v*
+      workflow_dispatch:
+        inputs:
+          name:
+            description: Name of the person to greet
+            required: true
+            default: Mona the Octocat
+      pull_request:
+        types:
+        - opened
+        - edited
+        - reopened
+        - synchronize
+        - review_requested
+    env:
+      PR_NUMBER: ${{github.event.number}}
+    concurrency:
+      group: example-group
+      cancel-in-progress: true
+    permissions:
+      actions: read
+      contents: read
+      issues: write
+      pull-requests: write
+    jobs:
+      hello_dependabot:
+        runs-on: macos-latest
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            ref: develop
+            token: ${{ secrets.GITHUB_TOKEN }}
+        - name: Hello World
+          working-directory: src/
+          run: echo Dependabot!
+      print:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Hello World
+          run: echo Hello World
+        - name: date
+          run: date
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            ref: develop
+        - name: Slack
+          id: Slack
+          if: ${{ failure() }}
+          uses: slackapi/slack-github-action@v1.25.0
+          with:
+            payload: "{\\n\\t\\"blocks\\": [\\n\\t\\t{\\n    \\"type\\": \\"section\\",\\n\\t\\t\\t\\"text\\": {\\n\\t\\t\\t\\t\\"type\\": \\"mrkdwn\\",\\n\\t\\t\\t\\t\\"text\\": \\":alert: Develop is broken!\\"\\n\\t\\t\\t}\\n\\t\\t}\\n\\t]\\n}"
+    
+    """
+  }
+  ["updateWikiReadme.pkl"] {
+    """
+    name: Update Wiki Readme
+    'on':
+      push:
+        paths:
+        - wiki/**
+        - '!wiki/README.md'
+    jobs:
+      update-wiki-readme:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-go@v5
+          with:
+            go-version: 1.17.7
+        - run: go run wiki/generateWikiToc.go
+        - name: Commit changes
+          run: |-
+            git config --global user.email "StefM@IsGre.at"
+            git config --global user.name "StefMa"
+            git add wiki/README.md || echo "No changes to commit"
+            git commit -m 'Re-build TOC in README.md' || echo "No changes to commit"
+            git push origin || echo "No changes to commit"
+    
+    """
+  }
+}

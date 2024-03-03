@@ -1,0 +1,120 @@
+amends "../GitHubAction.pkl"
+
+name = "PrintHelloWorld"
+
+// Fake: not implemented yet in generic GitHubAction module...
+local class LabelTrigger extends Trigger {
+  name = "label"
+  types = new Listing<String> {
+    "created"
+  }
+}
+
+on {
+  push {
+    `tags-ignore` {
+      "v*"
+    }
+    branches {
+      "master"
+      "develop"
+    }
+  }
+  pull_request {
+    types {
+      "opened"
+      "edited"
+      "reopened"
+      "synchronize"
+      "review_requested"
+    }
+  }
+  workflow_dispatch {
+    inputs {
+      ["name"] = new {
+        description = "Name of the person to greet"
+        required = true
+        default = "Mona the Octocat"
+      }
+    }
+  }
+}
+
+permissions = new Permissions {
+  actions = "read"
+  contents = "read"
+  issues = "write"
+  `pull-requests` = "write"
+}
+
+env {
+  ["PR_NUMBER"] = "${{github.event.number}}"
+}
+
+concurrency {
+  group = "example-group"
+  `cancel-in-progress` = true
+}
+
+jobs {
+  ["hello_dependabot"] = new {
+    `runs-on` = new MacOsLatest {}
+    `if` = "${{ github.actor == 'dependabot[bot]' }}"
+    steps {
+      new UsesStep {
+        name = "Checkout"
+        uses = "actions/checkout@v4"
+        with = new {
+          ["ref"] = "develop"
+          ["token"] = "${{ secrets.GITHUB_TOKEN }}"
+        }
+      }
+      new RunStep {
+        name = "Hello World"
+        `working-directory` = "src/"
+        run = "echo Dependabot!"
+      }
+    }
+  }
+  ["print"] = new {
+    `runs-on` = new UbuntuLatest{}
+    steps {
+      new RunStep {
+        name = "Hello World"
+        run = "echo Hello World"
+      }
+      new RunStep {
+        name = "date"
+        run = "date"
+      }
+      new UsesStep {
+        name = "Checkout"
+        uses = "actions/checkout@v4"
+        with = new {
+          ["ref"] = "develop"
+        }
+      }
+      new UsesStep {
+        name = "Slack"
+        id = "Slack"
+        `if` = "${{ failure() }}"
+        uses = "slackapi/slack-github-action@v1.25.0"
+        with = new {
+          ["payload"] = """
+            {
+            	"blocks": [
+            		{
+                "type": "section",
+            			"text": {
+            				"type": "mrkdwn",
+            				"text": ":alert: Develop is broken!"
+            			}
+            		}
+            	]
+            }
+            """
+        }
+      }
+    }
+  }
+}

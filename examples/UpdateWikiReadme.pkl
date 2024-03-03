@@ -1,0 +1,42 @@
+amends "../GitHubAction.pkl"
+
+name = "Update Wiki Readme"
+
+on {
+  push {
+    paths {
+      "wiki/**"
+      "!wiki/README.md"
+    }
+  }
+}
+
+jobs {
+  ["update-wiki-readme"] {
+    `runs-on` = new UbuntuLatest{}
+    steps {
+      new UsesStep {
+        uses = "actions/checkout@v4"
+      }
+      new UsesStep {
+        uses = "actions/setup-go@v5"
+        with {
+          ["go-version"] = "1.17.7"
+        }
+      }
+      new RunStep {
+        run = "go run wiki/generateWikiToc.go"
+      }
+      new RunStep {
+        name = "Commit changes"
+        run = """
+          git config --global user.email "StefM@IsGre.at"
+          git config --global user.name "StefMa"
+          git add wiki/README.md || echo "No changes to commit"
+          git commit -m 'Re-build TOC in README.md' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+          """
+      }
+    }
+  }
+}
