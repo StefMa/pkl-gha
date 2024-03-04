@@ -8,6 +8,7 @@ package {
   sourceCode = "https://github.com/stefma/pkl-gha"
   // apiTests = import*("tests/**.pkl").keys.toListing() // Doesn't work
   exclude  {
+    "README.md"
     "examples/**"
     "tests/**"
   }
