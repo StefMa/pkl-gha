@@ -10,6 +10,10 @@ on {
   }
 }
 
+permissions = new Permissions {
+  contents = "write"
+}
+
 jobs {
   ["createRelease"] {
     `runs-on` = new UbuntuLatest {}
@@ -35,10 +39,14 @@ jobs {
       }
       new RunStep {
         name = "Rename pkl module"
-        run = "mv .out/com.github.action@${{ env.VERSION_NUMBER }}/pkl-gha@${{ env.VERSION_NUMBER }} .out/com.github.action@${{ env.VERSION_NUMBER }}/com.github.action@${{ env.VERSION_NUMBER }}"
-        env {
-          ["VERSION_NUMBER"] = "${{ github.ref_name#*@ }}"
-        }
+        run = """
+          VERSION_NUMBER=${{ github.ref_name }}
+          VERSION_NUMBER=${VERSION_NUMBER#*@}
+          echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
+          for file in .out/com.github.action@$VERSION_NUMBER/pkl-gha*; do
+            mv "$file" "${file/pkl-gha/com.github.action}"
+          done
+          """
       }
       new UsesStep {
         uses = "softprops/action-gh-release@v1"

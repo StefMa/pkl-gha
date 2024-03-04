@@ -3,6 +3,8 @@ name: CreateRelease
   push:
     tags:
     - '*'
+permissions:
+  contents: write
 jobs:
   createRelease:
     runs-on: ubuntu-latest
@@ -19,9 +21,13 @@ jobs:
         VERSION: ${{ github.ref_name }}
       run: ./pkl project package
     - name: Rename pkl module
-      env:
-        VERSION_NUMBER: ${{ github.ref_name#*@ }}
-      run: mv .out/com.github.action@${{ env.VERSION_NUMBER }}/pkl-gha@${{ env.VERSION_NUMBER }} .out/com.github.action@${{ env.VERSION_NUMBER }}/com.github.action@${{ env.VERSION_NUMBER }}
+      run: |-
+        VERSION_NUMBER=${{ github.ref_name }}
+        VERSION_NUMBER=${VERSION_NUMBER#*@}
+        echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
+        for file in .out/com.github.action@$VERSION_NUMBER/pkl-gha*; do
+          mv "$file" "${file/pkl-gha/com.github.action}"
+        done
     - uses: softprops/action-gh-release@v1
       with:
         files: .out/com.github.action@${{ env.VERSION_NUMBER }}/*
