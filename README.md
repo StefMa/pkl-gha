@@ -26,5 +26,5 @@ git tag com.github.action@[SEMVER_VERSION]
 git push origin com.github.action@[SEMVER_VERSION]
 ```
 **Step 4**: The tag creates a new release on GitHub. 
-Go to the [releases](github.com/stefma/pkl-gha/releases) page and edit the new release.
+Go to the [releases](http://github.com/StefMa/pkl-gha/releases) page and edit the new release.
 Put some information about the changes in the description and publish the release.
