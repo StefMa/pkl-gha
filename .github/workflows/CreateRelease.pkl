@@ -1,0 +1,53 @@
+amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.1#/GitHubAction.pkl"
+
+name = "CreateRelease"
+
+on {
+  push {
+    tags {
+      "*"
+    }
+  }
+}
+
+jobs {
+  ["createRelease"] {
+    `runs-on` = new UbuntuLatest {}
+    steps {
+      new UsesStep {
+        name = "checkout"
+        uses = "actions/checkout@v4"
+      }
+      new RunStep {
+        name = "Install pkl cli"
+        run = """
+          curl -L -o pkl https://github.com/apple/pkl/releases/download/0.25.2/pkl-linux-amd64
+          chmod +x pkl
+          ./pkl --version
+          """
+      }
+      new RunStep {
+        name = "Package pkl module"
+        run = "./pkl project package"
+        env {
+          ["VERSION"] = "${{ github.ref_name }}"
+        }
+      }
+      new RunStep {
+        name = "Rename pkl module"
+        run = "mv .out/com.github.action@${{ env.VERSION_NUMBER }}/pkl-gha@${{ env.VERSION_NUMBER }} .out/com.github.action@${{ env.VERSION_NUMBER }}/com.github.action@${{ env.VERSION_NUMBER }}"
+        env {
+          ["VERSION_NUMBER"] = "${{ github.ref_name#*@ }}"
+        }
+      }
+      new UsesStep {
+        uses = "softprops/action-gh-release@v1"
+        with {
+          ["files"] = ".out/com.github.action@${{ env.VERSION_NUMBER }}/*"
+          ["prerelease"] = "true"
+          ["draft"] = "true"
+        }
+      }
+    }
+  }
+}
