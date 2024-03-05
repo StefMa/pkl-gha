@@ -12,7 +12,7 @@ abstract class Trigger {
 
 class Push extends Trigger {
   branches: Listing<String>?
- `branches-ignore`: Listing<String>?
+  `branches-ignore`: Listing<String>?
   tags: Listing<String>?
   `tags-ignore`: Listing<String>?
   paths: Listing<String>?
@@ -138,7 +138,8 @@ class UsesStep extends Step {
 
 name: String
 
-on: On
+local const onIsSet = (on: On) -> on.push != null || on.workflow_dispatch != null || on.pull_request != null
+on: On(onIsSet)
 
 env: EnvironmentVariables?
 
@@ -146,7 +147,8 @@ concurrency: Concurrency?
 
 permissions: (Permissions|"read-all"|"write-all")?
 
-jobs: Mapping<String, Job>
+local const jobIsSet = (jobs: Mapping<String, Job>) -> jobs.length > 0
+jobs: Mapping<String, Job>(jobIsSet)
 
 // Output
 output {
