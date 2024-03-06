@@ -1,8 +1,15 @@
 examples {
-  ["basic.pkl"] {
+  ["basic"] {
     """
     name: PrintHelloWorld
     'on':
+      pull_request:
+        types:
+        - opened
+        - edited
+        - reopened
+        - synchronize
+        - review_requested
       push:
         branches:
         - master
@@ -15,13 +22,6 @@ examples {
             description: Name of the person to greet
             required: true
             default: Mona the Octocat
-      pull_request:
-        types:
-        - opened
-        - edited
-        - reopened
-        - synchronize
-        - review_requested
     env:
       PR_NUMBER: ${{github.event.number}}
     concurrency:
@@ -65,7 +65,75 @@ examples {
     
     """
   }
-  ["updateWikiReadme.pkl"] {
+  ["workflowTriggers"] {
+    """
+    name: GitHub Action Triggers
+    'on':
+      branch_protection_rule:
+        types: []
+      check_run:
+        types: []
+      check_suite:
+        types: []
+      create: {}
+      delete: {}
+      deployment: {}
+      deployment_status: {}
+      discussion:
+        types: []
+      discussion_comment:
+        types: []
+      fork: {}
+      gollum: {}
+      issue_comment:
+        types: []
+      issues:
+        types: []
+      label:
+        types: []
+      milestone:
+        types: []
+      page_build: {}
+      project:
+        types: []
+      project_card:
+        types: []
+      project_column:
+        types: []
+      public: {}
+      pull_request:
+        types: []
+      pull_request_review:
+        types: []
+      pull_request_review_comment:
+        types: []
+      pull_request_target:
+        types: []
+      push: {}
+      registry_package:
+        types: []
+      release:
+        types: []
+      repository_dispatch:
+        types: []
+      schedule:
+        cron: []
+      status: {}
+      watch: {}
+      workflow_call: {}
+      workflow_dispatch: {}
+      workflow_run:
+        types: []
+    jobs:
+      doesntMatter:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Hello
+          run: echo 'Hello, World!'
+    
+    """
+  }
+  ["updateWikiReadme"] {
     """
     name: Update Wiki Readme
     'on':

@@ -3,10 +3,13 @@ module com.github.GitHubAction.tests
 amends "pkl:test"
 
 examples {
-  ["basic.pkl"] {
+  ["basic"] {
     import("../examples/TestWorkflow.pkl").output.text
   }
-  ["updateWikiReadme.pkl"] {
+  ["workflowTriggers"] {
+    import("../examples/WorkflowTriggers.pkl").output.text
+  }
+  ["updateWikiReadme"] {
     import("../examples/UpdateWikiReadme.pkl").output.text
   }
 }
