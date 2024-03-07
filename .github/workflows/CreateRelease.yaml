@@ -11,15 +11,19 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v4
-    - name: Install pkl cli
+    - name: Install pkl cli and add to path
       run: |-
         curl -L -o pkl https://github.com/apple/pkl/releases/download/0.25.2/pkl-linux-amd64
         chmod +x pkl
         ./pkl --version
+
+        mkdir -p $HOME/.local/bin
+        mv pkl $HOME/.local/bin/pkl
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
     - name: Package pkl module
       env:
         VERSION: ${{ github.ref_name }}
-      run: ./pkl project package
+      run: pkl project package
     - name: Rename pkl module
       run: |-
         VERSION_NUMBER=${{ github.ref_name }}

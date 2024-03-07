@@ -1,0 +1,40 @@
+amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.1#/GitHubAction.pkl"
+
+name = "Test"
+
+on {
+  push {
+    branches {
+      "main"
+    }
+  }
+  pull_request {}
+}
+
+jobs {
+  ["test"] {
+    `runs-on` = new UbuntuLatest {}
+    steps {
+      new UsesStep {
+        name = "checkout"
+        uses = "actions/checkout@v4"
+      }
+      new RunStep {
+        name = "Install pkl cli and add to path"
+        run = """
+          curl -L -o pkl https://github.com/apple/pkl/releases/download/0.25.2/pkl-linux-amd64
+          chmod +x pkl
+          ./pkl --version
+
+          mkdir -p $HOME/.local/bin
+          mv pkl $HOME/.local/bin/pkl
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          """
+      }
+      new RunStep {
+        name = "Test pkl module"
+        run = "pkl test tests/*.pkl"
+      }
+    }
+  }
+}
