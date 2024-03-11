@@ -61,6 +61,8 @@ examples {
           if: ${{ failure() }}
           uses: slackapi/slack-github-action@v1.25.0
           with:
+            some_bool: true
+            some_number: 5
             payload: "{\\n\\t\\"blocks\\": [\\n\\t\\t{\\n    \\"type\\": \\"section\\",\\n\\t\\t\\t\\"text\\": {\\n\\t\\t\\t\\t\\"type\\": \\"mrkdwn\\",\\n\\t\\t\\t\\t\\"text\\": \\":alert: Develop is broken!\\"\\n\\t\\t\\t}\\n\\t\\t}\\n\\t]\\n}"
     
     """

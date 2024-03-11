@@ -584,7 +584,7 @@ class RunStep extends Step {
 
 class UsesStep extends Step {
   uses: String
-  with: Mapping<String, String>?
+  with: Mapping<String, String|Number|Boolean>?
 }
 
 // Templating
