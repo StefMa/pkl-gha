@@ -14,7 +14,7 @@ abstract class Trigger {
 ///
 /// https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#branch_protection_rule
 class BranchProtectionRule extends Trigger {
-  types: Listing<BranchProtectionRuleType>
+  types: Listing<BranchProtectionRuleType>?
 }
 typealias BranchProtectionRuleType =
   "created"
@@ -26,7 +26,7 @@ typealias BranchProtectionRuleType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#check_run
 class CheckRun extends Trigger {
-  types: Listing<CheckRunType>
+  types: Listing<CheckRunType>?
 }
 typealias CheckRunType =
   "created"
@@ -39,7 +39,7 @@ typealias CheckRunType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#check_suite
 class CheckSuite extends Trigger {
-  types: Listing<CheckSuiteType>
+  types: Listing<CheckSuiteType>?
 }
 typealias CheckSuiteType =
   "completed"
@@ -77,7 +77,7 @@ class DeploymentStatus extends Trigger
 ///
 /// https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#discussion
 class Discussion extends Trigger {
-  types: Listing<DiscussionType>
+  types: Listing<DiscussionType>?
 }
 typealias DiscussionType =
   "created"
@@ -99,7 +99,7 @@ typealias DiscussionType =
 ///
 /// https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#discussion_comment
 class DiscussionComment extends Trigger {
-  types: Listing<DiscussionCommentType>
+  types: Listing<DiscussionCommentType>?
 }
 typealias DiscussionCommentType =
   "created"
@@ -122,7 +122,7 @@ class Gollum extends Trigger
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#issue_comment
 class IssueComment extends Trigger {
-  types: Listing<IssueCommentType>
+  types: Listing<IssueCommentType>?
 }
 typealias IssueCommentType =
   "created"
@@ -134,7 +134,7 @@ typealias IssueCommentType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#issues
 class Issues extends Trigger {
-  types: Listing<IssuesType>
+  types: Listing<IssuesType>?
 }
 typealias IssuesType =
   "opened"
@@ -159,7 +159,7 @@ typealias IssuesType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#label
 class Label extends Trigger {
-  types: Listing<LabelType>
+  types: Listing<LabelType>?
 }
 typealias LabelType =
   "created"
@@ -171,7 +171,7 @@ typealias LabelType =
 ///
 /// https://help.github.com/en/github/automating-your-workflow-with-github-actions/events-that-trigger-workflows#merge_group
 class MergeGroup extends Trigger {
-  types: Listing<MergeGroupType>
+  types: Listing<MergeGroupType>?
 }
 typealias MergeGroupType =
   "checked_requested"
@@ -181,7 +181,7 @@ typealias MergeGroupType =
 ///
 ///  https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#milestone
 class Milestone extends Trigger {
-  types: Listing<MilestoneType>
+  types: Listing<MilestoneType>?
 }
 typealias MilestoneType =
   "created"
@@ -201,7 +201,7 @@ class PageBuild extends Trigger
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#project
 class Project extends Trigger {
-  types: Listing<ProjectType>
+  types: Listing<ProjectType>?
 }
 typealias ProjectType =
   "created"
@@ -216,7 +216,7 @@ typealias ProjectType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#project_card
 class ProjectCard extends Trigger {
-  types: Listing<ProjectCardType>
+  types: Listing<ProjectCardType>?
 }
 typealias ProjectCardType =
   "created"
@@ -230,7 +230,7 @@ typealias ProjectCardType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#project_column
 class ProjectColumn extends Trigger {
-  types: Listing<ProjectColumnType>
+  types: Listing<ProjectColumnType>?
 }
 typealias ProjectColumnType =
   "created"
@@ -256,7 +256,7 @@ class Public extends Trigger
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
 class PullRequest extends Trigger {
-  types: Listing<PullRequestType>
+  types: Listing<PullRequestType>?
 }
 typealias PullRequestType =
   "assigned"
@@ -294,7 +294,7 @@ typealias PullRequestType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_review
 class PullRequestReview extends Trigger {
-  types: Listing<PullRequestReviewType>
+  types: Listing<PullRequestReviewType>?
 }
 typealias PullRequestReviewType =
   "submitted"
@@ -314,7 +314,7 @@ typealias PullRequestReviewType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_review_comment
 class PullRequestReviewComment extends Trigger {
-  types: Listing<PullRequestReviewCommentType>
+  types: Listing<PullRequestReviewCommentType>?
 }
 typealias PullRequestReviewCommentType =
   "created"
@@ -330,7 +330,7 @@ typealias PullRequestReviewCommentType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target
 class PullRequestTarget extends Trigger {
-  types: Listing<PullRequestTargetType>
+  types: Listing<PullRequestTargetType>?
 }
 typealias PullRequestTargetType =
   "assigned"
@@ -371,7 +371,7 @@ class Push extends Trigger {
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#registry_package
 class RegistryPackage extends Trigger {
-  types: Listing<ReleaseType>
+  types: Listing<ReleaseType>?
 }
 typealias RegistryPackageType =
   "published"
@@ -382,7 +382,7 @@ typealias RegistryPackageType =
 ///
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
 class Release extends Trigger {
-  types: Listing<ReleaseType>
+  types: Listing<ReleaseType>?
 }
 typealias ReleaseType =
   "published"
@@ -402,7 +402,7 @@ typealias ReleaseType =
 ///
 /// https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#repository_dispatch
 class RepositoryDispatch extends Trigger {
-  types: Listing<String>
+  types: Listing<String>?
 }
 
 /// You can schedule a workflow to run at specific UTC times using POSIX cron syntax (https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07).
@@ -472,7 +472,7 @@ typealias WorkflowInputType = "boolean"|"string"|"choice"|"environment"|"number"
 ///
 /// https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_run
 class WorkflowRun extends Trigger {
-  types: Listing<WorkflowRunType>
+  types: Listing<WorkflowRunType>?
   workflow: Listing<String>?
 }
 typealias WorkflowRunType =

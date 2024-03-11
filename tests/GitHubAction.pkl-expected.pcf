@@ -69,61 +69,41 @@ examples {
     """
     name: GitHub Action Triggers
     'on':
-      branch_protection_rule:
-        types: []
-      check_run:
-        types: []
-      check_suite:
-        types: []
+      branch_protection_rule: {}
+      check_run: {}
+      check_suite: {}
       create: {}
       delete: {}
       deployment: {}
       deployment_status: {}
-      discussion:
-        types: []
-      discussion_comment:
-        types: []
+      discussion: {}
+      discussion_comment: {}
       fork: {}
       gollum: {}
-      issue_comment:
-        types: []
-      issues:
-        types: []
-      label:
-        types: []
-      milestone:
-        types: []
+      issue_comment: {}
+      issues: {}
+      label: {}
+      milestone: {}
       page_build: {}
-      project:
-        types: []
-      project_card:
-        types: []
-      project_column:
-        types: []
+      project: {}
+      project_card: {}
+      project_column: {}
       public: {}
-      pull_request:
-        types: []
-      pull_request_review:
-        types: []
-      pull_request_review_comment:
-        types: []
-      pull_request_target:
-        types: []
+      pull_request: {}
+      pull_request_review: {}
+      pull_request_review_comment: {}
+      pull_request_target: {}
       push: {}
-      registry_package:
-        types: []
-      release:
-        types: []
-      repository_dispatch:
-        types: []
+      registry_package: {}
+      release: {}
+      repository_dispatch: {}
       schedule:
         cron: []
       status: {}
       watch: {}
       workflow_call: {}
       workflow_dispatch: {}
-      workflow_run:
-        types: []
+      workflow_run: {}
     jobs:
       doesntMatter:
         runs-on: ubuntu-latest
