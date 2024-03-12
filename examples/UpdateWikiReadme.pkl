@@ -13,21 +13,21 @@ on {
 
 jobs {
   ["update-wiki-readme"] {
-    `runs-on` = new UbuntuLatest{}
+    `runs-on` = new UbuntuLatest {}
     steps {
-      new UsesStep {
+      new {
         uses = "actions/checkout@v4"
       }
-      new UsesStep {
+      new {
         uses = "actions/setup-go@v5"
         with {
           ["go-version"] = "1.17.7"
         }
       }
-      new RunStep {
+      new {
         run = "go run wiki/generateWikiToc.go"
       }
-      new RunStep {
+      new {
         name = "Commit changes"
         run = """
           git config --global user.email "StefM@IsGre.at"

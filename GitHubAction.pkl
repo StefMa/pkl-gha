@@ -569,21 +569,15 @@ class WindowsLatest extends Machine {
   name = "windows-latest"
 }
 
-// Steps, part of Jobs
-open class Step {
+// Step, part of Jobs
+class Step {
   name: String?
   id: String?
   `if`: String?
   env: EnvironmentVariables?
   `working-directory`: String?
-}
-
-class RunStep extends Step {
-  run: String
-}
-
-class UsesStep extends Step {
-  uses: String
+  run: String?
+  uses: String?
   with: Mapping<String, String|Number|Boolean>?
 }
 
@@ -592,41 +586,41 @@ class UsesStep extends Step {
 name: String
 
 local const onIsSet = (on: On) ->
-  on.branch_protection_rule != null ||
-  on.check_run != null ||
-  on.check_suite != null ||
-  on.create != null ||
-  on.`delete` != null ||
-  on.deployment != null ||
-  on.deployment_status != null ||
-  on.discussion != null ||
-  on.discussion_comment != null ||
-  on.fork != null ||
-  on.gollum != null ||
-  on.issue_comment != null ||
-  on.issues != null ||
-  on.label != null ||
-  on.merge_group != null ||
-  on.milestone != null ||
-  on.page_build != null ||
-  on.project != null ||
-  on.project_card != null ||
-  on.project_column != null ||
-  on.public != null ||
-  on.pull_request != null ||
-  on.pull_request_review != null ||
-  on.pull_request_review_comment != null ||
-  on.pull_request_target != null ||
-  on.push != null ||
-  on.registry_package != null ||
-  on.release != null ||
-  on.repository_dispatch != null ||
-  on.schedule != null ||
-  on.status != null ||
-  on.watch != null ||
-  on.workflow_call != null ||
-  on.workflow_dispatch != null ||
-  on.workflow_run != null
+    on.branch_protection_rule != null ||
+      on.check_run != null ||
+      on.check_suite != null ||
+      on.create != null ||
+      on.`delete` != null ||
+      on.deployment != null ||
+      on.deployment_status != null ||
+      on.discussion != null ||
+      on.discussion_comment != null ||
+      on.fork != null ||
+      on.gollum != null ||
+      on.issue_comment != null ||
+      on.issues != null ||
+      on.label != null ||
+      on.merge_group != null ||
+      on.milestone != null ||
+      on.page_build != null ||
+      on.project != null ||
+      on.project_card != null ||
+      on.project_column != null ||
+      on.public != null ||
+      on.pull_request != null ||
+      on.pull_request_review != null ||
+      on.pull_request_review_comment != null ||
+      on.pull_request_target != null ||
+      on.push != null ||
+      on.registry_package != null ||
+      on.release != null ||
+      on.repository_dispatch != null ||
+      on.schedule != null ||
+      on.status != null ||
+      on.watch != null ||
+      on.workflow_call != null ||
+      on.workflow_dispatch != null ||
+      on.workflow_run != null
 on: On(onIsSet)
 
 env: EnvironmentVariables?
@@ -644,6 +638,15 @@ output {
   renderer = new YamlRenderer {
     converters {
       ["runs-on"] = (runsOn: String|Machine) -> if (runsOn is Machine) runsOn.name else runsOn
+      ["steps"] = (steps: Listing<Step>) -> if (containsInvalidSteps(steps)) throw(invalidStepsErrorMessage) else steps
     }
   }
 }
+
+local function containsInvalidSteps(steps: Listing<Step>): Boolean = steps
+  .toList()
+  .any((step) -> containsNeitherRunNorUses(step) || containsRunAndUses(step))
+
+local function containsRunAndUses(step: Step): Boolean = step.run != null && step.uses != null
+local function containsNeitherRunNorUses(step: Step): Boolean = step.run == null && step.uses == null
+local invalidStepsErrorMessage = "Step must have either 'run' or 'uses' but not both and at least one of them"

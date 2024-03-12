@@ -2,14 +2,6 @@ amends "../GitHubAction.pkl"
 
 name = "PrintHelloWorld"
 
-// Fake: not implemented yet in generic GitHubAction module...
-local class LabelTrigger extends Trigger {
-  name = "label"
-  types = new Listing<String> {
-    "created"
-  }
-}
-
 on {
   push {
     `tags-ignore` {
@@ -57,11 +49,11 @@ concurrency {
 }
 
 jobs {
-  ["hello_dependabot"] = new {
+  ["hello_dependabot"] {
     `runs-on` = new MacOsLatest {}
     `if` = "${{ github.actor == 'dependabot[bot]' }}"
     steps {
-      new UsesStep {
+      new {
         name = "Checkout"
         uses = "actions/checkout@v4"
         with = new {
@@ -69,32 +61,32 @@ jobs {
           ["token"] = "${{ secrets.GITHUB_TOKEN }}"
         }
       }
-      new RunStep {
+      new {
         name = "Hello World"
         `working-directory` = "src/"
         run = "echo Dependabot!"
       }
     }
   }
-  ["print"] = new {
+  ["print"] {
     `runs-on` = new UbuntuLatest{}
     steps {
-      new RunStep {
+      new {
         name = "Hello World"
         run = "echo Hello World"
       }
-      new RunStep {
+      new {
         name = "date"
         run = "date"
       }
-      new UsesStep {
+      new {
         name = "Checkout"
         uses = "actions/checkout@v4"
         with = new {
           ["ref"] = "develop"
         }
       }
-      new UsesStep {
+      new {
         name = "Slack"
         id = "Slack"
         `if` = "${{ failure() }}"
