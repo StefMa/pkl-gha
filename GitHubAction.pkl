@@ -640,6 +640,7 @@ jobs: Mapping<String, Job>(jobIsSet)
 
 // Output
 output {
+  text = "# Do not modify!\n# This file was generated from a template using https://github.com/StefMa/pkl-gha\n\n\(super.text)"
   renderer = new YamlRenderer {
     converters {
       ["runs-on"] = (runsOn: String|Machine) -> if (runsOn is Machine) runsOn.name else runsOn

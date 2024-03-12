@@ -1,6 +1,9 @@
 examples {
   ["basic"] {
     """
+    # Do not modify!
+    # This file was generated from a template using https://github.com/StefMa/pkl-gha
+    
     name: PrintHelloWorld
     'on':
       pull_request:
@@ -69,6 +72,9 @@ examples {
   }
   ["workflowTriggers"] {
     """
+    # Do not modify!
+    # This file was generated from a template using https://github.com/StefMa/pkl-gha
+    
     name: GitHub Action Triggers
     'on':
       branch_protection_rule: {}
@@ -117,6 +123,9 @@ examples {
   }
   ["updateWikiReadme"] {
     """
+    # Do not modify!
+    # This file was generated from a template using https://github.com/StefMa/pkl-gha
+    
     name: Update Wiki Readme
     'on':
       push:
