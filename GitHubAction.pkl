@@ -633,7 +633,7 @@ env: EnvironmentVariables?
 
 concurrency: Concurrency?
 
-permissions: (Permissions|"read-all"|"write-all")?
+permissions: (*Permissions|"read-all"|"write-all")?
 
 local const jobIsSet = (jobs: Mapping<String, Job>) -> jobs.length > 0
 jobs: Mapping<String, Job>(jobIsSet)

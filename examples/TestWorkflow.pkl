@@ -40,7 +40,7 @@ on {
   }
 }
 
-permissions = new Permissions {
+permissions {
   actions = "read"
   contents = "read"
   issues = "write"
