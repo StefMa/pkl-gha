@@ -8,7 +8,7 @@ on {
 
 jobs {
   ["checkActionsConverted"] {
-    `runs-on` = new MacOsLatest {}
+    `runs-on` = new UbuntuLatest {}
     steps {
       new UsesStep {
         name = "checkout"

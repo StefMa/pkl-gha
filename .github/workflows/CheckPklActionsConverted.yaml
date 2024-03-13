@@ -3,7 +3,7 @@ name: CheckPklActionsConverted
   push: {}
 jobs:
   checkActionsConverted:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v4
