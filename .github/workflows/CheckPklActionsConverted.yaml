@@ -1,0 +1,25 @@
+name: CheckPklActionsConverted
+'on':
+  push: {}
+jobs:
+  checkActionsConverted:
+    runs-on: macos-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+    - name: Install pkl cli and add to path
+      run: |-
+        curl -L -o pkl https://github.com/apple/pkl/releases/download/0.25.2/pkl-linux-amd64
+        chmod +x pkl
+        ./pkl --version
+
+        mkdir -p $HOME/.local/bin
+        mv pkl $HOME/.local/bin/pkl
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+    - name: Convert pkl actions to yaml
+      run: |-
+        for file in .github/workflows/*.pkl; do
+          pkl eval "$file" -o "${file/.pkl/.yaml}"
+        done
+    - name: Verify if if pkl actions are converted
+      run: git diff --exit-code
