@@ -5,11 +5,21 @@ package {
   baseUri = "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/\(name)"
   version = read?("env:VERSION")?.replaceFirst("\(name)@", "") ?? "0.0.2-SNAPSHOT"
   packageZipUrl = "https://github.com/stefma/pkl-gha/releases/download/\(name)@\(version)/\(name)@\(version).zip"
+  description = "A Pkl template for writing GitHub Action workflows"
+  authors {
+    "Stefan M. <StefMaDev@outlook.com>"
+  }
+  website = "https://github.com/stefma/pkl-gha"
   sourceCode = "https://github.com/stefma/pkl-gha"
-  // apiTests = import*("tests/**.pkl").keys.toListing() // Doesn't work
-  exclude  {
+  license = "MIT"
+  issueTracker = "https://github.com/stefma/pkl-gha/issues"
+  // apiTests = import*("tests/**.pkl").keys.toListing() // Doesn't work with pkl 0.25.2 but above
+  exclude {
+    "LICENSE"
     "README.md"
     "examples/**"
     "tests/**"
   }
 }
+
+tests = import*("tests/**.pkl").keys.toListing()

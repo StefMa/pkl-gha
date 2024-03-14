@@ -33,7 +33,7 @@ jobs {
       }
       new RunStep {
         name = "Test pkl module"
-        run = "pkl test tests/*.pkl"
+        run = "pkl test"
       }
     }
   }

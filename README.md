@@ -2,7 +2,7 @@
 
 # pkl-gha
 
-A [Pkl](https://pkl-lang.org/) template for writing a GitHub Action workflow.
+A [Pkl](https://pkl-lang.org/) template for writing GitHub Action workflows.
 
 ## What?
 
