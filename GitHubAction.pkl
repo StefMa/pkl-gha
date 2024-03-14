@@ -6,9 +6,7 @@ module com.github.GitHubAction
 // Definitions
 
 // Trigger
-abstract class Trigger {
-  hidden name: String
-}
+abstract class Trigger
 
 /// Runs your workflow anytime the branch_protection_rule event occurs. More than one activity type triggers this event.
 ///
