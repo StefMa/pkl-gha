@@ -106,12 +106,15 @@ examples {
       release: {}
       repository_dispatch: {}
       schedule:
-        cron: []
+        cron:
+        - '*/10 * * * *'
       status: {}
       watch: {}
       workflow_call: {}
       workflow_dispatch: {}
-      workflow_run: {}
+      workflow_run:
+        workflows:
+        - some_other
     jobs:
       doesntMatter:
         runs-on: ubuntu-latest

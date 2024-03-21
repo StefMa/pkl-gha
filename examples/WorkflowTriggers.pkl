@@ -31,12 +31,20 @@ on {
   registry_package {}
   release {}
   repository_dispatch {}
-  schedule {}
+  schedule {
+    cron {
+      "*/10 * * * *"
+    }
+  }
   status {}
   watch {}
   workflow_call {}
   workflow_dispatch {}
-  workflow_run {}
+  workflow_run {
+    workflows {
+      "some_other"
+    }
+  }
 }
 
 jobs {

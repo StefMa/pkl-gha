@@ -412,7 +412,7 @@ class RepositoryDispatch extends Trigger {
 ///
 /// https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule
 class Schedule extends Trigger {
-  cron: Listing<ScheduleCron>
+  cron: Listing<ScheduleCron>(length > 0)
 }
 typealias ScheduleCron = String
 
@@ -471,7 +471,7 @@ typealias WorkflowInputType = "boolean"|"string"|"choice"|"environment"|"number"
 /// https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_run
 class WorkflowRun extends Trigger {
   types: Listing<WorkflowRunType>?
-  workflow: Listing<String>?
+  workflows: Listing<String>(length > 0)
 }
 typealias WorkflowRunType =
   "requested"
@@ -548,7 +548,7 @@ class Concurrency {
 class Job {
   `runs-on`: Machine|String
   `if`: String?
-  steps: Listing<Step>
+  steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
   env: EnvironmentVariables?
   concurrency: Concurrency?
 }
@@ -636,15 +636,12 @@ output {
   renderer = new YamlRenderer {
     converters {
       ["runs-on"] = (runsOn: String|Machine) -> if (runsOn is Machine) runsOn.name else runsOn
-      ["steps"] = (steps: Listing<Step>) -> if (containsInvalidSteps(steps)) throw(invalidStepsErrorMessage) else steps
     }
   }
 }
 
-local function containsInvalidSteps(steps: Listing<Step>): Boolean = steps
+const local function stepsHasOnlyRunOrUses(steps: Listing<Step>): Boolean = steps
   .toList()
-  .any((step) -> containsNeitherRunNorUses(step) || containsRunAndUses(step))
-
-local function containsRunAndUses(step: Step): Boolean = step.run != null && step.uses != null
-local function containsNeitherRunNorUses(step: Step): Boolean = step.run == null && step.uses == null
-local invalidStepsErrorMessage = "Step must have either 'run' or 'uses' but not both and at least one of them"
+  .every((step) ->  !(containsRunAndUses(step) || containsNeitherRunNorUses(step)))
+const local function containsRunAndUses(step: Step): Boolean = step.run != null && step.uses != null
+const local function containsNeitherRunNorUses(step: Step): Boolean = step.run == null && step.uses == null
