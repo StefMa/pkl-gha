@@ -1,7 +1,10 @@
 module com.github.GitHubAction
 
-// JSON Schema defination:
+// JSON Schema definition for GitHub Actions workflow files:
 // https://json.schemastore.org/github-workflow.json
+
+// GitHub Action lint:
+// https://rhysd.github.io/actionlint/
 
 // Definitions
 
@@ -631,17 +634,21 @@ local const jobIsSet = (jobs: Mapping<String, Job>) -> jobs.length > 0
 jobs: Mapping<String, Job>(jobIsSet)
 
 // Output
+local jsonRenderer = new JsonRenderer {}
 output {
   text = "# Do not modify!\n# This file was generated from a template using https://github.com/StefMa/pkl-gha\n\n\(super.text)"
   renderer = new YamlRenderer {
     converters {
       ["runs-on"] = (runsOn: String|Machine) -> if (runsOn is Machine) runsOn.name else runsOn
+      ["schedule"] = (schedule: Schedule?) -> schedule.ifNonNull((_) ->
+        schedule.cron.toList().map((cr) -> Map("cron", new RenderDirective { text = " " + jsonRenderer.renderValue(cr) }))
+      )
     }
   }
 }
 
 const local function stepsHasOnlyRunOrUses(steps: Listing<Step>): Boolean = steps
   .toList()
-  .every((step) ->  !(containsRunAndUses(step) || containsNeitherRunNorUses(step)))
+  .every((step) -> !(containsRunAndUses(step) || containsNeitherRunNorUses(step)))
 const local function containsRunAndUses(step: Step): Boolean = step.run != null && step.uses != null
 const local function containsNeitherRunNorUses(step: Step): Boolean = step.run == null && step.uses == null
