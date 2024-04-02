@@ -42,20 +42,18 @@ jobs {
         }
       }
       new RunStep {
-        name = "Rename pkl module"
+        name = "Extract version number from tag"
         run = """
           VERSION_NUMBER=${{ github.ref_name }}
           VERSION_NUMBER=${VERSION_NUMBER#*@}
           echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
-          for file in .out/com.github.action@$VERSION_NUMBER/pkl-gha*; do
-            mv "$file" "${file/pkl-gha/com.github.action}"
-          done
           """
       }
       new UsesStep {
         uses = "softprops/action-gh-release@v1"
         with {
           ["files"] = ".out/com.github.action@${{ env.VERSION_NUMBER }}/*"
+          ["fail_on_unmatched_files"] = "true"
           ["prerelease"] = "true"
           ["draft"] = "true"
         }
