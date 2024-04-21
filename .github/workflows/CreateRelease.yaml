@@ -1,3 +1,6 @@
+# Do not modify!
+# This file was generated from a template using https://github.com/StefMa/pkl-gha
+
 name: CreateRelease
 'on':
   push:
@@ -11,15 +14,10 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v4
-    - name: Install pkl cli and add to path
-      run: |-
-        curl -L -o pkl https://github.com/apple/pkl/releases/download/0.25.2/pkl-linux-amd64
-        chmod +x pkl
-        ./pkl --version
-
-        mkdir -p $HOME/.local/bin
-        mv pkl $HOME/.local/bin/pkl
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
+    - name: Install pkl
+      uses: pkl-community/setup-pkl@v0
+      with:
+        pkl-version: 0.25.3
     - name: Package pkl module
       env:
         VERSION: ${{ github.ref_name }}
@@ -32,6 +30,6 @@ jobs:
     - uses: softprops/action-gh-release@v1
       with:
         files: .out/com.github.action@${{ env.VERSION_NUMBER }}/*
-        fail_on_unmatched_files: 'true'
-        prerelease: 'true'
-        draft: 'true'
+        fail_on_unmatched_files: true
+        prerelease: true
+        draft: true

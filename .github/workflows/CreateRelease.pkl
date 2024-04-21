@@ -1,4 +1,5 @@
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.1#/GitHubAction.pkl"
+amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.2#/GitHubAction.pkl"
+import "modules/Steps.pkl"
 
 name = "CreateRelease"
 
@@ -18,30 +19,15 @@ jobs {
   ["createRelease"] {
     `runs-on` = new UbuntuLatest {}
     steps {
-      new UsesStep {
-        name = "checkout"
-        uses = "actions/checkout@v4"
-      }
-      new RunStep {
-        name = "Install pkl cli and add to path"
-        run = """
-          curl -L -o pkl https://github.com/apple/pkl/releases/download/0.25.2/pkl-linux-amd64
-          chmod +x pkl
-          ./pkl --version
-
-          mkdir -p $HOME/.local/bin
-          mv pkl $HOME/.local/bin/pkl
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          """
-      }
-      new RunStep {
+      ...Steps.checkoutAndInstallPkl()
+      new {
         name = "Package pkl module"
         run = "pkl project package"
         env {
           ["VERSION"] = "${{ github.ref_name }}"
         }
       }
-      new RunStep {
+      new {
         name = "Extract version number from tag"
         run = """
           VERSION_NUMBER=${{ github.ref_name }}
@@ -49,13 +35,13 @@ jobs {
           echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
           """
       }
-      new UsesStep {
+      new {
         uses = "softprops/action-gh-release@v1"
         with {
           ["files"] = ".out/com.github.action@${{ env.VERSION_NUMBER }}/*"
-          ["fail_on_unmatched_files"] = "true"
-          ["prerelease"] = "true"
-          ["draft"] = "true"
+          ["fail_on_unmatched_files"] = true
+          ["prerelease"] = true
+          ["draft"] = true
         }
       }
     }
