@@ -1,24 +1,26 @@
-![GitHub Release](https://img.shields.io/github/v/release/stefma/pkl-gha?include_prereleases)
+[![GitHub Release](https://img.shields.io/github/v/release/stefma/pkl-gha?include_prereleases)](https://github.com/StefMa/pkl-gha/releases/latest)
+[![GitHub License](https://img.shields.io/github/license/stefma/pkl-gha)](https://github.com/StefMa/pkl-gha/blob/main/LICENSE)
 
-# pkl-gha
+# <img src="icon.png" alt="Pkl" width="55"/> pkl-gha
 
 A [Pkl](https://pkl-lang.org/) template for writing GitHub Action workflows.
 
 ## What?
 
 [Pkl](https://pkl-lang.org/) is a configuration as code language with rich validation.
-Yaml, the language used for GitHub Actions on the other hand, is a configuration language with **no validation** at all.
+YAML, the language used for GitHub Actions on the other hand, is a configuration language with **no validation** at all.
 We have to rely on third-party tools or IDE support to validate our GitHub Actions.
 While this will get better over time, it's still not as good as having a language with rich validation out of the box.
 
-This is where this template comes in.
-It allows you to write your GitHub Actions in Pkl and then compile them (using the Pkl cli) to Yaml.
-The generated Yaml output, if successfully converted, is definitely Yaml validated and ready to be used in your GitHub
-Actions.
+This is where **this** template comes in.
+It allows you to write your GitHub Action Workflows in Pkl
+and then compile them (using the [Pkl cli](https://pkl-lang.org/main/current/pkl-cli/index.html#installation)) to YAML.
+The generated YAML output, if successfully converted, 
+is definitely YAML validated and ready to be used as your Action Workflows.
 
 ## How?
 
-**1. Write a Pkl file and `amend` this template**
+**1. Write a `Pkl` file and `amend` this template**
 
 ```
 amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/GitHubAction.pkl"
@@ -77,6 +79,11 @@ brew install pkl
 pkl eval path/to/your/pkl/file.pkl -o path/to/your/pkl/file.yaml
 ```
 
+*Or alternatively for all files in the `.github/workflows` directory*:
+```bash
+for file in .github/workflows/*.pkl; do pkl eval "$file" -o "${file/.pkl/.yaml}"; done
+```
+
 ## Why?
 
 * **Strong typing**: Pkl is a strongly typed language. This means that you can't accidentally use a wrong type in your
@@ -86,7 +93,7 @@ pkl eval path/to/your/pkl/file.pkl -o path/to/your/pkl/file.yaml
 ## Examples
 
 You can find real-life examples in the [.github/workflows](.github/workflows) directory of this repository.
-There are some examples in the [examples](examples) directory.
+There are also some examples in the [examples](examples) directory.
 
 The (right now) supported templates looks like that:
 ```
