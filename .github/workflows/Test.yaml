@@ -16,6 +16,6 @@ jobs:
     - name: Install pkl
       uses: pkl-community/setup-pkl@v0
       with:
-        pkl-version: 0.25.3
+        pkl-version: 0.26.1
     - name: Test pkl module
       run: pkl test
