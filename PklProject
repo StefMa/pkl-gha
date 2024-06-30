@@ -13,7 +13,7 @@ package {
   sourceCode = "https://github.com/stefma/pkl-gha"
   license = "MIT"
   issueTracker = "https://github.com/stefma/pkl-gha/issues"
-  // apiTests = import*("tests/**.pkl").keys.toListing() // Doesn't work with pkl 0.25.2 but above
+  apiTests = import*("tests/**.pkl").keys.toListing()
   exclude {
     "LICENSE"
     "README.md"

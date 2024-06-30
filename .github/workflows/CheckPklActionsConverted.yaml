@@ -13,11 +13,11 @@ jobs:
     - name: Install pkl
       uses: pkl-community/setup-pkl@v0
       with:
-        pkl-version: 0.25.3
+        pkl-version: 0.26.1
     - name: Convert pkl actions to yaml
       run: |-
         for file in .github/workflows/*.pkl; do
           pkl eval "$file" -o "${file/.pkl/.yaml}"
         done
-    - name: Verify if if pkl actions are converted
+    - name: Verify if pkl actions are converted
       run: git diff --exit-code
