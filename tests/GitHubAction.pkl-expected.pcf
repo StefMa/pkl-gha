@@ -1,6 +1,6 @@
 examples {
   ["basic"] {
-    """
+    #"""
     # Do not modify!
     # This file was generated from a template using https://github.com/StefMa/pkl-gha
     
@@ -66,9 +66,9 @@ examples {
           with:
             some_bool: true
             some_number: 5
-            payload: "{\\n\\t\\"blocks\\": [\\n\\t\\t{\\n    \\"type\\": \\"section\\",\\n\\t\\t\\t\\"text\\": {\\n\\t\\t\\t\\t\\"type\\": \\"mrkdwn\\",\\n\\t\\t\\t\\t\\"text\\": \\":alert: Develop is broken!\\"\\n\\t\\t\\t}\\n\\t\\t}\\n\\t]\\n}"
+            payload: "{\n\t\"blocks\": [\n\t\t{\n    \"type\": \"section\",\n\t\t\t\"text\": {\n\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\"text\": \":alert: Develop is broken!\"\n\t\t\t}\n\t\t}\n\t]\n}"
     
-    """
+    """#
   }
   ["workflowTriggers"] {
     """
@@ -138,6 +138,7 @@ examples {
         - '!wiki/README.md'
     jobs:
       update-wiki-readme:
+        name: Update Wiki Readme
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v4
