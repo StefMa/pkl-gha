@@ -1,0 +1,36 @@
+amends "../GitHubAction.pkl"
+
+name = "Matrix Test"
+
+on {
+  push {
+    branches {
+      "main"
+    }
+  }
+}
+
+jobs {
+  ["matrixTest"] {
+    `runs-on` = "ubuntu-latest"
+    strategy {
+      matrix {
+        ["os"] = new {
+          "ubuntu-latest"
+          "macos-latest"
+          "windows-latest"
+        }
+      }
+    }
+    steps {
+      new {
+        name = "Checkout"
+        uses = "actions/checkout@v4"
+      }
+      new {
+        name = "Run on ${{ matrix.os }}"
+        run = "echo Hello World"
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 examples {
   ["basic"] {
-    """
+    #"""
     # Do not modify!
     # This file was generated from a template using https://github.com/StefMa/pkl-gha
     
@@ -66,9 +66,9 @@ examples {
           with:
             some_bool: true
             some_number: 5
-            payload: "{\\n\\t\\"blocks\\": [\\n\\t\\t{\\n    \\"type\\": \\"section\\",\\n\\t\\t\\t\\"text\\": {\\n\\t\\t\\t\\t\\"type\\": \\"mrkdwn\\",\\n\\t\\t\\t\\t\\"text\\": \\":alert: Develop is broken!\\"\\n\\t\\t\\t}\\n\\t\\t}\\n\\t]\\n}"
+            payload: "{\n\t\"blocks\": [\n\t\t{\n    \"type\": \"section\",\n\t\t\t\"text\": {\n\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\"text\": \":alert: Develop is broken!\"\n\t\t\t}\n\t\t}\n\t]\n}"
     
-    """
+    """#
   }
   ["workflowTriggers"] {
     """
@@ -153,6 +153,33 @@ examples {
             git commit -m 'Re-build TOC in README.md' || echo "No changes to commit"
             git push origin || echo "No changes to commit"
     
+    """
+  }
+  ["matrixTest"] {
+    """
+    # Do not modify!
+    # This file was generated from a template using https://github.com/StefMa/pkl-gha
+    
+    name: Matrix Test
+    'on':
+      push:
+        branches:
+        - main
+    jobs:
+      matrixTest:
+        runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            os:
+            - ubuntu-latest
+            - macos-latest
+            - windows-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+        - name: Run on ${{ matrix.os }}
+          run: echo Hello World
+
     """
   }
 }

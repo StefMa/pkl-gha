@@ -12,4 +12,7 @@ examples {
   ["updateWikiReadme"] {
     import("../examples/UpdateWikiReadme.pkl").output.text
   }
+  ["matrixTest"] {
+    import("../examples/MatrixTest.pkl").output.text
+  }
 }

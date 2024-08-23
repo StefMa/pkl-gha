@@ -551,9 +551,10 @@ class Concurrency {
 class Job {
   `runs-on`: Machine|String
   `if`: String?
-  steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
   env: EnvironmentVariables?
   concurrency: Concurrency?
+  strategy: Strategy?
+  steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
 }
 
 // Machines, part of Jobs
@@ -580,6 +581,13 @@ class Step {
   run: String?
   uses: String?
   with: Mapping<String, String|Number|Boolean>?
+}
+
+// Strategy, part of Jobs
+class Strategy {
+  matrix: Mapping<String, Listing<String>>
+  `fail-fast`: Boolean?
+  `max-parallel`: (Number|String)?
 }
 
 // Templating
