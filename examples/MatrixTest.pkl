@@ -20,6 +20,20 @@ jobs {
           "macos-latest"
           "windows-latest"
         }
+        ["soemthingElse"] = new {
+          new Dynamic {
+            os = "ubuntu-latest"
+            runtime = "linux-x64"
+          }
+          new Dynamic {
+            os = "windows-latest"
+            runtime = "windows-x64"
+          }
+          new Dynamic {
+            os = "macos-latest"
+            runtime = "macos-x64"
+          }
+        }
       }
     }
     steps {

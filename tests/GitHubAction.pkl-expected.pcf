@@ -175,12 +175,19 @@ examples {
             - ubuntu-latest
             - macos-latest
             - windows-latest
+            soemthingElse:
+            - os: ubuntu-latest
+              runtime: linux-x64
+            - os: windows-latest
+              runtime: windows-x64
+            - os: macos-latest
+              runtime: macos-x64
         steps:
         - name: Checkout
           uses: actions/checkout@v4
         - name: Run on ${{ matrix.os }}
           run: echo Hello World
-
+    
     """
   }
 }

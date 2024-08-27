@@ -586,7 +586,7 @@ class Step {
 
 // Strategy, part of Jobs
 class Strategy {
-  matrix: Mapping<String, Listing<String>>
+  matrix: Mapping<String, Listing<*String|Dynamic>>
   `fail-fast`: Boolean?
   `max-parallel`: (Number|String)?
 }
