@@ -563,6 +563,7 @@ class Job {
   `runs-on`: *String|Machine|Listing<*String|Machine>
   `if`: String?
   needs: (String|Listing<String>)?
+  `timeout-minutes`: Number?
   env: EnvironmentVariables?
   concurrency: Concurrency?
   strategy: Strategy?
@@ -595,6 +596,7 @@ class Step {
   name: String?
   id: String?
   `if`: String?
+  `timeout-minutes`: Number?
   env: EnvironmentVariables?
   `working-directory`: String?
   shell: Shell?
