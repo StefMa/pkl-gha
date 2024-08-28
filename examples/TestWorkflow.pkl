@@ -69,7 +69,10 @@ jobs {
     }
   }
   ["print"] {
-    `runs-on` = new UbuntuLatest{}
+    `runs-on` = new Listing {
+      "macos-latest"
+      new WindowsLatest {}
+    }
     steps {
       new {
         name = "Hello World"

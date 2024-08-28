@@ -49,7 +49,9 @@ examples {
           working-directory: src/
           run: echo Dependabot!
       print:
-        runs-on: ubuntu-latest
+        runs-on:
+        - macos-latest
+        - windows-latest
         steps:
         - name: Hello World
           run: echo Hello World
