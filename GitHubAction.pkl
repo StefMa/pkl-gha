@@ -531,7 +531,7 @@ class On {
 }
 
 // Environment Variables
-typealias EnvironmentVariables = Mapping<String, String|Boolean|Int>
+typealias EnvironmentVariables = Mapping<String, String|Boolean|Number>
 
 // Permissions
 class Permissions {
