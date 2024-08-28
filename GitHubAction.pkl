@@ -258,6 +258,10 @@ class Public extends Trigger
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
 class PullRequest extends Trigger {
   types: Listing<PullRequestType>?
+  branches: Listing<String>?
+  `branches-ignore`: Listing<String>?
+  paths: Listing<String>?
+  `paths-ignore`: Listing<String>?
 }
 typealias PullRequestType =
   "assigned"
@@ -332,6 +336,10 @@ typealias PullRequestReviewCommentType =
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target
 class PullRequestTarget extends Trigger {
   types: Listing<PullRequestTargetType>?
+  branches: Listing<String>?
+  `branches-ignore`: Listing<String>?
+  paths: Listing<String>?
+  `paths-ignore`: Listing<String>?
 }
 typealias PullRequestTargetType =
   "assigned"
@@ -475,6 +483,8 @@ typealias WorkflowInputType = "boolean"|"string"|"choice"|"environment"|"number"
 class WorkflowRun extends Trigger {
   types: Listing<WorkflowRunType>?
   workflows: Listing<String>(length > 0)
+  branches: Listing<String>?
+  `branches-ignore`: Listing<String>?
 }
 typealias WorkflowRunType =
   "requested"
