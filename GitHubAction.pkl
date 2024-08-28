@@ -567,6 +567,7 @@ class Job {
   env: EnvironmentVariables?
   concurrency: Concurrency?
   strategy: Strategy?
+  environment: Environment?
   steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
 }
 
@@ -589,6 +590,12 @@ class Strategy {
   matrix: Mapping<String, Listing<*String|Dynamic>>
   `fail-fast`: Boolean?
   `max-parallel`: (Number|String)?
+}
+
+// Environment, part of Jobs
+class Environment {
+  name: String
+  url: String?
 }
 
 // Step, part of Jobs

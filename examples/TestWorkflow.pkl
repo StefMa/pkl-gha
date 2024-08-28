@@ -59,6 +59,9 @@ jobs {
       "first_job"
       "second_job"
     }
+    environment {
+      name = "production"
+    }
     steps {
       new {
         name = "Checkout"

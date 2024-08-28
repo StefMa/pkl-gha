@@ -45,6 +45,8 @@ examples {
         needs:
         - first_job
         - second_job
+        environment:
+          name: production
         steps:
         - name: Checkout
           uses: actions/checkout@v4
