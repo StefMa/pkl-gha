@@ -22,15 +22,15 @@ jobs {
           "windows-latest"
         }
         ["soemthingElse"] = new {
-          new Dynamic {
+          new {
             os = "ubuntu-latest"
             runtime = "linux-x64"
           }
-          new Dynamic {
+          new {
             os = "windows-latest"
             runtime = "windows-x64"
           }
-          new Dynamic {
+          new {
             os = "macos-latest"
             runtime = "macos-x64"
           }

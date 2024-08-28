@@ -562,7 +562,7 @@ class Job {
   name: String?
   `runs-on`: *String|Machine|Listing<*String|Machine>
   `if`: String?
-  needs: (String|Listing<String>)?
+  needs: (String|*Listing<String>)?
   `timeout-minutes`: Number?
   env: EnvironmentVariables?
   concurrency: Concurrency?
@@ -587,7 +587,7 @@ class WindowsLatest extends Machine {
 
 // Strategy, part of Jobs
 class Strategy {
-  matrix: Mapping<String, Listing<*String|Dynamic>>
+  matrix: Mapping<String, Listing<String|*Dynamic>>
   `fail-fast`: Boolean?
   `max-parallel`: (Number|String)?
 }
