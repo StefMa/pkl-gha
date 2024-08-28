@@ -27,6 +27,8 @@ examples {
             default: Mona the Octocat
     env:
       PR_NUMBER: ${{github.event.number}}
+      SOME_INT: 3
+      SOME_BOOL: true
     concurrency:
       group: example-group
       cancel-in-progress: true
