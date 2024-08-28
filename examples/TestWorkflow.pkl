@@ -54,6 +54,10 @@ jobs {
   ["hello_dependabot"] {
     `runs-on` = new MacOsLatest {}
     `if` = "${{ github.actor == 'dependabot[bot]' }}"
+    needs = new Listing {
+      "first_job"
+      "second_job"
+    }
     steps {
       new {
         name = "Checkout"
@@ -75,6 +79,7 @@ jobs {
       "macos-latest"
       new WindowsLatest {}
     }
+    needs = "hello_dependabot"
     steps {
       new {
         name = "Hello World"
