@@ -573,6 +573,13 @@ class WindowsLatest extends Machine {
   name = "windows-latest"
 }
 
+// Strategy, part of Jobs
+class Strategy {
+  matrix: Mapping<String, Listing<*String|Dynamic>>
+  `fail-fast`: Boolean?
+  `max-parallel`: (Number|String)?
+}
+
 // Step, part of Jobs
 class Step {
   name: String?
@@ -580,17 +587,14 @@ class Step {
   `if`: String?
   env: EnvironmentVariables?
   `working-directory`: String?
+  shell: Shell?
   run: String?
   uses: String?
   with: Mapping<String, String|Number|Boolean>?
 }
 
-// Strategy, part of Jobs
-class Strategy {
-  matrix: Mapping<String, Listing<*String|Dynamic>>
-  `fail-fast`: Boolean?
-  `max-parallel`: (Number|String)?
-}
+// Shell, part of Steps
+typealias Shell = "pwsh" | "bash" | "sh" | "cmd" | "powershell" | "python"
 
 // Templating
 
