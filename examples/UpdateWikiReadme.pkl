@@ -27,6 +27,7 @@ jobs {
       }
       new {
         run = "go run wiki/generateWikiToc.go"
+        shell = "bash"
       }
       new {
         name = "Commit changes"

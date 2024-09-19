@@ -41,6 +41,9 @@ permissions {
 
 env {
   ["PR_NUMBER"] = "${{github.event.number}}"
+  ["SOME_INT"] = 3
+  ["SOME_FLOAT"] = 3.2
+  ["SOME_BOOL"] = true
 }
 
 concurrency {
@@ -52,6 +55,13 @@ jobs {
   ["hello_dependabot"] {
     `runs-on` = new MacOsLatest {}
     `if` = "${{ github.actor == 'dependabot[bot]' }}"
+    needs {
+      "first_job"
+      "second_job"
+    }
+    environment {
+      name = "production"
+    }
     steps {
       new {
         name = "Checkout"
@@ -69,7 +79,11 @@ jobs {
     }
   }
   ["print"] {
-    `runs-on` = new UbuntuLatest{}
+    `runs-on` = new Listing {
+      "macos-latest"
+      new WindowsLatest {}
+    }
+    needs = "hello_dependabot"
     steps {
       new {
         name = "Hello World"

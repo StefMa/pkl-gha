@@ -258,6 +258,10 @@ class Public extends Trigger
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
 class PullRequest extends Trigger {
   types: Listing<PullRequestType>?
+  branches: Listing<String>?
+  `branches-ignore`: Listing<String>?
+  paths: Listing<String>?
+  `paths-ignore`: Listing<String>?
 }
 typealias PullRequestType =
   "assigned"
@@ -332,6 +336,10 @@ typealias PullRequestReviewCommentType =
 /// https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target
 class PullRequestTarget extends Trigger {
   types: Listing<PullRequestTargetType>?
+  branches: Listing<String>?
+  `branches-ignore`: Listing<String>?
+  paths: Listing<String>?
+  `paths-ignore`: Listing<String>?
 }
 typealias PullRequestTargetType =
   "assigned"
@@ -475,6 +483,8 @@ typealias WorkflowInputType = "boolean"|"string"|"choice"|"environment"|"number"
 class WorkflowRun extends Trigger {
   types: Listing<WorkflowRunType>?
   workflows: Listing<String>(length > 0)
+  branches: Listing<String>?
+  `branches-ignore`: Listing<String>?
 }
 typealias WorkflowRunType =
   "requested"
@@ -521,7 +531,7 @@ class On {
 }
 
 // Environment Variables
-typealias EnvironmentVariables = Mapping<String, String>
+typealias EnvironmentVariables = Mapping<String, String|Boolean|Number>
 
 // Permissions
 class Permissions {
@@ -550,11 +560,14 @@ class Concurrency {
 // Jobs
 class Job {
   name: String?
-  `runs-on`: Machine|String
+  `runs-on`: *String|Machine|Listing<*String|Machine>
   `if`: String?
+  needs: (String|*Listing<String>)?
+  `timeout-minutes`: Number?
   env: EnvironmentVariables?
   concurrency: Concurrency?
   strategy: Strategy?
+  environment: Environment?
   steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
 }
 
@@ -572,24 +585,35 @@ class WindowsLatest extends Machine {
   name = "windows-latest"
 }
 
+// Strategy, part of Jobs
+class Strategy {
+  matrix: Mapping<String, Listing<String|*Dynamic>>
+  `fail-fast`: Boolean?
+  `max-parallel`: (Number|String)?
+}
+
+// Environment, part of Jobs
+class Environment {
+  name: String
+  url: String?
+}
+
 // Step, part of Jobs
 class Step {
   name: String?
   id: String?
   `if`: String?
+  `timeout-minutes`: Number?
   env: EnvironmentVariables?
   `working-directory`: String?
+  shell: Shell?
   run: String?
   uses: String?
   with: Mapping<String, String|Number|Boolean>?
 }
 
-// Strategy, part of Jobs
-class Strategy {
-  matrix: Mapping<String, Listing<String>>
-  `fail-fast`: Boolean?
-  `max-parallel`: (Number|String)?
-}
+// Shell, part of Steps
+typealias Shell = "pwsh" | "bash" | "sh" | "cmd" | "powershell" | "python"
 
 // Templating
 
@@ -648,7 +672,8 @@ output {
   text = "# Do not modify!\n# This file was generated from a template using https://github.com/StefMa/pkl-gha\n\n\(super.text)"
   renderer = new YamlRenderer {
     converters {
-      ["runs-on"] = (runsOn: String|Machine) -> if (runsOn is Machine) runsOn.name else runsOn
+      ["runs-on"] = (runsOn: String|Machine|Listing<String|Machine>) ->
+        if (runsOn is Listing<String|Machine>) convertMachinesToString(runsOn) else convertMachineToString(runsOn)
       ["schedule"] = (schedule: Schedule?) -> schedule.ifNonNull((_) ->
         schedule.cron.toList().map((cr) -> Map("cron", new RenderDirective { text = " " + jsonRenderer.renderValue(cr) }))
       )
@@ -661,3 +686,10 @@ const local function stepsHasOnlyRunOrUses(steps: Listing<Step>): Boolean = step
   .every((step) -> !(containsRunAndUses(step) || containsNeitherRunNorUses(step)))
 const local function containsRunAndUses(step: Step): Boolean = step.run != null && step.uses != null
 const local function containsNeitherRunNorUses(step: Step): Boolean = step.run == null && step.uses == null
+
+const local function convertMachinesToString(runsOn: Listing<String|Machine>): Listing<String> = runsOn
+  .toList()
+  .map((type) -> convertMachineToString(type))
+  .toListing()
+const local function convertMachineToString(machine: String|Machine): String =
+  if (machine is Machine) machine.name else machine
