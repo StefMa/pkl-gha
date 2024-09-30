@@ -72,10 +72,18 @@ jobs {
         }
       }
       new {
+        id = "hello"
         name = "Hello World"
         `working-directory` = "src/"
-        run = "echo Dependabot!"
+        run = """
+          echo Dependabot!
+          echo "some_output=hello" >> "$GITHUB_OUTPUT"
+          """
       }
+    }
+    outputs {
+      ["some_output"] = "${{ steps.hello.outputs.some_output }}"
+      ["another_output"] = "true"
     }
   }
   ["print"] {
