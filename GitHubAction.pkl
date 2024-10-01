@@ -565,6 +565,7 @@ class Job {
   needs: (String|*Listing<String>)?
   `timeout-minutes`: Number?
   env: EnvironmentVariables?
+  outputs: Mapping<String, String>?
   concurrency: Concurrency?
   strategy: Strategy?
   environment: Environment?

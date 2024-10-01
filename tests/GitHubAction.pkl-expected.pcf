@@ -45,6 +45,9 @@ examples {
         needs:
         - first_job
         - second_job
+        outputs:
+          some_output: ${{ steps.hello.outputs.some_output }}
+          another_output: 'true'
         environment:
           name: production
         steps:
@@ -54,8 +57,11 @@ examples {
             ref: develop
             token: ${{ secrets.GITHUB_TOKEN }}
         - name: Hello World
+          id: hello
           working-directory: src/
-          run: echo Dependabot!
+          run: |-
+            echo Dependabot!
+            echo "some_output=hello" >> "$GITHUB_OUTPUT"
       print:
         runs-on:
         - macos-latest
