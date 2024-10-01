@@ -50,6 +50,7 @@ examples {
           another_output: 'true'
         environment:
           name: production
+        permissions: write-all
         steps:
         - name: Checkout
           uses: actions/checkout@v4

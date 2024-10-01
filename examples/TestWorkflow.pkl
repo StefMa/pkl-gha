@@ -59,6 +59,7 @@ jobs {
       "first_job"
       "second_job"
     }
+    permissions = "write-all"
     environment {
       name = "production"
     }

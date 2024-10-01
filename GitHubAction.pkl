@@ -569,6 +569,7 @@ class Job {
   concurrency: Concurrency?
   strategy: Strategy?
   environment: Environment?
+  permissions: (*Permissions|"read-all"|"write-all")?
   steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
 }
 
