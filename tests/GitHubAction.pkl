@@ -15,4 +15,7 @@ examples {
   ["matrixTest"] {
     import("../examples/MatrixTest.pkl").output.text
   }
+  ["reusableWorkflow"] {
+    import("../examples/ReusableWorkflow.pkl").output.text
+  }
 }
