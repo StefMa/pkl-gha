@@ -13,9 +13,10 @@ jobs {
     steps {
       ...Steps.checkoutAndInstallPkl()
       new {
-        `working-directory` = ".github/pkl-workflows"
         name = "Convert pkl actions to yaml"
-        run = "./convertWorkflows.sh"
+        run = """
+        pkl eval .github/pkl-workflows/*.pkl -o ".github/workflows/%{moduleName}.generated.yml"
+        """
       }
       new {
         name = "Verify if pkl actions are converted"

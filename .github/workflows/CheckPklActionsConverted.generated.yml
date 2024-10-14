@@ -15,7 +15,6 @@ jobs:
       with:
         pkl-version: 0.26.1
     - name: Convert pkl actions to yaml
-      working-directory: .github/pkl-workflows
-      run: ./convertWorkflows.sh
+      run: pkl eval .github/pkl-workflows/*.pkl -o ".github/workflows/%{moduleName}.generated.yml"
     - name: Verify if pkl actions are converted
       run: git diff --exit-code
