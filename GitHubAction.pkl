@@ -625,7 +625,7 @@ class Step {
 }
 
 // Shell, part of Steps
-typealias Shell = "pwsh" | "bash" | "sh" | "cmd" | "powershell" | "python"
+typealias Shell = "pwsh"|"bash"|"sh"|"cmd"|"powershell"|"python"
 
 // Templating
 
