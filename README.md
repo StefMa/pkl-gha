@@ -32,7 +32,7 @@ on {
   push {
     branches {
       "main"
-      }
+    }
   }
   pull_request {}
 }
@@ -81,7 +81,7 @@ pkl eval path/to/your/pkl/file.pkl -o path/to/your/pkl/file.yaml
 
 *Or alternatively for all files in the `.github/workflows` directory*:
 ```bash
-for file in .github/workflows/*.pkl; do pkl eval "$file" -o "${file/.pkl/.yaml}"; done
+pkl eval .github/workflows/*.pkl -o .github/workflows/%{moduleName}.yml
 ```
 
 ## Why?
