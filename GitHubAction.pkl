@@ -565,7 +565,6 @@ abstract class BaseJob {
   concurrency: Concurrency?
   strategy: Strategy?
   permissions: (*Permissions|"read-all"|"write-all")?
-  uses: String?
 }
 
 class DefaultJob extends BaseJob {
