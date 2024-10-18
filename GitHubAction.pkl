@@ -558,20 +558,29 @@ class Concurrency {
 }
 
 // Jobs
-class Job {
+abstract class BaseJob {
   name: String?
-  `runs-on`: *String|Machine|Listing<*String|Machine>
   `if`: String?
   needs: (String|*Listing<String>)?
+  concurrency: Concurrency?
+  strategy: Strategy?
+  permissions: (*Permissions|"read-all"|"write-all")?
+}
+
+class DefaultJob extends BaseJob {
+  `runs-on`: *String|Machine|Listing<*String|Machine>
   `timeout-minutes`: Number?
   env: EnvironmentVariables?
   outputs: Mapping<String, String>?
-  concurrency: Concurrency?
-  strategy: Strategy?
   environment: Environment?
-  permissions: (*Permissions|"read-all"|"write-all")?
   steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
 }
+
+class ReusableJob extends BaseJob {
+  uses: String(matches(Regex("(.+\\/)+(.+)\\.(ya?ml)(@.+)?")))?
+}
+
+typealias Job = *DefaultJob|ReusableJob
 
 // Machines, part of Jobs
 abstract class Machine {
@@ -615,7 +624,7 @@ class Step {
 }
 
 // Shell, part of Steps
-typealias Shell = "pwsh" | "bash" | "sh" | "cmd" | "powershell" | "python"
+typealias Shell = "pwsh"|"bash"|"sh"|"cmd"|"powershell"|"python"
 
 // Templating
 
@@ -665,8 +674,7 @@ concurrency: Concurrency?
 
 permissions: (*Permissions|"read-all"|"write-all")?
 
-local const jobIsSet = (jobs: Mapping<String, Job>) -> jobs.length > 0
-jobs: Mapping<String, Job>(jobIsSet)
+jobs: Mapping<String, Job>(this.length > 0)
 
 // Output
 local jsonRenderer = new JsonRenderer {}

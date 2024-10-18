@@ -1,0 +1,24 @@
+amends "../GitHubAction.pkl"
+
+name = "Reusable Workflow"
+
+on {
+  push {
+    `tags-ignore` {
+      "v*"
+    }
+    branches {
+      "master"
+      "develop"
+    }
+  }
+}
+
+jobs {
+  ["reusable_workflow"] = new ReusableJob {
+    uses = "./something.yaml"
+  }
+  ["reusable_workflow_repo"] = new ReusableJob {
+    uses = "octo-org/another-repo/.github/workflows/workflow.yml@v1"
+  }
+}
