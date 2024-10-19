@@ -40,17 +40,17 @@ examples {
       pull-requests: write
     jobs:
       hello_dependabot:
-        runs-on: macos-latest
         if: ${{ github.actor == 'dependabot[bot]' }}
         needs:
         - first_job
         - second_job
+        permissions: write-all
+        runs-on: macos-latest
         outputs:
           some_output: ${{ steps.hello.outputs.some_output }}
           another_output: 'true'
         environment:
           name: production
-        permissions: write-all
         steps:
         - name: Checkout
           uses: actions/checkout@v4
@@ -64,10 +64,10 @@ examples {
             echo Dependabot!
             echo "some_output=hello" >> "$GITHUB_OUTPUT"
       print:
+        needs: hello_dependabot
         runs-on:
         - macos-latest
         - windows-latest
-        needs: hello_dependabot
         steps:
         - name: Hello World
           run: echo Hello World
@@ -187,8 +187,6 @@ examples {
         - main
     jobs:
       matrixTest:
-        runs-on: ubuntu-latest
-        timeout-minutes: 5.5
         strategy:
           matrix:
             os:
@@ -202,12 +200,35 @@ examples {
               runtime: windows-x64
             - os: macos-latest
               runtime: macos-x64
+        runs-on: ubuntu-latest
+        timeout-minutes: 5.5
         steps:
         - name: Checkout
           timeout-minutes: 2.3
           uses: actions/checkout@v4
         - name: Run on ${{ matrix.os }}
           run: echo Hello World
+    
+    """
+  }
+  ["reusableWorkflow"] {
+    """
+    # Do not modify!
+    # This file was generated from a template using https://github.com/StefMa/pkl-gha
+    
+    name: Reusable Workflow
+    'on':
+      push:
+        branches:
+        - master
+        - develop
+        tags-ignore:
+        - v*
+    jobs:
+      reusable_workflow:
+        uses: ./something.yaml
+      reusable_workflow_repo:
+        uses: octo-org/another-repo/.github/workflows/workflow.yml@v1
     
     """
   }
