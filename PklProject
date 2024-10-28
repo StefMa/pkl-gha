@@ -16,7 +16,8 @@ package {
   apiTests = import*("tests/**.pkl").keys.toListing()
   exclude {
     "LICENSE"
-    "README.md"
+    "*.md"
+    "icon.png"
     "examples/**"
     "tests/**"
   }
