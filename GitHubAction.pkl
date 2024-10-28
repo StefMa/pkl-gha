@@ -572,7 +572,7 @@ class DefaultJob extends BaseJob {
   `timeout-minutes`: Number?
   env: EnvironmentVariables?
   outputs: Mapping<String, String>?
-  environment: Environment?
+  environment: (*Environment|String)?
   steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
 }
 

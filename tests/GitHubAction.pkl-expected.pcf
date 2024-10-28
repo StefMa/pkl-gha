@@ -68,6 +68,7 @@ examples {
         runs-on:
         - macos-latest
         - windows-latest
+        environment: staging
         steps:
         - name: Hello World
           run: echo Hello World
