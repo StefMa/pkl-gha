@@ -2,6 +2,9 @@ module com.github.GitHubAction.tests
 
 amends "pkl:test"
 
+import "pkl:test"
+import "../GitHubAction.pkl"
+
 examples {
   ["basic"] {
     import("../examples/TestWorkflow.pkl").output.text
@@ -19,3 +22,17 @@ examples {
     import("../examples/ReusableWorkflow.pkl").output.text
   }
 }
+
+facts {
+  ["jobIdTest"] {
+    local function createJobs(id: String): GitHubAction.Jobs = new { [id] {} }
+    test.catchOrNull(() -> createJobs("validJobId")) == null
+    test.catchOrNull(() -> createJobs("ValidJobId")) == null
+    test.catchOrNull(() -> createJobs("_validJobId")) == null
+    test.catchOrNull(() -> createJobs("validJobId-_0123456789")) == null
+    test.catchOrNull(() -> createJobs("this is throwing")) != null
+    test.catchOrNull(() -> createJobs("7hisIsThrowing")) != null
+    test.catchOrNull(() -> createJobs("-7hisIsThrowing")) != null
+  }
+}
+

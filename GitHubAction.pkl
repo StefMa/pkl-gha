@@ -627,7 +627,10 @@ class Step {
 typealias Shell = "pwsh"|"bash"|"sh"|"cmd"|"powershell"|"python"
 
 // Jobs top-level typealias
-typealias Jobs = Mapping<String, Job>
+typealias Jobs = Mapping<String, Job>(
+    length > 0,
+    keys.any((key) -> key.matches(Regex("[a-zA-Z_][a-zA-Z0-9_-]*")))
+  )
 
 // Templating
 
@@ -677,7 +680,7 @@ concurrency: Concurrency?
 
 permissions: (*Permissions|"read-all"|"write-all")?
 
-jobs: Jobs(length > 0)
+jobs: Jobs
 
 // Output
 local jsonRenderer = new JsonRenderer {}
