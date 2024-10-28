@@ -626,6 +626,9 @@ class Step {
 // Shell, part of Steps
 typealias Shell = "pwsh"|"bash"|"sh"|"cmd"|"powershell"|"python"
 
+// Jobs top-level typealias
+typealias Jobs = Mapping<String, Job>
+
 // Templating
 
 name: String
@@ -674,7 +677,7 @@ concurrency: Concurrency?
 
 permissions: (*Permissions|"read-all"|"write-all")?
 
-jobs: Mapping<String, Job>(this.length > 0)
+jobs: Jobs(length > 0)
 
 // Output
 local jsonRenderer = new JsonRenderer {}
