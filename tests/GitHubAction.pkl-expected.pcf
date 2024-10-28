@@ -68,6 +68,7 @@ examples {
         runs-on:
         - macos-latest
         - windows-latest
+        environment: staging
         steps:
         - name: Hello World
           run: echo Hello World
@@ -227,8 +228,15 @@ examples {
     jobs:
       reusable_workflow:
         uses: ./something.yaml
+        secrets: inherit
       reusable_workflow_repo:
         uses: octo-org/another-repo/.github/workflows/workflow.yml@v1
+        with:
+          some_input: some value
+          another_input: true
+        secrets:
+          SECRET TOKEN: TOKEN
+          ANOTHER SECRET: 42
     
     """
   }

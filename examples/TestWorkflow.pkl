@@ -92,6 +92,7 @@ jobs {
       "macos-latest"
       new WindowsLatest {}
     }
+    environment = "staging"
     needs = "hello_dependabot"
     steps {
       new {

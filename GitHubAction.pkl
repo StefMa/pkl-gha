@@ -1,11 +1,5 @@
 module com.github.GitHubAction
 
-// JSON Schema definition for GitHub Actions workflow files:
-// https://json.schemastore.org/github-workflow.json
-
-// GitHub Action lint:
-// https://rhysd.github.io/actionlint/
-
 // Definitions
 
 // Trigger
@@ -572,12 +566,14 @@ class DefaultJob extends BaseJob {
   `timeout-minutes`: Number?
   env: EnvironmentVariables?
   outputs: Mapping<String, String>?
-  environment: Environment?
+  environment: (*Environment|String)?
   steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
 }
 
 class ReusableJob extends BaseJob {
   uses: String(matches(Regex("(.+\\/)+(.+)\\.(ya?ml)(@.+)?")))?
+  with: Mapping<String, String|Number|Boolean>?
+  secrets: ("inherit"|*Mapping<String, String|Number|Boolean>)?
 }
 
 typealias Job = *DefaultJob|ReusableJob
@@ -625,6 +621,12 @@ class Step {
 
 // Shell, part of Steps
 typealias Shell = "pwsh"|"bash"|"sh"|"cmd"|"powershell"|"python"
+
+// Jobs top-level typealias
+typealias Jobs = Mapping<String, Job>(
+    length > 0,
+    keys.any((key) -> key.matches(Regex("[a-zA-Z_][a-zA-Z0-9_-]*")))
+  )
 
 // Templating
 
@@ -674,7 +676,7 @@ concurrency: Concurrency?
 
 permissions: (*Permissions|"read-all"|"write-all")?
 
-jobs: Mapping<String, Job>(this.length > 0)
+jobs: Jobs
 
 // Output
 local jsonRenderer = new JsonRenderer {}
