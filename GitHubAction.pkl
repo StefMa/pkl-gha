@@ -1,11 +1,5 @@
 module com.github.GitHubAction
 
-// JSON Schema definition for GitHub Actions workflow files:
-// https://json.schemastore.org/github-workflow.json
-
-// GitHub Action lint:
-// https://rhysd.github.io/actionlint/
-
 // Definitions
 
 // Trigger
