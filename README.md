@@ -81,7 +81,7 @@ pkl eval path/to/your/pkl/file.pkl -o path/to/your/pkl/file.yaml
 
 *Or alternatively for all files in the `.github/workflows` directory*:
 ```bash
-pkl eval .github/workflows/*.pkl -o .github/workflows/%{moduleName}.yml
+pkl eval path/to/your/pkl/files/*.pkl -o path/to/your/pkl/files/%{moduleName}.yml
 ```
 
 ## Why?
@@ -92,7 +92,7 @@ pkl eval .github/workflows/*.pkl -o .github/workflows/%{moduleName}.yml
 
 ## Examples
 
-You can find real-life examples in the [.github/workflows](.github/workflows) directory of this repository.
+You can find real-life examples in the [.github/pkl-workflows](.github/pkl-workflows) directory of this repository.
 There are also some examples in the [examples](examples) directory.
 
 The (right now) supported templates looks like that:
