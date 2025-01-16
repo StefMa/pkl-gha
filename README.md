@@ -102,12 +102,23 @@ on: On
 env: EnvironmentVariables?
 concurrency: Concurrency?
 permissions: (*Permissions|"read-all"|"write-all")?
-jobs: Mapping<String, Job>
+jobs: Jobs
 ```
 
 The template itself as well as the `class` definitions can be found in the [GitHubAction.pkl](GitHubAction.pkl) file.
 
-## Releasing
+## Adopters
+
+This module is already used in the following repositories:
+* [StefMa/pkl-gha](https://github.com/StefMa/pkl-gha/tree/725a23cc42112a11dec32ff934d3166bddc54e5c/.github/pkl-workflows)
+* [pkl-community/setup-go](https://github.com/pkl-community/setup-pkl/tree/52a58184f4f3e64a7fd8444f2a5dee6fa8eeba58/.github/pkl-workflows)
+* [realm/realm-dotnet](https://github.com/realm/realm-dotnet/tree/d44ca659e2744ce0a210ff7ffbcb59607d8b3dac/.github/pkl-workflows)
+
+Additionally, it is used in the internal codebase of the [ioki](https://ioki.com/en/platform/) Android White-Label Apps.
+
+Let me know if you have also adopted the module, or submit a PR!
+
+## Release
 
 **Step 1**: Make sure you're on the `main` branch and pull the latest changes.
 
