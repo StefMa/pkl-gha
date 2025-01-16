@@ -69,9 +69,12 @@ jobs {
 
 **2. Install the Pkl cli**
 
+For macOS it as simple as:
 ```bash
 brew install pkl
 ````
+
+For other platforms, please follow the [official installation guide](https://pkl-lang.org/main/current/pkl-cli/index.html#installation).
 
 **3. Convert the Pkl file to Yaml**
 
