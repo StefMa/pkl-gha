@@ -679,16 +679,19 @@ permissions: (*Permissions|"read-all"|"write-all")?
 jobs: Jobs
 
 // Output
-local jsonRenderer = new JsonRenderer {}
+local baseHeaderComment = "# Do not modify!\n# This file was generated from a template using https://github.com/StefMa/pkl-gha"
+headerComment: String? = null
+local finalHeaderComment: String = if (headerComment != null) "\(headerComment)\n\n" + baseHeaderComment else baseHeaderComment
 output {
-  text = "# Do not modify!\n# This file was generated from a template using https://github.com/StefMa/pkl-gha\n\n\(super.text)"
+  text = "\(finalHeaderComment)\n\n\(super.text)"
   renderer = new YamlRenderer {
     converters {
       ["runs-on"] = (runsOn: String|Machine|Listing<String|Machine>) ->
         if (runsOn is Listing<String|Machine>) convertMachinesToString(runsOn) else convertMachineToString(runsOn)
       ["schedule"] = (schedule: Schedule?) -> schedule.ifNonNull((_) ->
-        schedule.cron.toList().map((cr) -> Map("cron", new RenderDirective { text = " " + jsonRenderer.renderValue(cr) }))
+        schedule.cron.toList().map((cr) -> Map("cron", new RenderDirective { text = " " + new JsonRenderer {}.renderValue(cr) }))
       )
+      ["headerComment"] = (headerComment: String?) -> null
     }
   }
 }

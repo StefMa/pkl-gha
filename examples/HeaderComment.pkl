@@ -1,0 +1,31 @@
+amends "../GitHubAction.pkl"
+
+headerComment = """
+  # SPDX-FileCopyrightText: Copyright line here
+  #
+  # SPDX-License-Identifier: License here
+  """
+
+name = "Custom header comment"
+
+on {
+  push {
+    branches {
+      "main"
+    }
+  }
+}
+
+jobs {
+  ["headerComment"] {
+    `runs-on` = "ubuntu-latest"
+    steps {
+      new {
+        uses = "actions/checkout@v4"
+      }
+      new {
+        run = "echo Hello World"
+      }
+    }
+  }
+}
