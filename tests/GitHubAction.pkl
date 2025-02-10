@@ -21,6 +21,9 @@ examples {
   ["reusableWorkflow"] {
     import("../examples/ReusableWorkflow.pkl").output.text
   }
+  ["headerComment"] {
+    import("../examples/HeaderComment.pkl").output.text
+  }
 }
 
 facts {

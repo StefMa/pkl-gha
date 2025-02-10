@@ -240,4 +240,27 @@ examples {
     
     """
   }
+  ["headerComment"] {
+    """
+    # SPDX-FileCopyrightText: Copyright line here
+    #
+    # SPDX-License-Identifier: License here
+    
+    # Do not modify!
+    # This file was generated from a template using https://github.com/StefMa/pkl-gha
+    
+    name: Custom header comment
+    'on':
+      push:
+        branches:
+        - main
+    jobs:
+      headerComment:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+        - run: echo Hello World
+    
+    """
+  }
 }
