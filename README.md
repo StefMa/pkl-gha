@@ -22,7 +22,7 @@ is definitely YAML validated and ready to be used as your Action Workflows.
 
 **1. Write a `Pkl` file and `amend` this template**
 
-```
+```pkl
 amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/GitHubAction.pkl"
 
 name = "Test"
@@ -114,7 +114,7 @@ The template itself as well as the `class` definitions can be found in the [GitH
 
 This module is already used in the following repositories:
 * [StefMa/pkl-gha](https://github.com/StefMa/pkl-gha/tree/725a23cc42112a11dec32ff934d3166bddc54e5c/.github/pkl-workflows)
-* [pkl-community/setup-go](https://github.com/pkl-community/setup-pkl/tree/52a58184f4f3e64a7fd8444f2a5dee6fa8eeba58/.github/pkl-workflows)
+* [pkl-community/setup-pkl](https://github.com/pkl-community/setup-pkl/tree/52a58184f4f3e64a7fd8444f2a5dee6fa8eeba58/.github/pkl-workflows)
 * [realm/realm-dotnet](https://github.com/realm/realm-dotnet/tree/d44ca659e2744ce0a210ff7ffbcb59607d8b3dac/.github/pkl-workflows)
 
 Additionally, it is used in the internal codebase of the [ioki](https://ioki.com/en/platform/) Android White-Label Apps.
