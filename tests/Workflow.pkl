@@ -1,9 +1,9 @@
-module com.github.GitHubAction.tests
+module com.github.action.Workflow.tests
 
 amends "pkl:test"
 
 import "pkl:test"
-import "../GitHubAction.pkl"
+import "../Workflow.pkl"
 
 examples {
   ["basic"] {
@@ -25,7 +25,7 @@ examples {
 
 facts {
   ["jobIdTest"] {
-    local function createJobs(id: String): GitHubAction.Jobs = new { [id] {} }
+    local function createJobs(id: String): Workflow.Jobs = new { [id] {} }
     test.catchOrNull(() -> createJobs("validJobId")) == null
     test.catchOrNull(() -> createJobs("ValidJobId")) == null
     test.catchOrNull(() -> createJobs("_validJobId")) == null
