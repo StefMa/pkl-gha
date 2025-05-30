@@ -24,6 +24,7 @@ is definitely YAML validated and ready to be used as your Action Workflows.
 
 ```pkl
 amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/GitHubAction.pkl"
+import "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/Context.pkl" // Optional
 
 name = "Test"
 
@@ -54,8 +55,8 @@ jobs {
         name = "Setup nexus credentials"
         run = """
           mkdir ~/.gradle
-          echo "systemProp.nexusUsername=${{ secrets.NEXUS_USERNAME }}" >> ~/.gradle/gradle.properties
-          echo "systemProp.nexusPassword=${{ secrets.NEXUS_PASSWORD }}" >> ~/.gradle/gradle.properties
+          echo "systemProp.nexusUsername=\(Context.secret("NEXUS_USERNAME")) >> ~/.gradle/gradle.properties
+          echo "systemProp.nexusPassword=\(Context.secret("NEXUS_PASSWORD")) >> ~/.gradle/gradle.properties
         """
       }
       new {
