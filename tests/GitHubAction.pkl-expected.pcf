@@ -26,7 +26,7 @@ examples {
             required: true
             default: Mona the Octocat
     env:
-      PR_NUMBER: ${{github.event.number}}
+      PR_NUMBER: ${{ github.event.number }}
       SOME_INT: 3
       SOME_FLOAT: 3.2
       SOME_BOOL: true
