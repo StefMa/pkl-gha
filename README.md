@@ -23,7 +23,7 @@ is definitely YAML validated and ready to be used as your Action Workflows.
 **1. Write a `Pkl` file and `amend` this template**
 
 ```pkl
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/GitHubAction.pkl"
+amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/Workflow.pkl"
 import "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/Context.pkl" // Optional
 
 name = "Test"
