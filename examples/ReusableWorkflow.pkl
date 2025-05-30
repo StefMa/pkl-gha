@@ -1,4 +1,4 @@
-amends "../GitHubAction.pkl"
+amends "../Workflow.pkl"
 
 name = "Reusable Workflow"
 

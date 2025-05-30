@@ -1,4 +1,9 @@
-module com.github.GitHubAction
+/// A Pkl template for writing GitHub Action workflows.
+///
+/// This module provides a set of definitions for GitHub Action workflows,
+/// including triggers, jobs, steps, and environment variables.
+@ModuleInfo { minPklVersion = "0.25.3" }
+module com.github.action.Workflow
 
 // Definitions
 
