@@ -2,17 +2,8 @@
 ///
 /// This module provides a set of definitions for GitHub Action workflows,
 /// including triggers, jobs, steps, and environment variables.
-///
-/// **Deprated**: This module is deprecated and will not receive further updates.
-/// Use [Workflow](Workflow.pkl) instead for creating GitHub Action workflows.
-///
-@Deprecated {
-  since = "0.0.5"
-  message = "This module is deprecated. Use the latest version of GitHub Action module instead."
-  replaceWith = "Workflow"
-}
 @ModuleInfo { minPklVersion = "0.25.3" }
-module com.github.action.GitHubAction
+module com.github.action.Workflow
 
 // Definitions
 
@@ -569,28 +560,28 @@ class Concurrency {
 abstract class BaseJob {
   name: String?
   `if`: String?
-  needs: (String|* Listing<String>)?
+  needs: (String|*Listing<String>)?
   concurrency: Concurrency?
   strategy: Strategy?
-  permissions: (* Permissions|"read-all"|"write-all")?
+  permissions: (*Permissions|"read-all"|"write-all")?
 }
 
 class DefaultJob extends BaseJob {
-  `runs-on`: * String|Machine|Listing<* String|Machine>
+  `runs-on`: *String|Machine|Listing<*String|Machine>
   `timeout-minutes`: Number?
   env: EnvironmentVariables?
   outputs: Mapping<String, String>?
-  environment: (* Environment|String)?
+  environment: (*Environment|String)?
   steps: Listing<Step>(stepsHasOnlyRunOrUses(this))
 }
 
 class ReusableJob extends BaseJob {
   uses: String(matches(Regex("(.+\\/)+(.+)\\.(ya?ml)(@.+)?")))?
   with: Mapping<String, String|Number|Boolean>?
-  secrets: ("inherit"|* Mapping<String, String|Number|Boolean>)?
+  secrets: ("inherit"|*Mapping<String, String|Number|Boolean>)?
 }
 
-typealias Job = * DefaultJob|ReusableJob
+typealias Job = *DefaultJob|ReusableJob
 
 // Machines, part of Jobs
 abstract class Machine {
@@ -608,7 +599,7 @@ class WindowsLatest extends Machine {
 
 // Strategy, part of Jobs
 class Strategy {
-  matrix: Mapping<String, Listing<String|* Dynamic>>
+  matrix: Mapping<String, Listing<String|*Dynamic>>
   `fail-fast`: Boolean?
   `max-parallel`: (Number|String)?
 }
@@ -688,7 +679,7 @@ env: EnvironmentVariables?
 
 concurrency: Concurrency?
 
-permissions: (* Permissions|"read-all"|"write-all")?
+permissions: (*Permissions|"read-all"|"write-all")?
 
 jobs: Jobs
 
