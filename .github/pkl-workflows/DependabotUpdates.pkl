@@ -26,6 +26,9 @@ jobs {
     `runs-on` = new UbuntuLatest {}
     needs = "checkActionUpdate"
     `if` = "${{ needs.checkActionUpdate.outputs.shouldUpdatePklWorkflows }}"
+    permissions {
+      contents = "write"
+    }
     steps {
       (Steps.checkout()) {
         with {

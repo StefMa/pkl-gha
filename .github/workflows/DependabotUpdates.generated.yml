@@ -17,6 +17,8 @@ jobs:
   updatePklWorkflows:
     if: ${{ needs.checkActionUpdate.outputs.shouldUpdatePklWorkflows }}
     needs: checkActionUpdate
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
     - name: checkout
