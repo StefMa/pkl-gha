@@ -1,4 +1,4 @@
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.2#/GitHubAction.pkl"
+amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
 import "modules/Steps.pkl"
 
 name = "CreateRelease"
