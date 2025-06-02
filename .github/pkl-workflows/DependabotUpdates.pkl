@@ -14,7 +14,7 @@ jobs {
     outputs {
       ["shouldUpdatePklWorkflows"] = "${{ steps.dependabotMetadata.outputs.package-ecosystem == 'github-action' }}"
       ["previousDependencyName"] = "${{ steps.dependencyName.outputs.previous-dependency-name }}"
-      ["dnewDpendencyName"] = "${{ steps.dependencyName.outputs.new-dependency-name }}"
+      ["newDependencyName"] = "${{ steps.dependencyName.outputs.new-dependency-name }}"
     }
     steps {
       new {
