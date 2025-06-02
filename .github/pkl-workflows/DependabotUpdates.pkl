@@ -27,7 +27,12 @@ jobs {
     needs = "checkActionUpdate"
     `if` = "${{ needs.checkActionUpdate.outputs.shouldUpdatePklWorkflows }}"
     steps {
-      ...Steps.checkoutAndInstallPkl()
+      (Steps.checkout()) {
+        with {
+          ["ref"] = "${{ github.event.pull_request.head.ref }}"
+        }
+      }
+      Steps.installPkl()
       new {
         name = "Convert pkl workflows to yaml"
         run = """
