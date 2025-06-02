@@ -13,12 +13,26 @@ jobs {
     `if` = "github.event.pull_request.user.login == 'dependabot[bot]'"
     outputs {
       ["shouldUpdatePklWorkflows"] = "${{ steps.dependabotMetadata.outputs.package-ecosystem == 'github-action' }}"
+      ["previousDependencyName"] = "${{ steps.dependencyName.outputs.previous-dependency-name }}"
+      ["dnewDpendencyName"] = "${{ steps.dependencyName.outputs.new-dependency-name }}"
     }
     steps {
       new {
         name = "Fetch dependabot metadata"
         id = "dependabotMetadata"
         uses = "dependabot/fetch-metadata@v2"
+      }
+      new {
+        name = "Get dependency name"
+        id = "dependencyName"
+        run = """
+          echo '${{ steps.dependabotMetadata.outputs.updated-dependencies-json }}' > deps.json
+          dependency_name=$(jq -r '.[0].dependencyName' deps.json)
+          previous_version=$(jq -r '.[0].prevVersion' deps.json)
+          new_version=$(jq -r '.[0].newVersion' deps.json)
+          echo "previous-dependency-name=dependency_name@previous_version" >> $GITHUB_OUTPUT
+          echo "new-dependency-name=dependency_name@$new_version" >> $GITHUB_OUTPUT
+          """
       }
     }
   }
@@ -35,11 +49,16 @@ jobs {
           ["ref"] = "${{ github.event.pull_request.head.ref }}"
         }
       }
-      Steps.installPkl()
       new {
-        name = "Convert pkl workflows to yaml"
+        name = "Update dependencies in pkl files"
         run = """
-          pkl eval .github/pkl-workflows/*.pkl -o ".github/workflows/%{moduleName}.generated.yml"
+          SEARCH_DIR=".github/pkl-workflows"
+          OLD="${{ needs.checkActionUpdate.outputs.previousDependencyName }}"
+          NEW="${{ needs.checkActionUpdate.outputs.newDependencyName }}"
+          grep -rl -- "$OLD" "$SEARCH_DIR" | while read -r file; do
+            echo "Updating $file"
+            sed -i "s|$OLD|$NEW|g" "$file"
+          done
           """
       }
       new {
