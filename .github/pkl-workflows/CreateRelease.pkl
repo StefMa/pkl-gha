@@ -1,4 +1,4 @@
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.2#/GitHubAction.pkl"
+amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
 import "modules/Steps.pkl"
 
 name = "CreateRelease"
@@ -36,7 +36,7 @@ jobs {
           """
       }
       new {
-        uses = "softprops/action-gh-release@v2"
+        uses = "softprops/action-gh-release@v1"
         with {
           ["files"] = ".out/com.github.action@${{ env.VERSION_NUMBER }}/*"
           ["fail_on_unmatched_files"] = true

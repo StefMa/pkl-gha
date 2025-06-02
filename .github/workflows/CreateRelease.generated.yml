@@ -27,7 +27,7 @@ jobs:
         VERSION_NUMBER=${{ github.ref_name }}
         VERSION_NUMBER=${VERSION_NUMBER#*@}
         echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
-    - uses: softprops/action-gh-release@v2
+    - uses: softprops/action-gh-release@v1
       with:
         files: .out/com.github.action@${{ env.VERSION_NUMBER }}/*
         fail_on_unmatched_files: true

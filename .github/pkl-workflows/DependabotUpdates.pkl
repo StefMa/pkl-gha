@@ -1,0 +1,48 @@
+amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
+import "modules/Steps.pkl"
+
+name = "UpdatePklWorkflows"
+
+on {
+  pull_request {}
+}
+
+jobs {
+  ["checkActionUpdate"] {
+    `runs-on` = new UbuntuLatest {}
+    `if` = "github.event.pull_request.user.login == 'dependabot[bot]'"
+    outputs {
+      ["shouldUpdatePklWorkflows"] = "${{ steps.dependabotMetadata.outputs.package-ecosystem == 'github-action' }}"
+    }
+    steps {
+      new {
+        name = "Fetch dependabot metadata"
+        id = "dependabotMetadata"
+        uses = "dependabot/fetch-metadata@v2"
+      }
+    }
+  }
+  ["updatePklWorkflows"] {
+    `runs-on` = new UbuntuLatest {}
+    needs = "checkActionUpdate"
+    `if` = "${{ needs.checkActionUpdate.outputs.shouldUpdatePklWorkflows }}"
+    steps {
+      ...Steps.checkoutAndInstallPkl()
+      new {
+        name = "Convert pkl workflows to yaml"
+        run = """
+          pkl eval .github/pkl-workflows/*.pkl -o ".github/workflows/%{moduleName}.generated.yml"
+          """
+      }
+      new {
+        name = "Commit and push changes"
+        run = """
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Update pkl workflows"
+          git push origin
+          """
+      }
+    }
+  }
+}

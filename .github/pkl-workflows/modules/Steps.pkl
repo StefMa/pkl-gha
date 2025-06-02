@@ -1,4 +1,4 @@
-import "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.2#/GitHubAction.pkl"
+import "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
 
 function checkout(): GitHubAction.Step = new {
   name = "checkout"

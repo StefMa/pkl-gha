@@ -1,0 +1,35 @@
+# Do not modify!
+# This file was generated from a template using https://github.com/StefMa/pkl-gha
+
+name: UpdatePklWorkflows
+'on':
+  pull_request: {}
+jobs:
+  checkActionUpdate:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    outputs:
+      shouldUpdatePklWorkflows: ${{ steps.dependabotMetadata.outputs.package-ecosystem == 'github-action' }}
+    steps:
+    - name: Fetch dependabot metadata
+      id: dependabotMetadata
+      uses: dependabot/fetch-metadata@v2
+  updatePklWorkflows:
+    if: ${{ needs.checkActionUpdate.outputs.shouldUpdatePklWorkflows }}
+    needs: checkActionUpdate
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+    - name: Install pkl
+      uses: pkl-community/setup-pkl@v0
+      with:
+        pkl-version: 0.26.1
+    - name: Convert pkl workflows to yaml
+      run: pkl eval .github/pkl-workflows/*.pkl -o ".github/workflows/%{moduleName}.generated.yml"
+    - name: Commit and push changes
+      run: |-
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git commit -am "Update pkl workflows"
+        git push origin
