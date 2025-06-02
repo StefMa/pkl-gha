@@ -23,8 +23,8 @@ jobs:
         dependency_name=$(jq -r '.[0].dependencyName' deps.json)
         previous_version=$(jq -r '.[0].prevVersion' deps.json)
         new_version=$(jq -r '.[0].newVersion' deps.json)
-        echo "previous-dependency-name=dependency_name@previous_version" >> $GITHUB_OUTPUT
-        echo "new-dependency-name=dependency_name@$new_version" >> $GITHUB_OUTPUT
+        echo "previous-dependency-name=$dependency_name@$previous_version" >> $GITHUB_OUTPUT
+        echo "new-dependency-name=$dependency_name@$new_version" >> $GITHUB_OUTPUT
   updatePklWorkflows:
     if: ${{ needs.checkActionUpdate.outputs.shouldUpdatePklWorkflows }}
     needs: checkActionUpdate
