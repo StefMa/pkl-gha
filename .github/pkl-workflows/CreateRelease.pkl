@@ -36,7 +36,7 @@ jobs {
           """
       }
       new {
-        uses = "softprops/action-gh-release@v1"
+        uses = "softprops/action-gh-release@v2"
         with {
           ["files"] = ".out/com.github.action@${{ env.VERSION_NUMBER }}/*"
           ["fail_on_unmatched_files"] = true
