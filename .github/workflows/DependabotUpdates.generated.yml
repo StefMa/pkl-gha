@@ -10,10 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       shouldUpdatePklWorkflows: ${{ steps.dependabotMetadata.outputs.package-ecosystem == 'github-action' }}
+      previousDependencyName: ${{ steps.dependencyName.outputs.previous-dependency-name }}
+      dnewDpendencyName: ${{ steps.dependencyName.outputs.new-dependency-name }}
     steps:
     - name: Fetch dependabot metadata
       id: dependabotMetadata
       uses: dependabot/fetch-metadata@v2
+    - name: Get dependency name
+      id: dependencyName
+      run: |-
+        echo '${{ steps.dependabotMetadata.outputs.updated-dependencies-json }}' > deps.json
+        dependency_name=$(jq -r '.[0].dependencyName' deps.json)
+        previous_version=$(jq -r '.[0].prevVersion' deps.json)
+        new_version=$(jq -r '.[0].newVersion' deps.json)
+        echo "previous-dependency-name=dependency_name@previous_version" >> $GITHUB_OUTPUT
+        echo "new-dependency-name=dependency_name@$new_version" >> $GITHUB_OUTPUT
   updatePklWorkflows:
     if: ${{ needs.checkActionUpdate.outputs.shouldUpdatePklWorkflows }}
     needs: checkActionUpdate
@@ -25,12 +36,15 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-    - name: Install pkl
-      uses: pkl-community/setup-pkl@v0
-      with:
-        pkl-version: 0.26.1
-    - name: Convert pkl workflows to yaml
-      run: pkl eval .github/pkl-workflows/*.pkl -o ".github/workflows/%{moduleName}.generated.yml"
+    - name: Update dependencies in pkl files
+      run: |-
+        SEARCH_DIR=".github/pkl-workflows"
+        OLD="${{ needs.checkActionUpdate.outputs.previousDependencyName }}"
+        NEW="${{ needs.checkActionUpdate.outputs.newDependencyName }}"
+        grep -rl -- "$OLD" "$SEARCH_DIR" | while read -r file; do
+          echo "Updating $file"
+          sed -i "s|$OLD|$NEW|g" "$file"
+        done
     - name: Commit and push changes
       run: |-
         git config --global user.name "github-actions[bot]"
