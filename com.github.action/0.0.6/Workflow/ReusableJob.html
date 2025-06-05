@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReusableJob (com.github.action/Workflow:0.0.6) • Pkldoc</title>
+    <script src="../../../scripts/pkldoc.js" defer="defer"></script>
+    <script src="../../../scripts/scroll-into-view.min.js" defer="defer"></script>
+    <script src="../../../data/com.github.action/0.0.6/Workflow/ReusableJob.js" defer="defer"></script>
+    <link href="../../../styles/pkldoc.css" media="screen" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../../../images/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../images/favicon-16x16.png">
+    <meta charset="UTF-8">
+  </head>
+  <body onload="onLoad()">
+    <header>
+      <div id="search"><i id="search-icon" class="material-icons">search</i><input id="search-input" type="search" placeholder="Click or press 'S' to search this package" autocomplete="off" data-package-name="com.github.action" data-package-version="0.0.6" data-package-url-prefix="../" data-module-name="com.github.action.Workflow" data-class-name="ReusableJob" data-root-url-prefix="../../../"></div>
+    </header>
+    <main><a class="declaration-parent-link" href="../../../index.html">Pkldoc</a> &gt; <a class="declaration-parent-link" href="../index.html">com.github.action</a> &gt; <a class="declaration-parent-link" href="index.html">com.github.action.Workflow</a>
+      <h1 id="declaration-title">ReusableJob<span id="declaration-version">0.0.6</span></h1>
+      <ul class="member-group-links">
+        <li><a href="#_properties">Properties</a></li>
+        <li><a href="#_methods">Methods</a></li>
+      </ul>
+      <div id="_overview" class="anchor"> </div>
+      <div id="_declaration" class="member">
+        <div class="member-signature">class <span class="name-decl">ReusableJob</span> extends <a href="BaseJob.html" class="name-ref">BaseJob</a></div>
+        <dl class="member-info">
+          <dt class="runtime-data hidden">Known subtypes:</dt>
+          <dd id="known-subtypes" class="runtime-data hidden"></dd>
+          <dt class="runtime-data hidden">Known usages:</dt>
+          <dd id="known-usages" class="runtime-data hidden"></dd>
+          <dt class="runtime-data hidden">All versions:</dt>
+          <dd id="known-versions" class="runtime-data hidden"></dd>
+        </dl>
+      </div>
+      <div class="member-group">
+        <div id="_properties" class="anchor"> </div>
+        <h2 class="member-group-title">Properties<span class="toggle-inherited-members">(<span class="toggle-inherited-members-link button-link">show inherited</span>)</span></h2>
+        <ul>
+          <li>
+            <div id="name" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#name">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="BaseJob.html" class="name-ref">BaseJob</a>.</span><span class="name-decl">name</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?<span class="context"> (<a href="index.html" class="name-ref">com.github.action.Workflow</a>)</span></div>
+                <div class="doc-comment"><p>A name for the job, which is displayed in the GitHub UI</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="if" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#if">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="BaseJob.html" class="name-ref">BaseJob</a>.</span><span class="name-decl">`if`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?<span class="context"> (<a href="index.html" class="name-ref">com.github.action.Workflow</a>)</span></div>
+                <div class="doc-comment"><p>A conditional to prevent a job from running unless a condition is met.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>You can use any supported context and expression to create a conditional.
+For more information on which contexts are supported in this key, see
+<a href="https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#context-availability">Contexts reference</a>.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="needs" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#needs">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="BaseJob.html" class="name-ref">BaseJob</a>.</span><span class="name-decl">needs</span>: (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>|<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Listing.html" class="name-ref">Listing</a>&lt;<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>&gt;)?<span class="context"> (<a href="index.html" class="name-ref">com.github.action.Workflow</a>)</span></div>
+                <div class="doc-comment"><p>Identify any jobs that must complete successfully before this job will run.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>It can be a string or array of strings.
+If a job fails or is skipped, all jobs that need it are skipped unless the jobs use a conditional expression that
+causes the job to continue.
+If a run contains a series of jobs that need each other, a failure or skip applies to all jobs in the dependency
+chain from the point of failure or skip onwards. If you would like a job to run even if a job it is dependent on
+did not succeed, use the <code>always()</code> conditional expression in <code>jobs.&lt;job_id&gt;.if</code>.</p>
+<p>See: <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idneeds">https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idneeds</a></p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="concurrency" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#concurrency">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="BaseJob.html" class="name-ref">BaseJob</a>.</span><span class="name-decl">concurrency</span>: <a href="Concurrency.html" class="name-ref">Concurrency</a>?<span class="context"> (<a href="index.html" class="name-ref">com.github.action.Workflow</a>)</span></div>
+                <div class="doc-comment"><p>Ensure that only a single job or workflow using the same concurrency group will run at a time.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>A concurrency group can be any string or expression. Allowed expression contexts: <code>github</code>, <code>inputs</code>, <code>vars</code>,
+<code>needs</code>, <code>strategy</code>, and <code>matrix</code>.
+For more information about expressions, see
+<a href="https://docs.github.com/en/actions/reference/workflows-and-actions/expressions">Evaluate expressions in workflows and actions</a>.</p>
+<p>You can also specify concurrency at the workflow level.
+For more information, see <a href="index.html#concurrency"><code>module.concurrency</code></a>.</p>
+<p>This means that there can be at most one running and one pending job in a concurrency group at any time.
+When a concurrent job or workflow is queued, if another job or workflow using the same concurrency group in the
+repository is in progress, the queued job or workflow will be pending.
+Any existing pending job or workflow in the same concurrency group, if it exists, will be canceled and the new
+queued job or workflow will take its place.</p>
+<p>To also cancel any currently running job or workflow in the same concurrency group, specify <code>cancel-in-progress = true</code>.
+To conditionally cancel currently running jobs or workflows in the same concurrency group, you can specify
+<a href="not_found"><code>cancel-in-progress</code></a> as an expression with any of the allowed expression contexts.</p>
+<p>Note:</p>
+<p>The concurrency group name is case insensitive. For example, <code>prod</code> and <code>Prod</code> will be treated as the same concurrency group.
+Ordering is not guaranteed for jobs or workflow runs using concurrency groups. Jobs or workflow runs in the same concurrency group are handled in an arbitrary order.</p>
+<p>Docs: <a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations">https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations</a></p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="strategy" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#strategy">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="BaseJob.html" class="name-ref">BaseJob</a>.</span><span class="name-decl">strategy</span>: <a href="Strategy.html" class="name-ref">Strategy</a>?<span class="context"> (<a href="index.html" class="name-ref">com.github.action.Workflow</a>)</span></div>
+                <div class="doc-comment"><p>Use <code>jobs.&lt;job_id&gt;.strategy</code> to use a matrix strategy for your jobs.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>A matrix strategy lets you use variables in a single job definition to automatically create multiple job runs that
+are based on the combinations of the variables.
+For example, you can use a matrix strategy to test your code in multiple versions of a language or on multiple
+operating systems.</p>
+<p>For more information, see
+<a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations">Running variations of jobs in a workflow</a>.</p>
+<p>Docs: <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstrategy">https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstrategy</a></p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="permissions" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#permissions">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="BaseJob.html" class="name-ref">BaseJob</a>.</span><span class="name-decl">permissions</span>: (<a href="Permissions.html" class="name-ref">Permissions</a>|&quot;read-all&quot;|&quot;write-all&quot;)?<span class="context"> (<a href="index.html" class="name-ref">com.github.action.Workflow</a>)</span></div>
+                <div class="doc-comment"><p>For a specific job, you can use <code>jobs.&lt;job_id&gt;.permissions</code> to modify the default permissions granted to the
+<code>GITHUB_TOKEN</code>, adding or removing access as required, so that you only allow the minimum required access.
+For more information, see Use <code>GITHUB_TOKEN</code> for authentication in workflows.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>By specifying the permission within a job definition, you can configure a different set of permissions for the
+<code>GITHUB_TOKEN</code> for each job, if required.
+Alternatively, you can specify the permissions for all jobs in the workflow.
+For information on defining permissions at the workflow level, see <a href="index.html#permissions"><code>module.permissions</code></a>.</p>
+<p>For each of the available permissions, shown in the table below, you can assign one of the access levels:
+read (if applicable), write, or none. write includes read. If you specify the access for any of these permissions,
+all of those that are not specified are set to none.</p>
+<p>Docs: <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idpermissions">https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idpermissions</a></p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="uses" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#uses">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">uses</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>(matches(Regex(&quot;(.+/)+(.+)\\.(ya?ml)(@.+)?&quot;)))?</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="with" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#with">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">with</span>: <a href="index.html#With" class="name-ref">With</a>?</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="secrets" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#secrets">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">secrets</span>: (&quot;inherit&quot;|<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Mapping.html" class="name-ref">Mapping</a>&lt;<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>, (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>|<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Number.html" class="name-ref">Number</a>|<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Boolean.html" class="name-ref">Boolean</a>)&gt;)?</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="member-group">
+        <div id="_methods" class="anchor"> </div>
+        <h2 class="member-group-title">Methods<span class="toggle-inherited-members">(<span class="toggle-inherited-members-link button-link">show inherited</span>)</span></h2>
+        <ul>
+          <li>
+            <div id="getClass()" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#getClass()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Any.html" class="name-ref">Any</a>.</span><span class="name-decl">getClass</span>(): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Class.html" class="name-ref">Class</a><span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns the class of <code>this</code>.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="toString()" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#toString()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Any.html" class="name-ref">Any</a>.</span><span class="name-decl">toString</span>(): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a><span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns a string representation of <code>this</code>.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>This method is used to convert the values of string interpolation expressions to strings.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="ifNonNull()" class="anchor"> </div>
+            <div id="ifNonNull().Result" class="anchor-param1"> </div>
+            <div id="ifNonNull().transform" class="anchor-param2"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#ifNonNull()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Any.html" class="name-ref">Any</a>.</span><span class="name-decl">ifNonNull</span>&lt;<a class="param1">Result</a>&gt;(<span class="param2">transform</span>: (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/#NonNull" class="name-ref">NonNull</a>) -&gt; <a href="ReusableJob.html#ifNonNull().Result" class="name-ref">Result</a>): <a href="ReusableJob.html#ifNonNull().Result" class="name-ref">Result</a>?<span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns <code>this |&gt; transform</code> if <code>this</code> is non-null, and <code>null</code> otherwise.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>This method is the complement of the <code>??</code> operator and the equivalent of an <code>Option</code> type's <code>map</code> and <code>flatMap</code> methods.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="hasProperty()" class="anchor"> </div>
+            <div id="hasProperty().name" class="anchor-param1"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#hasProperty()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">hasProperty</span>(<span class="param1">name</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Boolean.html" class="name-ref">Boolean</a><span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Tells if this object has a property with the given <code>name</code>.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="getProperty()" class="anchor"> </div>
+            <div id="getProperty().name" class="anchor-param1"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#getProperty()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">getProperty</span>(<span class="param1">name</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>): unknown<span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns the value of the property with the given <code>name</code>.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Throws if a property with this name does not exist.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="getPropertyOrNull()" class="anchor"> </div>
+            <div id="getPropertyOrNull().name" class="anchor-param1"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#getPropertyOrNull()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">getPropertyOrNull</span>(<span class="param1">name</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>): unknown?<span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns the value of the property with the given <code>name</code>.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Returns <code>null</code> if a property with this name does not exist.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="toDynamic()" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#toDynamic()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">toDynamic</span>(): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Dynamic.html" class="name-ref">Dynamic</a><span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Converts this object to a <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Dynamic.html"><code>Dynamic</code></a> object.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="toMap()" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#toMap()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">toMap</span>(): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Map.html" class="name-ref">Map</a>&lt;<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>, unknown&gt;<span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Converts this object to a <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Map.html"><code>Map</code></a>.</p></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
