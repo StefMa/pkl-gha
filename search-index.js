@@ -1,0 +1,1 @@
+searchData='[{"name":"com.github.action","kind":0,"url":"com.github.action/current/index.html"},{"name":"com.github.action.Context","kind":1,"url":"com.github.action/current/Context/index.html"},{"name":"com.github.action.Workflow","kind":1,"url":"com.github.action/current/Workflow/index.html"}]';
