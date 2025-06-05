@@ -8,6 +8,8 @@ name: GeneratePklDoc
     - main
 jobs:
   generateDocsAndPush:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
     - name: checkout
