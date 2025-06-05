@@ -19,8 +19,6 @@ jobs:
       with:
         pkl-version: 0.26.1
     - name: Package pkl module
-      env:
-        VERSION: ${{ github.ref_name }}
       run: pkl project package
     - name: Extract version number from tag
       run: |-

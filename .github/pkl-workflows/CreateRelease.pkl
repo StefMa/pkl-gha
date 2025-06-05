@@ -23,9 +23,6 @@ jobs {
       new {
         name = "Package pkl module"
         run = "pkl project package"
-        env {
-          ["VERSION"] = "${{ github.ref_name }}"
-        }
       }
       new {
         name = "Extract version number from tag"
