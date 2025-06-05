@@ -137,6 +137,9 @@ git pull origin main
 git tag com.github.action@[SEMVER_VERSION]
 ```
 
+> [!IMPORTANT]
+> The `[SEMVER_VERSION]` should be the same as the version in the `PklProject` and `doc-package-info.pkl` files.
+
 **Step 3**: Push the tag to the remote repository.
 
 ```bash
@@ -147,10 +150,11 @@ git push origin com.github.action@[SEMVER_VERSION]
 Go to the [releases](http://github.com/StefMa/pkl-gha/releases) page and edit the new release.
 Put some information about the changes in the description and publish the release.
 
-**Step 5**: Update `SNAPSHOT` version in [PklProject](PklProject) to the next version and push the changes.
+**Step 5**: Update the version in the [PklProject](PklProject) and [doc-package-info](doc-package-info.pkl) files.
+Adjust the version to the next [Semantic Versioning](https://semver.org/) version.
 
+Commit and push the changes:
 ```bash
-git add PklProject
-git commit -m "Bump snapshot version"
+git commit -m "Bump version to [SEMVER_VERSION]" .
 git push origin main
 ```
