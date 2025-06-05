@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaInputs (com.github.action/actions/Setup:0.0.7) • Pkldoc</title>
+    <script src="../../../../scripts/pkldoc.js" defer="defer"></script>
+    <script src="../../../../scripts/scroll-into-view.min.js" defer="defer"></script>
+    <script src="../../../../data/com.github.action/0.0.7/actions/Setup/JavaInputs.js" defer="defer"></script>
+    <link href="../../../../styles/pkldoc.css" media="screen" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../../../../images/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../images/favicon-16x16.png">
+    <meta charset="UTF-8">
+  </head>
+  <body onload="onLoad()">
+    <header>
+      <div id="search"><i id="search-icon" class="material-icons">search</i><input id="search-input" type="search" placeholder="Click or press 'S' to search this package" autocomplete="off" data-package-name="com.github.action" data-package-version="0.0.7" data-package-url-prefix="../../" data-module-name="com.github.action.actions.Setup" data-class-name="JavaInputs" data-root-url-prefix="../../../../"></div>
+    </header>
+    <main><a class="declaration-parent-link" href="../../../../index.html">Pkldoc</a> &gt; <a class="declaration-parent-link" href="../../index.html">com.github.action</a> &gt; <a class="declaration-parent-link" href="index.html">com.github.action.actions.Setup</a>
+      <h1 id="declaration-title">JavaInputs<span id="declaration-version">0.0.7</span></h1>
+      <ul class="member-group-links">
+        <li><a href="#_properties">Properties</a></li>
+        <li><a href="#_methods">Methods</a></li>
+      </ul>
+      <div id="_overview" class="anchor"> </div>
+      <div id="_declaration" class="member">
+        <div class="member-signature">class <span class="name-decl">JavaInputs</span></div>
+        <dl class="member-info">
+          <dt class="runtime-data hidden">Known subtypes:</dt>
+          <dd id="known-subtypes" class="runtime-data hidden"></dd>
+          <dt class="runtime-data hidden">Known usages:</dt>
+          <dd id="known-usages" class="runtime-data hidden"></dd>
+          <dt class="runtime-data hidden">All versions:</dt>
+          <dd id="known-versions" class="runtime-data hidden"></dd>
+        </dl>
+      </div>
+      <div class="member-group">
+        <div id="_properties" class="anchor"> </div>
+        <h2 class="member-group-title">Properties</h2>
+        <ul>
+          <li>
+            <div id="java-version" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#java-version">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`java-version`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>The Java version that is going to be set up.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Takes a whole or <a href="https://github.com/actions/setup-java?tab=readme-ov-file#supported-version-syntax">semver</a>
+Java version.
+If not specified, the action will expect java-version-file input to be specified</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="java-version-file" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#java-version-file">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`java-version-file`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>The path to a file containing java version.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>If the <code>java-version-file</code> input is specified, the action will extract the version from the file and install it.</p>
+<p>Supported files are .java-version and .tool-versions.
+In .java-version file, only the version should be specified (e.g., 17.0.7).
+In .tool-versions file, java version should be preceded by the java keyword (e.g., java 17.0.7).
+The <code>.java-version</code> file recognizes all variants of the version description according to
+<a href="https://github.com/jenv/jenv">jenv</a>.
+Similarly, the <code>.tool-versions</code> file supports version specifications in accordance with
+<a href="https://github.com/asdf-vm/asdf">asdf</a> standards, adhering to Semantic Versioning (<a href="https://semver.org/">semver</a>).</p>
+<p>If both java-version and java-version-file inputs are provided, the java-version input will be used.</p>
+<p>Valid entry options:</p>
+<pre><code>major versions: 8, 11, 16, 17, 21
+more specific versions: 8.0.282+8, 8.0.232, 11.0, 11.0.4, 17.0
+early access (EA) versions: 15-ea, 15.0.0-ea
+versions with specified distribution: openjdk64-11.0.2
+</code></pre></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="distribution" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#distribution">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">distribution</span>: <a href="index.html#JavaDistribution" class="name-ref">JavaDistribution</a></div>
+                <div class="doc-comment"><p>Java <a href="https://github.com/actions/setup-java?tab=readme-ov-file#supported-distributions">distribution</a></p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="java-package" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#java-package">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`java-package`</span>: (&quot;jdk&quot;|&quot;jre&quot;|&quot;jdk+fx&quot;|&quot;jre+fx&quot;)?</div>
+                <div class="doc-comment"><p>The packaging variant of the chosen distribution. Possible values: <code>jdk</code>, <code>jre</code>, <code>jdk+fx</code>, <code>jre+fx</code>.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Default value: <code>jdk</code></p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="architecture" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#architecture">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">architecture</span>: (&quot;x86&quot;|&quot;x64&quot;|&quot;armv7&quot;|&quot;aarch64&quot;|&quot;ppc64le&quot;)?</div>
+                <div class="doc-comment"><p>The target architecture of the package.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Possible values: <code>x86</code>, <code>x64</code>, <code>armv7</code>, <code>aarch64</code>, <code>ppc64le</code>.</p>
+<p>Default value: Derived from the runner machine.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="jdkFile" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#jdkFile">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">jdkFile</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>If a use-case requires a custom distribution setup-java uses the compressed JDK from the location pointed by this
+input and will take care of the installation and caching on the VM.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="check-latest" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#check-latest">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`check-latest`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Boolean.html" class="name-ref">Boolean</a>?</div>
+                <div class="doc-comment"><p>Setting this option makes the action to check for the latest available version for the version spec.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="server-id" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#server-id">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`server-id`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>ID of the distributionManagement repository in the pom.xml file.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Default is <code>github</code>.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="server-username" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#server-username">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`server-username`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>Environment variable name for the username for authentication to the Apache Maven repository.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Default is GITHUB_ACTOR.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="server-password" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#server-password">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`server-password`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>Environment variable name for password or token for authentication to the Apache Maven repository.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Default is GITHUB_TOKEN.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="settings-path" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#settings-path">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`settings-path`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>Maven related setting to point to the directory where the settings.xml file will be written.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Default is ~/.m2.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="overwrite-settings" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#overwrite-settings">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`overwrite-settings`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Boolean.html" class="name-ref">Boolean</a>?</div>
+                <div class="doc-comment"><p>By default action overwrites the settings.xml.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>In order to skip generation of file if it exists, set this to <code>false</code>.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="gpg-private-key" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#gpg-private-key">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`gpg-private-key`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>GPG private key to import.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Default is empty string.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="gpg-passphrase" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#gpg-passphrase">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`gpg-passphrase`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>Environment variable name for the GPG private key passphrase.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Default is GPG_PASSPHRASE.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="cache" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#cache">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">cache</span>: (&quot;maven&quot;|&quot;gradle&quot;|&quot;sbt&quot;)?</div>
+                <div class="doc-comment"><p>Quick <a href="#caching-packages-dependencies">setup caching</a> for the dependencies managed through one of the predefined
+package managers.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>It can be one of &quot;maven&quot;, &quot;gradle&quot; or &quot;sbt&quot;</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="cache-dependency-path" class="anchor"> </div>
+            <div class="member with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#cache-dependency-path">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`cache-dependency-path`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>The path to a dependency file: pom.xml, build.gradle, build.sbt, etc.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>This option can be used with the <a href="JavaInputs.html#cache"><code>cache</code></a> option.
+If this option is omitted, the action searches for the dependency file in the entire repository.
+This option supports wildcards and a list of file names for caching multiple dependencies</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="job-status" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#job-status">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`job-status`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>Workaround to pass job status to post job step. This variable is not intended for manual setting</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="token" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#token">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">token</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>The token used to authenticate when fetching version manifests hosted on github.com, such as for the Microsoft Build of OpenJDK.
+When running this action on github.com, the default value is sufficient.
+When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="mvn-toolchain-id" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#mvn-toolchain-id">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`mvn-toolchain-id`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>Name of Maven Toolchain ID if the default name of <code>${distribution}_${java-version}</code> is not wanted.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="mvn-toolchain-vendor" class="anchor"> </div>
+            <div class="member"><a class="member-selflink material-icons" href="#mvn-toolchain-vendor">link</a>
+              <div class="member-left">
+                <div class="member-modifiers"></div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="name-decl">`mvn-toolchain-vendor`</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>?</div>
+                <div class="doc-comment"><p>Name of Maven Toolchain Vendor if the default name of <code>${distribution}</code> is not wanted</p></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="member-group">
+        <div id="_methods" class="anchor"> </div>
+        <h2 class="member-group-title">Methods<span class="toggle-inherited-members">(<span class="toggle-inherited-members-link button-link">show inherited</span>)</span></h2>
+        <ul>
+          <li>
+            <div id="getClass()" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#getClass()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Any.html" class="name-ref">Any</a>.</span><span class="name-decl">getClass</span>(): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Class.html" class="name-ref">Class</a><span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns the class of <code>this</code>.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="toString()" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#toString()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Any.html" class="name-ref">Any</a>.</span><span class="name-decl">toString</span>(): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a><span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns a string representation of <code>this</code>.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>This method is used to convert the values of string interpolation expressions to strings.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="ifNonNull()" class="anchor"> </div>
+            <div id="ifNonNull().Result" class="anchor-param1"> </div>
+            <div id="ifNonNull().transform" class="anchor-param2"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#ifNonNull()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Any.html" class="name-ref">Any</a>.</span><span class="name-decl">ifNonNull</span>&lt;<a class="param1">Result</a>&gt;(<span class="param2">transform</span>: (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/#NonNull" class="name-ref">NonNull</a>) -&gt; <a href="JavaInputs.html#ifNonNull().Result" class="name-ref">Result</a>): <a href="JavaInputs.html#ifNonNull().Result" class="name-ref">Result</a>?<span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns <code>this |&gt; transform</code> if <code>this</code> is non-null, and <code>null</code> otherwise.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>This method is the complement of the <code>??</code> operator and the equivalent of an <code>Option</code> type's <code>map</code> and <code>flatMap</code> methods.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="hasProperty()" class="anchor"> </div>
+            <div id="hasProperty().name" class="anchor-param1"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#hasProperty()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">hasProperty</span>(<span class="param1">name</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Boolean.html" class="name-ref">Boolean</a><span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Tells if this object has a property with the given <code>name</code>.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="getProperty()" class="anchor"> </div>
+            <div id="getProperty().name" class="anchor-param1"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#getProperty()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">getProperty</span>(<span class="param1">name</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>): unknown<span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns the value of the property with the given <code>name</code>.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Throws if a property with this name does not exist.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="getPropertyOrNull()" class="anchor"> </div>
+            <div id="getPropertyOrNull().name" class="anchor-param1"> </div>
+            <div class="member inherited expandable hidden collapsed with-expandable-docs"><i class="material-icons expandable-docs-icon">expand_more</i><a class="member-selflink material-icons" href="#getPropertyOrNull()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">getPropertyOrNull</span>(<span class="param1">name</span>: <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>): unknown?<span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Returns the value of the property with the given <code>name</code>.</p></div>
+                <div class="doc-comment expandable hidden collapsed"><p>Returns <code>null</code> if a property with this name does not exist.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="toDynamic()" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#toDynamic()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">toDynamic</span>(): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Dynamic.html" class="name-ref">Dynamic</a><span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Converts this object to a <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Dynamic.html"><code>Dynamic</code></a> object.</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="toMap()" class="anchor"> </div>
+            <div class="member inherited expandable hidden collapsed"><a class="member-selflink material-icons" href="#toMap()">link</a>
+              <div class="member-left">
+                <div class="member-modifiers">function </div>
+              </div>
+              <div class="member-main">
+                <div class="member-signature"><span class="context"><a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Typed.html" class="name-ref">Typed</a>.</span><span class="name-decl">toMap</span>(): <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Map.html" class="name-ref">Map</a>&lt;<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/String.html" class="name-ref">String</a>, unknown&gt;<span class="context"> (<a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/" class="name-ref">pkl.base</a>)</span><a class="member-source-link" href="https://github.com/apple/pkl/blob/0.26.3/stdlib/stdlib/base.pkl#L123-L456">Source</a></div>
+                <div class="doc-comment"><p>Converts this object to a <a href="https://pkl-lang.org/package-docs/pkl/0.26.3/base/Map.html"><code>Map</code></a>.</p></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
