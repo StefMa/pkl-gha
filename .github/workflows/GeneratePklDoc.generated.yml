@@ -1,0 +1,48 @@
+# Do not modify!
+# This file was generated from a template using https://github.com/StefMa/pkl-gha
+
+name: GeneratePklDoc
+'on':
+  push:
+    branches:
+    - main
+jobs:
+  generateDocsAndPush:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Setup worktree for docs
+      run: |-
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git worktree add tmp-docs docs
+    - name: Install jbang
+      run: curl -Ls https://sh.jbang.dev | bash -s - app setup
+    - name: Generate pkl doc
+      run: jbang run --main org.pkl.doc.Main "org.pkl-lang:pkl-doc:0.26.3"  *.pkl -o tmp-docs
+    - name: Update docs in docs branch and push
+      working-directory: tmp-docs
+      run: |-
+        git add .
+        git commit --amend -m "Docs for pkl-gha"
+        git push --force origin docs
+    - name: Upload artifact for GitHub Pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: tmp-docs
+  deployToGitHubPages:
+    needs: generateDocsAndPush
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-latest
+    environment:
+      name: gh-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
