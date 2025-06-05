@@ -30,7 +30,10 @@ jobs {
       }
       new {
         name = "Install jbang"
-        run = "curl -Ls https://sh.jbang.dev | bash -s - app setup"
+        run = """
+        curl -Ls https://sh.jbang.dev | bash -s - app setup
+        echo "$HOME/.jbang/bin" >> $GITHUB_PATH
+        """
       }
       new {
         name = "Generate pkl doc"
