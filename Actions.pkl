@@ -1,0 +1,20 @@
+module com.github.action.Actions
+import "Workflow.pkl"
+
+class CheckoutV4 extends Workflow.Step {
+  uses = "actions/checkout@v4"
+
+  hidden ref: String?
+  hidden fetchDepth: String?
+  local localWith = new Mapping {
+    ["ref"] = ref
+    ["fetch-depth"] = fetchDepth
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+class CheckoutWrapper {
+  v4: CheckoutV4 = new {}
+}
+checkout: CheckoutWrapper = new {}

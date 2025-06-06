@@ -611,7 +611,7 @@ class Environment {
 }
 
 // Step, part of Jobs
-class Step {
+open class Step {
   name: String?
   id: String?
   `if`: String?
