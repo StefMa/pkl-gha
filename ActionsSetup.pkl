@@ -1,3 +1,4 @@
+module com.github.action.ActionsSetup
 import "Workflow.pkl"
 
 class Java extends Workflow.Step {

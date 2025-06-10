@@ -1,3 +1,4 @@
+module com.github.action.ActionsPages
 import "Workflow.pkl"
 
 class Configure extends Workflow.Step {
