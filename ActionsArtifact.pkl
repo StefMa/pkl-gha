@@ -1,0 +1,75 @@
+import "Workflow.pkl"
+
+class Download extends Workflow.Step {
+  uses = "actions/download-artifact@v4"
+
+  hidden name: String?
+  hidden artifactIds: String?
+  hidden path: String?
+  hidden pattern: String?
+  hidden mergeMultiple: String?
+  hidden githubToken: String?
+  hidden repository: String?
+  hidden runId: String?
+
+  local localWith = new Mapping {
+    ["name"] = name
+    ["artifact-ids"] = artifactIds
+    ["path"] = path
+    ["pattern"] = pattern
+    ["merge-multiple"] = mergeMultiple
+    ["github-token"] = githubToken
+    ["repository"] = repository
+    ["run-id"] = runId
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+class Upload extends Workflow.Step {
+  uses = "actions/upload-artifact@v4"
+
+  hidden name: String?
+  hidden path: String?
+  hidden ifNoFilesFound: String?
+  hidden retentionDays: String?
+  hidden compressionLevel: String?
+  hidden overwrite: String?
+  hidden includeHiddenFiles: String?
+
+  local localWith = new Mapping {
+    ["name"] = name
+    ["path"] = path
+    ["if-no-files-found"] = ifNoFilesFound
+    ["retention-days"] = retentionDays
+    ["compression-level"] = compressionLevel
+    ["overwrite"] = overwrite
+    ["include-hidden-files"] = includeHiddenFiles
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+class UploadArtifactMerge extends Workflow.Step {
+  uses = "actions/upload-artifact/merge@v4"
+
+  hidden name: String?
+  hidden pattern: String?
+  hidden separateDirectories: String?
+  hidden retentionDays: String?
+  hidden compressionLevel: String?
+  hidden deleteMerged: String?
+  hidden includeHiddenFiles: String?
+
+  local localWith = new Mapping {
+    ["name"] = name
+    ["pattern"] = pattern
+    ["separate-directories"] = separateDirectories
+    ["retention-days"] = retentionDays
+    ["compression-level"] = compressionLevel
+    ["delete-merged"] = deleteMerged
+    ["include-hidden-files"] = includeHiddenFiles
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}

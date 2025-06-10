@@ -1,0 +1,67 @@
+import "Workflow.pkl"
+
+class Cache extends Workflow.Step {
+  uses = "actions/cache@v4"
+
+  hidden path: String?
+  hidden key: String?
+  hidden restoreKeys: String?
+  hidden uploadChunkSize: String?
+  hidden enableCrossOsArchive: String?
+  hidden failOnCacheMiss: String?
+  hidden lookupOnly: String?
+  hidden saveAlways: String?
+
+  local localWith = new Mapping {
+    ["path"] = path
+    ["key"] = key
+    ["restore-keys"] = restoreKeys
+    ["upload-chunk-size"] = uploadChunkSize
+    ["enableCrossOsArchive"] = enableCrossOsArchive
+    ["fail-on-cache-miss"] = failOnCacheMiss
+    ["lookup-only"] = lookupOnly
+    ["save-always"] = saveAlways
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+class Save extends Workflow.Step {
+  uses = "actions/cache/save@v4"
+
+  hidden path: String?
+  hidden key: String?
+  hidden uploadChunkSize: String?
+  hidden enableCrossOsArchive: String?
+
+  local localWith = new Mapping {
+    ["path"] = path
+    ["key"] = key
+    ["upload-chunk-size"] = uploadChunkSize
+    ["enableCrossOsArchive"] = enableCrossOsArchive
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+class Restore extends Workflow.Step {
+  uses = "actions/cache/restore@v4"
+
+  hidden path: String?
+  hidden key: String?
+  hidden restoreKeys: String?
+  hidden enableCrossOsArchive: String?
+  hidden failOnCacheMiss: String?
+  hidden lookupOnly: String?
+
+  local localWith = new Mapping {
+    ["path"] = path
+    ["key"] = key
+    ["restore-keys"] = restoreKeys
+    ["enableCrossOsArchive"] = enableCrossOsArchive
+    ["fail-on-cache-miss"] = failOnCacheMiss
+    ["lookup-only"] = lookupOnly
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}

@@ -1,0 +1,79 @@
+import "Workflow.pkl"
+
+class Configure extends Workflow.Step {
+  uses = "actions/configure-pages@v5"
+
+  hidden staticSiteGenerator: String?
+  hidden generatorConfigFile: String?
+  hidden token: String?
+  hidden enablement: String?
+
+  local localWith = new Mapping {
+    ["static_site_generator"] = staticSiteGenerator
+    ["generator_config_file"] = generatorConfigFile
+    ["token"] = token
+    ["enablement"] = enablement
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+class UploadArtifact extends Workflow.Step {
+  uses = "actions/upload-pages-artifact@v3"
+
+  hidden name: String?
+  hidden path: String?
+  hidden retentionDays: String?
+
+  local localWith = new Mapping {
+    ["name"] = name
+    ["path"] = path
+    ["retention-days"] = retentionDays
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+class JekyllBuild extends Workflow.Step {
+  uses = "actions/jekyll-build-pages@v1"
+
+  hidden source: String?
+  hidden destination: String?
+  hidden future: String?
+  hidden buildRevision: String?
+  hidden verbose: String?
+  hidden token: String?
+
+  local localWith = new Mapping {
+    ["source"] = source
+    ["destination"] = destination
+    ["future"] = future
+    ["build_revision"] = buildRevision
+    ["verbose"] = verbose
+    ["token"] = token
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+class Deploy extends Workflow.Step {
+  uses = "actions/deploy-pages@v4"
+
+  hidden token: String?
+  hidden timeout: String?
+  hidden errorCount: String?
+  hidden reportingInterval: String?
+  hidden artifactName: String?
+  hidden preview: String?
+
+  local localWith = new Mapping {
+    ["token"] = token
+    ["timeout"] = timeout
+    ["error_count"] = errorCount
+    ["reporting_interval"] = reportingInterval
+    ["artifact_name"] = artifactName
+    ["preview"] = preview
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
