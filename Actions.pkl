@@ -17,6 +17,8 @@ goDependencySubmission: ActionsCommon.GoDependencySubmission = new {}
 attestSbom: ActionsCommon.AttestSbom = new {}
 aiInference: ActionsCommon.AiInference = new {}
 createGitHubAppToken: ActionsCommon.CreateGitHubAppToken = new {}
+
+// Artifact Actions:
 downloadArtifact: ActionsArtifact.Download = new {}
 uploadArtitact: ActionsArtifact.Upload = new {}
 uploadArtifactMerge: ActionsArtifact.UploadArtifactMerge = new {}
