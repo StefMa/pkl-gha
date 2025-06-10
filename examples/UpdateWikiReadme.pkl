@@ -1,4 +1,5 @@
 amends "../Workflow.pkl"
+import "../Actions.pkl"
 
 name = "Update Wiki Readme"
 
@@ -16,14 +17,9 @@ jobs {
     name = "Update Wiki Readme"
     `runs-on` = new UbuntuLatest {}
     steps {
-      new {
-        uses = "actions/checkout@v4"
-      }
-      new {
-        uses = "actions/setup-go@v5"
-        with {
-          ["go-version"] = "1.17.7"
-        }
+      Actions.checkout
+      (Actions.setupGo) {
+        goVersion = "1.17.7"
       }
       new {
         run = "go run wiki/generateWikiToc.go"

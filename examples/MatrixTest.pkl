@@ -39,23 +39,14 @@ jobs {
       }
     }
     steps {
-      new {
+      (Actions.checkout) {
         name = "Checkout"
-        uses = "actions/checkout@v4"
         `timeout-minutes` = 2.3
       }
       new {
         name = "Run on ${{ matrix.os }}"
         run = "echo Hello World"
       }
-      new Actions.CheckoutV4 {
-        ref = "v1.2.3"
-      }
-      (Actions.checkout.v4)  {
-        ref = "2"
-        fetchDepth = "v1.2.3"
-      }
-      Actions.checkout.v4
     }
   }
 }
