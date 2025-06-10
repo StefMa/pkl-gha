@@ -4,10 +4,10 @@ import "Workflow.pkl"
 class Configure extends Workflow.Step {
   uses = "actions/configure-pages@v5"
 
-  hidden staticSiteGenerator: String?
-  hidden generatorConfigFile: String?
-  hidden token: String?
-  hidden enablement: String?
+  hidden staticSiteGenerator: (String|Number|Boolean)?
+  hidden generatorConfigFile: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
+  hidden enablement: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["static_site_generator"] = staticSiteGenerator
@@ -22,9 +22,9 @@ class Configure extends Workflow.Step {
 class UploadArtifact extends Workflow.Step {
   uses = "actions/upload-pages-artifact@v3"
 
-  hidden name: String?
-  hidden path: String?
-  hidden retentionDays: String?
+  hidden name: (String|Number|Boolean)?
+  hidden path: (String|Number|Boolean)?
+  hidden retentionDays: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["name"] = name
@@ -38,12 +38,12 @@ class UploadArtifact extends Workflow.Step {
 class JekyllBuild extends Workflow.Step {
   uses = "actions/jekyll-build-pages@v1"
 
-  hidden source: String?
-  hidden destination: String?
-  hidden future: String?
-  hidden buildRevision: String?
-  hidden verbose: String?
-  hidden token: String?
+  hidden source: (String|Number|Boolean)?
+  hidden destination: (String|Number|Boolean)?
+  hidden future: (String|Number|Boolean)?
+  hidden buildRevision: (String|Number|Boolean)?
+  hidden verbose: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["source"] = source
@@ -60,12 +60,12 @@ class JekyllBuild extends Workflow.Step {
 class Deploy extends Workflow.Step {
   uses = "actions/deploy-pages@v4"
 
-  hidden token: String?
-  hidden timeout: String?
-  hidden errorCount: String?
-  hidden reportingInterval: String?
-  hidden artifactName: String?
-  hidden preview: String?
+  hidden token: (String|Number|Boolean)?
+  hidden timeout: (String|Number|Boolean)?
+  hidden errorCount: (String|Number|Boolean)?
+  hidden reportingInterval: (String|Number|Boolean)?
+  hidden artifactName: (String|Number|Boolean)?
+  hidden preview: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["token"] = token

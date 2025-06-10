@@ -4,14 +4,14 @@ import "Workflow.pkl"
 class Download extends Workflow.Step {
   uses = "actions/download-artifact@v4"
 
-  hidden name: String?
-  hidden artifactIds: String?
-  hidden path: String?
-  hidden pattern: String?
-  hidden mergeMultiple: String?
-  hidden githubToken: String?
-  hidden repository: String?
-  hidden runId: String?
+  hidden name: (String|Number|Boolean)?
+  hidden artifactIds: (String|Number|Boolean)?
+  hidden path: (String|Number|Boolean)?
+  hidden pattern: (String|Number|Boolean)?
+  hidden mergeMultiple: (String|Number|Boolean)?
+  hidden githubToken: (String|Number|Boolean)?
+  hidden repository: (String|Number|Boolean)?
+  hidden runId: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["name"] = name
@@ -30,13 +30,13 @@ class Download extends Workflow.Step {
 class Upload extends Workflow.Step {
   uses = "actions/upload-artifact@v4"
 
-  hidden name: String?
-  hidden path: String?
-  hidden ifNoFilesFound: String?
-  hidden retentionDays: String?
-  hidden compressionLevel: String?
-  hidden overwrite: String?
-  hidden includeHiddenFiles: String?
+  hidden name: (String|Number|Boolean)?
+  hidden path: (String|Number|Boolean)?
+  hidden ifNoFilesFound: (String|Number|Boolean)?
+  hidden retentionDays: (String|Number|Boolean)?
+  hidden compressionLevel: (String|Number|Boolean)?
+  hidden overwrite: (String|Number|Boolean)?
+  hidden includeHiddenFiles: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["name"] = name
@@ -54,13 +54,13 @@ class Upload extends Workflow.Step {
 class UploadArtifactMerge extends Workflow.Step {
   uses = "actions/upload-artifact/merge@v4"
 
-  hidden name: String?
-  hidden pattern: String?
-  hidden separateDirectories: String?
-  hidden retentionDays: String?
-  hidden compressionLevel: String?
-  hidden deleteMerged: String?
-  hidden includeHiddenFiles: String?
+  hidden name: (String|Number|Boolean)?
+  hidden pattern: (String|Number|Boolean)?
+  hidden separateDirectories: (String|Number|Boolean)?
+  hidden retentionDays: (String|Number|Boolean)?
+  hidden compressionLevel: (String|Number|Boolean)?
+  hidden deleteMerged: (String|Number|Boolean)?
+  hidden includeHiddenFiles: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["name"] = name

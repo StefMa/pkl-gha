@@ -4,26 +4,26 @@ import "Workflow.pkl"
 class Java extends Workflow.Step {
   uses = "actions/setup-java@v4"
 
-  hidden javaVersion: String?
-  hidden javaVersionFile: String?
-  hidden distribution: String?
-  hidden javaPackage: String?
-  hidden architecture: String?
-  hidden jdkFile: String?
-  hidden checkLatest: Boolean?
-  hidden serverId: String?
-  hidden serverUsername: String?
-  hidden serverPassword: String?
-  hidden settingsPath: String?
-  hidden overwriteSettings: Boolean?
-  hidden gpgPrivateKey: String?
-  hidden gpgPassphrase: String?
-  hidden cache: String?
-  hidden cacheDependencyPath: String?
-  hidden jobStatus: String?
-  hidden token: String?
-  hidden mvnToolchainId: String?
-  hidden mvnToolchainVendor: String?
+  hidden javaVersion: (String|Number|Boolean)?
+  hidden javaVersionFile: (String|Number|Boolean)?
+  hidden distribution: (String|Number|Boolean)?
+  hidden javaPackage: (String|Number|Boolean)?
+  hidden architecture: (String|Number|Boolean)?
+  hidden jdkFile: (String|Number|Boolean)?
+  hidden checkLatest: (String|Number|Boolean)?
+  hidden serverId: (String|Number|Boolean)?
+  hidden serverUsername: (String|Number|Boolean)?
+  hidden serverPassword: (String|Number|Boolean)?
+  hidden settingsPath: (String|Number|Boolean)?
+  hidden overwriteSettings: (String|Number|Boolean)?
+  hidden gpgPrivateKey: (String|Number|Boolean)?
+  hidden gpgPassphrase: (String|Number|Boolean)?
+  hidden cache: (String|Number|Boolean)?
+  hidden cacheDependencyPath: (String|Number|Boolean)?
+  hidden jobStatus: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
+  hidden mvnToolchainId: (String|Number|Boolean)?
+  hidden mvnToolchainVendor: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["java-version"] = javaVersion
@@ -55,14 +55,14 @@ setupJava: Java = new {}
 class SetupDotnet extends Workflow.Step {
   uses = "actions/setup-dotnet@v4"
 
-  hidden dotnetVersion: String?
-  hidden dotnetQuality: String?
-  hidden globalJsonFile: String?
-  hidden sourceUrl: String?
-  hidden owner: String?
-  hidden configFile: String?
-  hidden cache: String?
-  hidden cacheDependencyPath: String?
+  hidden dotnetVersion: (String|Number|Boolean)?
+  hidden dotnetQuality: (String|Number|Boolean)?
+  hidden globalJsonFile: (String|Number|Boolean)?
+  hidden sourceUrl: (String|Number|Boolean)?
+  hidden owner: (String|Number|Boolean)?
+  hidden configFile: (String|Number|Boolean)?
+  hidden cache: (String|Number|Boolean)?
+  hidden cacheDependencyPath: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["dotnet-version"] = dotnetVersion
@@ -82,13 +82,13 @@ setupDotnet: SetupDotnet = new {}
 class Go extends Workflow.Step {
   uses = "actions/setup-go@v5"
 
-  hidden goVersion: String?
-  hidden goVersionFile: String?
-  hidden checkLatest: Boolean?
-  hidden token: String?
-  hidden cache: Boolean?
-  hidden cacheDependencyPath: String?
-  hidden architecture: String?
+  hidden goVersion: (String|Number|Boolean)?
+  hidden goVersionFile: (String|Number|Boolean)?
+  hidden checkLatest: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
+  hidden cache: (String|Number|Boolean)?
+  hidden cacheDependencyPath: (String|Number|Boolean)?
+  hidden architecture: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["go-version"] = goVersion
@@ -107,18 +107,18 @@ setupGo: Go = new {}
 class Node extends Workflow.Step {
   uses = "actions/setup-node@v4"
 
-  hidden alwaysAuth: String?
-  hidden nodeVersion: String?
-  hidden nodeVersionFile: String?
-  hidden architecture: String?
-  hidden checkLatest: String?
-  hidden registryUrl: String?
-  hidden scope: String?
-  hidden token: String?
-  hidden cache: String?
-  hidden cacheDependencyPath: String?
-  hidden mirror: String?
-  hidden mirrorToken: String?
+  hidden alwaysAuth: (String|Number|Boolean)?
+  hidden nodeVersion: (String|Number|Boolean)?
+  hidden nodeVersionFile: (String|Number|Boolean)?
+  hidden architecture: (String|Number|Boolean)?
+  hidden checkLatest: (String|Number|Boolean)?
+  hidden registryUrl: (String|Number|Boolean)?
+  hidden scope: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
+  hidden cache: (String|Number|Boolean)?
+  hidden cacheDependencyPath: (String|Number|Boolean)?
+  hidden mirror: (String|Number|Boolean)?
+  hidden mirrorToken: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["always-auth"] = alwaysAuth
@@ -142,16 +142,16 @@ setupNode: Node = new {}
 class Python extends Workflow.Step {
   uses = "actions/setup-python@v5"
 
-  hidden pythonVersion: String?
-  hidden pythonVersionFile: String?
-  hidden cache: String?
-  hidden architecture: String?
-  hidden checkLatest: Boolean?
-  hidden token: String?
-  hidden cacheDependencyPath: String?
-  hidden updateEnvironment: Boolean?
-  hidden allowPrereleases: Boolean?
-  hidden freethreaded: Boolean?
+  hidden pythonVersion: (String|Number|Boolean)?
+  hidden pythonVersionFile: (String|Number|Boolean)?
+  hidden cache: (String|Number|Boolean)?
+  hidden architecture: (String|Number|Boolean)?
+  hidden checkLatest: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
+  hidden cacheDependencyPath: (String|Number|Boolean)?
+  hidden updateEnvironment: (String|Number|Boolean)?
+  hidden allowPrereleases: (String|Number|Boolean)?
+  hidden freethreaded: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["python-version"] = pythonVersion

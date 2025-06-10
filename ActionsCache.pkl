@@ -4,14 +4,14 @@ import "Workflow.pkl"
 class Cache extends Workflow.Step {
   uses = "actions/cache@v4"
 
-  hidden path: String?
-  hidden key: String?
-  hidden restoreKeys: String?
-  hidden uploadChunkSize: String?
-  hidden enableCrossOsArchive: String?
-  hidden failOnCacheMiss: String?
-  hidden lookupOnly: String?
-  hidden saveAlways: String?
+  hidden path: (String|Number|Boolean)?
+  hidden key: (String|Number|Boolean)?
+  hidden restoreKeys: (String|Number|Boolean)?
+  hidden uploadChunkSize: (String|Number|Boolean)?
+  hidden enableCrossOsArchive: (String|Number|Boolean)?
+  hidden failOnCacheMiss: (String|Number|Boolean)?
+  hidden lookupOnly: (String|Number|Boolean)?
+  hidden saveAlways: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["path"] = path
@@ -30,10 +30,10 @@ class Cache extends Workflow.Step {
 class Save extends Workflow.Step {
   uses = "actions/cache/save@v4"
 
-  hidden path: String?
-  hidden key: String?
-  hidden uploadChunkSize: String?
-  hidden enableCrossOsArchive: String?
+  hidden path: (String|Number|Boolean)?
+  hidden key: (String|Number|Boolean)?
+  hidden uploadChunkSize: (String|Number|Boolean)?
+  hidden enableCrossOsArchive: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["path"] = path
@@ -48,12 +48,12 @@ class Save extends Workflow.Step {
 class Restore extends Workflow.Step {
   uses = "actions/cache/restore@v4"
 
-  hidden path: String?
-  hidden key: String?
-  hidden restoreKeys: String?
-  hidden enableCrossOsArchive: String?
-  hidden failOnCacheMiss: String?
-  hidden lookupOnly: String?
+  hidden path: (String|Number|Boolean)?
+  hidden key: (String|Number|Boolean)?
+  hidden restoreKeys: (String|Number|Boolean)?
+  hidden enableCrossOsArchive: (String|Number|Boolean)?
+  hidden failOnCacheMiss: (String|Number|Boolean)?
+  hidden lookupOnly: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["path"] = path

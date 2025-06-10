@@ -4,26 +4,26 @@ import "Workflow.pkl"
 class Checkout extends Workflow.Step {
   uses = "actions/checkout@v4"
 
-  hidden repository: String?
-  hidden ref: String?
-  hidden token: String?
-  hidden sshKey: String?
-  hidden sshKnownHosts: String?
-  hidden sshStrict: String?
-  hidden sshUser: String?
-  hidden persistCredentials: String?
-  hidden path: String?
-  hidden clean: String?
-  hidden filter: String?
-  hidden sparseCheckout: String?
-  hidden sparseCheckoutConeMode: String?
-  hidden fetchDepth: String?
-  hidden fetchTags: String?
-  hidden showProgress: String?
-  hidden lfs: String?
-  hidden submodules: String?
-  hidden setSafeDirectory: String?
-  hidden githubServerUrl: String?
+  hidden repository: (String|Number|Boolean)?
+  hidden ref: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
+  hidden sshKey: (String|Number|Boolean)?
+  hidden sshKnownHosts: (String|Number|Boolean)?
+  hidden sshStrict: (String|Number|Boolean)?
+  hidden sshUser: (String|Number|Boolean)?
+  hidden persistCredentials: (String|Number|Boolean)?
+  hidden path: (String|Number|Boolean)?
+  hidden clean: (String|Number|Boolean)?
+  hidden filter: (String|Number|Boolean)?
+  hidden sparseCheckout: (String|Number|Boolean)?
+  hidden sparseCheckoutConeMode: (String|Number|Boolean)?
+  hidden fetchDepth: (String|Number|Boolean)?
+  hidden fetchTags: (String|Number|Boolean)?
+  hidden showProgress: (String|Number|Boolean)?
+  hidden lfs: (String|Number|Boolean)?
+  hidden submodules: (String|Number|Boolean)?
+  hidden setSafeDirectory: (String|Number|Boolean)?
+  hidden githubServerUrl: (String|Number|Boolean)?
   local localWith = new Mapping {
     ["repository"] = repository
     ["ref"] = ref
@@ -53,11 +53,11 @@ class Checkout extends Workflow.Step {
 class AddToProject extends Workflow.Step {
   uses = "actions/add-to-project@v1"
 
-  hidden javaVersion: String?
-  hidden projectUrl: String?
-  hidden githubToken: String?
-  hidden labeled: String?
-  hidden labelOperator: String?
+  hidden javaVersion: (String|Number|Boolean)?
+  hidden projectUrl: (String|Number|Boolean)?
+  hidden githubToken: (String|Number|Boolean)?
+  hidden labeled: (String|Number|Boolean)?
+  hidden labelOperator: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["hava-version"] = javaVersion
@@ -73,15 +73,15 @@ class AddToProject extends Workflow.Step {
 class GoDependencySubmission extends Workflow.Step {
   uses = "actions/go-dependency-submission@v2"
 
-  hidden token: String?
-  hidden metadata: String?
-  hidden goModPath: String?
-  hidden goBuildTarget: String?
-  hidden snapshotSha: String?
-  hidden snapshotRef: String?
-  hidden detectorName: String?
-  hidden detectorVersion: String?
-  hidden detectorUrl: String?
+  hidden token: (String|Number|Boolean)?
+  hidden metadata: (String|Number|Boolean)?
+  hidden goModPath: (String|Number|Boolean)?
+  hidden goBuildTarget: (String|Number|Boolean)?
+  hidden snapshotSha: (String|Number|Boolean)?
+  hidden snapshotRef: (String|Number|Boolean)?
+  hidden detectorName: (String|Number|Boolean)?
+  hidden detectorVersion: (String|Number|Boolean)?
+  hidden detectorUrl: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["token"] = token
@@ -101,15 +101,15 @@ class GoDependencySubmission extends Workflow.Step {
 class GitHubScript extends Workflow.Step {
   uses = "actions/github-script@v7"
 
-  hidden script: String?
-  hidden githubToken: String?
-  hidden debug: String?
-  hidden userAgent: String?
-  hidden previews: String?
-  hidden resultEncoding: String?
-  hidden retries: String?
-  hidden retryExemptStatusCodes: String?
-  hidden baseUrl: String?
+  hidden script: (String|Number|Boolean)?
+  hidden githubToken: (String|Number|Boolean)?
+  hidden debug: (String|Number|Boolean)?
+  hidden userAgent: (String|Number|Boolean)?
+  hidden previews: (String|Number|Boolean)?
+  hidden resultEncoding: (String|Number|Boolean)?
+  hidden retries: (String|Number|Boolean)?
+  hidden retryExemptStatusCodes: (String|Number|Boolean)?
+  hidden baseUrl: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["script"] = script
@@ -129,11 +129,11 @@ class GitHubScript extends Workflow.Step {
 class Labeler extends Workflow.Step {
   uses = "actions/labeler@v5"
 
-  hidden repoToken: String?
-  hidden configurationPath: String?
-  hidden syncLabels: String?
-  hidden dot: String?
-  hidden prNumber: String?
+  hidden repoToken: (String|Number|Boolean)?
+  hidden configurationPath: (String|Number|Boolean)?
+  hidden syncLabels: (String|Number|Boolean)?
+  hidden dot: (String|Number|Boolean)?
+  hidden prNumber: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["repo-token"] = repoToken
@@ -149,7 +149,7 @@ class Labeler extends Workflow.Step {
 class AttestSbom extends Workflow.Step {
   uses = "attest-sbom@v2"
 
-  hidden sbomPath: String?
+  hidden sbomPath: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["sbom-path"] = sbomPath
@@ -161,14 +161,14 @@ class AttestSbom extends Workflow.Step {
 class AiInference extends Workflow.Step {
   uses = "actions/ai-inference@v1"
 
-  hidden prompt: String?
-  hidden promptFile: String?
-  hidden model: String?
-  hidden endpoint: String?
-  hidden systemPrompt: String?
-  hidden systemPromptFile: String?
-  hidden maxTokens: String?
-  hidden token: String?
+  hidden prompt: (String|Number|Boolean)?
+  hidden promptFile: (String|Number|Boolean)?
+  hidden model: (String|Number|Boolean)?
+  hidden endpoint: (String|Number|Boolean)?
+  hidden systemPrompt: (String|Number|Boolean)?
+  hidden systemPromptFile: (String|Number|Boolean)?
+  hidden maxTokens: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["prompt"] = prompt
@@ -187,60 +187,60 @@ class AiInference extends Workflow.Step {
 class CreateGitHubAppToken extends Workflow.Step {
   uses = "actions/create-github-app-token@v2"
 
-  hidden appId: String?
-  hidden privateKey: String?
-  hidden owner: String?
-  hidden repositories: String?
-  hidden skipTokenRevoke: String?
-  hidden githubApiUrl: String?
-  hidden permissionActions: String?
-  hidden permissionAdministration: String?
-  hidden permissionChecks: String?
-  hidden permissionCodespaces: String?
-  hidden permissionContents: String?
-  hidden permissionDependabotSecrets: String?
-  hidden permissionDeployments: String?
-  hidden permissionEmailAddresses: String?
-  hidden permissionEnvironments: String?
-  hidden permissionFollowers: String?
-  hidden permissionGitSshKeys: String?
-  hidden permissionGpgKeys: String?
-  hidden permissionInteractionLimits: String?
-  hidden permissionIssues: String?
-  hidden permissionMembers: String?
-  hidden permissionMetadata: String?
-  hidden permissionOrganizationAdministration: String?
-  hidden permissionOrganizationAnnouncementBanners: String?
-  hidden permissionOrganizationCopilotSeatManagement: String?
-  hidden permissionOrganizationCustomOrgRoles: String?
-  hidden permissionOrganizationCustomProperties: String?
-  hidden permissionOrganizationCustomRoles: String?
-  hidden permissionOrganizationEvents: String?
-  hidden permissionOrganizationHooks: String?
-  hidden permissionOrganizationPackages: String?
-  hidden permissionOrganizationPersonalAccessTokenRequests: String?
-  hidden permissionOrganizationPersonalAccessTokens: String?
-  hidden permissionOrganizationPlan: String?
-  hidden permissionOrganizationProjects: String?
-  hidden permissionOrganizationSecrets: String?
-  hidden permissionOrganizationSelfHostedRunners: String?
-  hidden permissionOrganizationUserBlocking: String?
-  hidden permissionPackages: String?
-  hidden permissionPages: String?
-  hidden permissionProfile: String?
-  hidden permissionPullRequests: String?
-  hidden permissionRepositoryCustomProperties: String?
-  hidden permissionRepositoryHooks: String?
-  hidden permissionRepositoryProjects: String?
-  hidden permissionSecretScanningAlerts: String?
-  hidden permissionSecrets: String?
-  hidden permissionSecurityEvents: String?
-  hidden permissionSingleFile: String?
-  hidden permissionStarring: String?
-  hidden permissionStatuses: String?
-  hidden permissionTeamDiscussions: String?
-  hidden permissionVulnerabilityAlerts: String?
-  hidden permissionWorkflows: String?
+  hidden appId: (String|Number|Boolean)?
+  hidden privateKey: (String|Number|Boolean)?
+  hidden owner: (String|Number|Boolean)?
+  hidden repositories: (String|Number|Boolean)?
+  hidden skipTokenRevoke: (String|Number|Boolean)?
+  hidden githubApiUrl: (String|Number|Boolean)?
+  hidden permissionActions: (String|Number|Boolean)?
+  hidden permissionAdministration: (String|Number|Boolean)?
+  hidden permissionChecks: (String|Number|Boolean)?
+  hidden permissionCodespaces: (String|Number|Boolean)?
+  hidden permissionContents: (String|Number|Boolean)?
+  hidden permissionDependabotSecrets: (String|Number|Boolean)?
+  hidden permissionDeployments: (String|Number|Boolean)?
+  hidden permissionEmailAddresses: (String|Number|Boolean)?
+  hidden permissionEnvironments: (String|Number|Boolean)?
+  hidden permissionFollowers: (String|Number|Boolean)?
+  hidden permissionGitSshKeys: (String|Number|Boolean)?
+  hidden permissionGpgKeys: (String|Number|Boolean)?
+  hidden permissionInteractionLimits: (String|Number|Boolean)?
+  hidden permissionIssues: (String|Number|Boolean)?
+  hidden permissionMembers: (String|Number|Boolean)?
+  hidden permissionMetadata: (String|Number|Boolean)?
+  hidden permissionOrganizationAdministration: (String|Number|Boolean)?
+  hidden permissionOrganizationAnnouncementBanners: (String|Number|Boolean)?
+  hidden permissionOrganizationCopilotSeatManagement: (String|Number|Boolean)?
+  hidden permissionOrganizationCustomOrgRoles: (String|Number|Boolean)?
+  hidden permissionOrganizationCustomProperties: (String|Number|Boolean)?
+  hidden permissionOrganizationCustomRoles: (String|Number|Boolean)?
+  hidden permissionOrganizationEvents: (String|Number|Boolean)?
+  hidden permissionOrganizationHooks: (String|Number|Boolean)?
+  hidden permissionOrganizationPackages: (String|Number|Boolean)?
+  hidden permissionOrganizationPersonalAccessTokenRequests: (String|Number|Boolean)?
+  hidden permissionOrganizationPersonalAccessTokens: (String|Number|Boolean)?
+  hidden permissionOrganizationPlan: (String|Number|Boolean)?
+  hidden permissionOrganizationProjects: (String|Number|Boolean)?
+  hidden permissionOrganizationSecrets: (String|Number|Boolean)?
+  hidden permissionOrganizationSelfHostedRunners: (String|Number|Boolean)?
+  hidden permissionOrganizationUserBlocking: (String|Number|Boolean)?
+  hidden permissionPackages: (String|Number|Boolean)?
+  hidden permissionPages: (String|Number|Boolean)?
+  hidden permissionProfile: (String|Number|Boolean)?
+  hidden permissionPullRequests: (String|Number|Boolean)?
+  hidden permissionRepositoryCustomProperties: (String|Number|Boolean)?
+  hidden permissionRepositoryHooks: (String|Number|Boolean)?
+  hidden permissionRepositoryProjects: (String|Number|Boolean)?
+  hidden permissionSecretScanningAlerts: (String|Number|Boolean)?
+  hidden permissionSecrets: (String|Number|Boolean)?
+  hidden permissionSecurityEvents: (String|Number|Boolean)?
+  hidden permissionSingleFile: (String|Number|Boolean)?
+  hidden permissionStarring: (String|Number|Boolean)?
+  hidden permissionStatuses: (String|Number|Boolean)?
+  hidden permissionTeamDiscussions: (String|Number|Boolean)?
+  hidden permissionVulnerabilityAlerts: (String|Number|Boolean)?
+  hidden permissionWorkflows: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["app-id"] = appId
@@ -305,16 +305,16 @@ class CreateGitHubAppToken extends Workflow.Step {
 class DeletePackageVersion extends Workflow.Step {
   uses = "actions/delete-package-versions@v5"
 
-  hidden packageVersionIds: String?
-  hidden owner: String?
-  hidden packageName: String?
-  hidden packageType: String?
-  hidden numOldVersionsToDelete: String?
-  hidden minVersionsToKeep: String?
-  hidden ignoreVersions: String?
-  hidden deleteOnlyPreReleaseVersions: String?
-  hidden deleteOnlyUntaggedVersions: String?
-  hidden token: String?
+  hidden packageVersionIds: (String|Number|Boolean)?
+  hidden owner: (String|Number|Boolean)?
+  hidden packageName: (String|Number|Boolean)?
+  hidden packageType: (String|Number|Boolean)?
+  hidden numOldVersionsToDelete: (String|Number|Boolean)?
+  hidden minVersionsToKeep: (String|Number|Boolean)?
+  hidden ignoreVersions: (String|Number|Boolean)?
+  hidden deleteOnlyPreReleaseVersions: (String|Number|Boolean)?
+  hidden deleteOnlyUntaggedVersions: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["package-version-ids"] = packageVersionIds
@@ -336,59 +336,59 @@ class DeletePackageVersion extends Workflow.Step {
 class Stale extends Workflow.Step {
   uses = "actions/stale@v9"
 
-  hidden repoToken: String?
-  hidden staleIssueMessage: String?
-  hidden stalePrMessage: String?
-  hidden closeIssueMessage: String?
-  hidden closePrMessage: String?
-  hidden daysBeforeStale: String?
-  hidden daysBeforeIssueStale: String?
-  hidden daysBeforePrStale: String?
-  hidden daysBeforeClose: String?
-  hidden daysBeforeIssueClose: String?
-  hidden daysBeforePrClose: String?
-  hidden staleIssueLabel: String?
-  hidden closeIssueLabel: String?
-  hidden exemptIssueLabels: String?
-  hidden closeIssueReason: String?
-  hidden stalePrLabel: String?
-  hidden closePrLabel: String?
-  hidden exemptPrLabels: String?
-  hidden exemptMilestones: String?
-  hidden exemptIssueMilestones: String?
-  hidden exemptPrMilestones: String?
-  hidden exemptAllMilestones: String?
-  hidden exemptAllIssueMilestones: String?
-  hidden exemptAllPrMilestones: String?
-  hidden onlyLabels: String?
-  hidden anyOfLabels: String?
-  hidden anyOfIssueLabels: String?
-  hidden anyOfPrLabels: String?
-  hidden onlyIssueLabels: String?
-  hidden onlyPrLabels: String?
-  hidden operationsPerRun: String?
-  hidden removeStaleWhenUpdated: String?
-  hidden removeIssueStaleWhenUpdated: String?
-  hidden removePrStaleWhenUpdated: String?
-  hidden debugOnly: String?
-  hidden ascending: String?
-  hidden deleteBranch: String?
-  hidden startDate: String?
-  hidden exemptAssignees: String?
-  hidden exemptIssueAssignees: String?
-  hidden exemptPrAssignees: String?
-  hidden exemptAllAssignees: String?
-  hidden exemptAllIssueAssignees: String?
-  hidden exemptAllPrAssignees: String?
-  hidden exemptDraftPr: String?
-  hidden enableStatistics: String?
-  hidden labelsToAddWhenUnstale: String?
-  hidden labelsToRemoveWhenStale: String?
-  hidden labelsToRemoveWhenUnstale: String?
-  hidden ignoreUpdates: String?
-  hidden ignoreIssueUpdates: String?
-  hidden ignorePrUpdates: String?
-  hidden includeOnlyAssigned: String?
+  hidden repoToken: (String|Number|Boolean)?
+  hidden staleIssueMessage: (String|Number|Boolean)?
+  hidden stalePrMessage: (String|Number|Boolean)?
+  hidden closeIssueMessage: (String|Number|Boolean)?
+  hidden closePrMessage: (String|Number|Boolean)?
+  hidden daysBeforeStale: (String|Number|Boolean)?
+  hidden daysBeforeIssueStale: (String|Number|Boolean)?
+  hidden daysBeforePrStale: (String|Number|Boolean)?
+  hidden daysBeforeClose: (String|Number|Boolean)?
+  hidden daysBeforeIssueClose: (String|Number|Boolean)?
+  hidden daysBeforePrClose: (String|Number|Boolean)?
+  hidden staleIssueLabel: (String|Number|Boolean)?
+  hidden closeIssueLabel: (String|Number|Boolean)?
+  hidden exemptIssueLabels: (String|Number|Boolean)?
+  hidden closeIssueReason: (String|Number|Boolean)?
+  hidden stalePrLabel: (String|Number|Boolean)?
+  hidden closePrLabel: (String|Number|Boolean)?
+  hidden exemptPrLabels: (String|Number|Boolean)?
+  hidden exemptMilestones: (String|Number|Boolean)?
+  hidden exemptIssueMilestones: (String|Number|Boolean)?
+  hidden exemptPrMilestones: (String|Number|Boolean)?
+  hidden exemptAllMilestones: (String|Number|Boolean)?
+  hidden exemptAllIssueMilestones: (String|Number|Boolean)?
+  hidden exemptAllPrMilestones: (String|Number|Boolean)?
+  hidden onlyLabels: (String|Number|Boolean)?
+  hidden anyOfLabels: (String|Number|Boolean)?
+  hidden anyOfIssueLabels: (String|Number|Boolean)?
+  hidden anyOfPrLabels: (String|Number|Boolean)?
+  hidden onlyIssueLabels: (String|Number|Boolean)?
+  hidden onlyPrLabels: (String|Number|Boolean)?
+  hidden operationsPerRun: (String|Number|Boolean)?
+  hidden removeStaleWhenUpdated: (String|Number|Boolean)?
+  hidden removeIssueStaleWhenUpdated: (String|Number|Boolean)?
+  hidden removePrStaleWhenUpdated: (String|Number|Boolean)?
+  hidden debugOnly: (String|Number|Boolean)?
+  hidden ascending: (String|Number|Boolean)?
+  hidden deleteBranch: (String|Number|Boolean)?
+  hidden startDate: (String|Number|Boolean)?
+  hidden exemptAssignees: (String|Number|Boolean)?
+  hidden exemptIssueAssignees: (String|Number|Boolean)?
+  hidden exemptPrAssignees: (String|Number|Boolean)?
+  hidden exemptAllAssignees: (String|Number|Boolean)?
+  hidden exemptAllIssueAssignees: (String|Number|Boolean)?
+  hidden exemptAllPrAssignees: (String|Number|Boolean)?
+  hidden exemptDraftPr: (String|Number|Boolean)?
+  hidden enableStatistics: (String|Number|Boolean)?
+  hidden labelsToAddWhenUnstale: (String|Number|Boolean)?
+  hidden labelsToRemoveWhenStale: (String|Number|Boolean)?
+  hidden labelsToRemoveWhenUnstale: (String|Number|Boolean)?
+  hidden ignoreUpdates: (String|Number|Boolean)?
+  hidden ignoreIssueUpdates: (String|Number|Boolean)?
+  hidden ignorePrUpdates: (String|Number|Boolean)?
+  hidden includeOnlyAssigned: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["repo-token"] = repoToken
@@ -452,27 +452,27 @@ class Stale extends Workflow.Step {
 class DependencyReviewAction extends Workflow.Step {
   uses = "actions/dependency-review-action@v4"
 
-  hidden repoToken: String?
-  hidden failOnSeverity: String?
-  hidden failOnScopes: String?
-  hidden baseRef: String?
-  hidden headRef: String?
-  hidden configFile: String?
-  hidden allowLicenses: String?
-  hidden denyLicenses: String?
-  hidden allowDependenciesLicenses: String?
-  hidden allowGhsas: String?
-  hidden externalRepoToken: String?
-  hidden licenseCheck: String?
-  hidden vulnerabilityCheck: String?
-  hidden commentSummaryInPr: String?
-  hidden denyPackages: String?
-  hidden denyGroups: String?
-  hidden retryOnSnapshotWarnings: String?
-  hidden retryOnSnapshotWarningsTimeout: String?
-  hidden warnOnly: String?
-  hidden showOpenssfScorecard: String?
-  hidden warnOnOpenssfScorecardLevel: String?
+  hidden repoToken: (String|Number|Boolean)?
+  hidden failOnSeverity: (String|Number|Boolean)?
+  hidden failOnScopes: (String|Number|Boolean)?
+  hidden baseRef: (String|Number|Boolean)?
+  hidden headRef: (String|Number|Boolean)?
+  hidden configFile: (String|Number|Boolean)?
+  hidden allowLicenses: (String|Number|Boolean)?
+  hidden denyLicenses: (String|Number|Boolean)?
+  hidden allowDependenciesLicenses: (String|Number|Boolean)?
+  hidden allowGhsas: (String|Number|Boolean)?
+  hidden externalRepoToken: (String|Number|Boolean)?
+  hidden licenseCheck: (String|Number|Boolean)?
+  hidden vulnerabilityCheck: (String|Number|Boolean)?
+  hidden commentSummaryInPr: (String|Number|Boolean)?
+  hidden denyPackages: (String|Number|Boolean)?
+  hidden denyGroups: (String|Number|Boolean)?
+  hidden retryOnSnapshotWarnings: (String|Number|Boolean)?
+  hidden retryOnSnapshotWarningsTimeout: (String|Number|Boolean)?
+  hidden warnOnly: (String|Number|Boolean)?
+  hidden showOpenssfScorecard: (String|Number|Boolean)?
+  hidden warnOnOpenssfScorecardLevel: (String|Number|Boolean)?
 
   local localWith = new Mapping {
     ["repo-token"] = repoToken
