@@ -1,6 +1,11 @@
+/// Actions for managing common things in GitHub workflows.
+/// This module is a low-level module not indended for direct use.
+/// Use the [Action](../Action) module instead to access these actions.
+@ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.actions.Common
 import "../Workflow.pkl"
 
+/// Type-safe GitHub Action of the [checkout](https://github.com/actions/checkout) action.
 class Checkout extends Workflow.Step {
   uses = "actions/checkout@v4"
 
@@ -50,6 +55,7 @@ class Checkout extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [actions/add-to-project](https://github.com/actions/add-to-project) action.
 class AddToProject extends Workflow.Step {
   uses = "actions/add-to-project@v1"
 
@@ -98,6 +104,7 @@ class GoDependencySubmission extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [actions/github-script](https://github.com/actions/github-script) action.
 class GitHubScript extends Workflow.Step {
   uses = "actions/github-script@v7"
 
@@ -126,6 +133,7 @@ class GitHubScript extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [actions/labeler](https://github.com/actions/labeler) action.
 class Labeler extends Workflow.Step {
   uses = "actions/labeler@v5"
 
@@ -158,6 +166,7 @@ class AttestSbom extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [actions/ai-inference](https://github.com/actions/ai-inference) action.
 class AiInference extends Workflow.Step {
   uses = "actions/ai-inference@v1"
 
@@ -184,6 +193,7 @@ class AiInference extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [actions/create-github-app-token](https://github.com/actions/create-github-app-token) action.
 class CreateGitHubAppToken extends Workflow.Step {
   uses = "actions/create-github-app-token@v2"
 
@@ -302,6 +312,7 @@ class CreateGitHubAppToken extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [actions/delete-package-versions](https://github.com/actions/delete-package-versions) action.
 class DeletePackageVersion extends Workflow.Step {
   uses = "actions/delete-package-versions@v5"
 
@@ -332,7 +343,7 @@ class DeletePackageVersion extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
-
+/// Type-safe GitHub Action of the [actions/stale](https://github.com/actions/stale) action.
 class Stale extends Workflow.Step {
   uses = "actions/stale@v9"
 
@@ -449,6 +460,7 @@ class Stale extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [actions/dependency-review-action](https://github.com/actions/dependency-review-action) action.
 class DependencyReviewAction extends Workflow.Step {
   uses = "actions/dependency-review-action@v4"
 
@@ -500,4 +512,3 @@ class DependencyReviewAction extends Workflow.Step {
   local filteredWith = localWith.toMap().filter((_, value) -> value != null)
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
-

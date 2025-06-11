@@ -1,6 +1,11 @@
+/// Actions for managing artifacts in GitHub workflows.
+/// This module is a low-level module not indended for direct use.
+/// Use the [Action](../Action) module instead to access these actions.
+@ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.actions.Artifact
 import "../Workflow.pkl"
 
+/// Type-safe GitHub Action of the [download-artifact](https://github.com/actions/download-artifact) action.
 class Download extends Workflow.Step {
   uses = "actions/download-artifact@v4"
 
@@ -27,6 +32,7 @@ class Download extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [upload-artifact](https://github.com/actions/upload-artifact) action.
 class Upload extends Workflow.Step {
   uses = "actions/upload-artifact@v4"
 
@@ -51,6 +57,7 @@ class Upload extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [upload-artifact/merge](https://github.com/actions/upload-artifact/tree/main/merge) action.
 class UploadArtifactMerge extends Workflow.Step {
   uses = "actions/upload-artifact/merge@v4"
 

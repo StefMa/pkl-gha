@@ -1,6 +1,11 @@
+/// Actions for managing "setup-programming language"" in GitHub workflows.
+/// This module is a low-level module not indended for direct use.
+/// Use the [Action](../Action) module instead to access these actions.
+@ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.actions.Setup
 import "../Workflow.pkl"
 
+/// Type-safe GitHub Action of the [setup-java](https://github.com/actions/setup-java) action.
 class Java extends Workflow.Step {
   uses = "actions/setup-java@v4"
 
@@ -52,6 +57,7 @@ class Java extends Workflow.Step {
 }
 setupJava: Java = new {}
 
+/// Type-safe GitHub Action of the [setup-dotnet](https://github.com/actions/setup-dotnet) action.
 class SetupDotnet extends Workflow.Step {
   uses = "actions/setup-dotnet@v4"
 
@@ -79,6 +85,7 @@ class SetupDotnet extends Workflow.Step {
 }
 setupDotnet: SetupDotnet = new {}
 
+/// Type-safe GitHub Action of the [setup-go](https//github.com/actions/setup-go) action.
 class Go extends Workflow.Step {
   uses = "actions/setup-go@v5"
 
@@ -102,8 +109,8 @@ class Go extends Workflow.Step {
   local filteredWith = localWith.toMap().filter((_, value) -> value != null)
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
-setupGo: Go = new {}
 
+/// Type-safe GitHub Action of the [setup-node](
 class Node extends Workflow.Step {
   uses = "actions/setup-node@v4"
 
@@ -137,8 +144,8 @@ class Node extends Workflow.Step {
   local filteredWith = localWith.toMap().filter((_, value) -> value != null)
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
-setupNode: Node = new {}
 
+/// Type-safe GitHub Action of the [setup-python](https://github.com/actions/setup-python) action.
 class Python extends Workflow.Step {
   uses = "actions/setup-python@v5"
 
@@ -168,4 +175,3 @@ class Python extends Workflow.Step {
   local filteredWith = localWith.toMap().filter((_, value) -> value != null)
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
-setupPython: Python = new {}

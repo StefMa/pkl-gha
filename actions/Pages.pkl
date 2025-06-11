@@ -1,6 +1,11 @@
+/// Actions for managing pages in GitHub workflows.
+/// This module is a low-level module not indended for direct use.
+/// Use the [Action](../Action) module instead to access these actions.
+@ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.actions.Pages
 import "../Workflow.pkl"
 
+/// Type-safe GitHub Action of the [configure-pages](https://github.com/actions/configure-pages) action.
 class Configure extends Workflow.Step {
   uses = "actions/configure-pages@v5"
 
@@ -19,6 +24,7 @@ class Configure extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [upload-pages-artifact](https://github.com/actions/upload-pages-artifact) action.
 class UploadArtifact extends Workflow.Step {
   uses = "actions/upload-pages-artifact@v3"
 
@@ -35,6 +41,7 @@ class UploadArtifact extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [jekyll-build-pages](https://github.com/actions/jekyll-build-pages) action.
 class JekyllBuild extends Workflow.Step {
   uses = "actions/jekyll-build-pages@v1"
 
@@ -57,6 +64,7 @@ class JekyllBuild extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [deploy-pages](https://github.com/actions/deploy-pages) action.
 class Deploy extends Workflow.Step {
   uses = "actions/deploy-pages@v4"
 

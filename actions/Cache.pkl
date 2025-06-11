@@ -1,6 +1,11 @@
+/// Actions for managing cache in GitHub workflows.
+/// This module is a low-level module not indended for direct use.
+/// Use the [Action](../Action) module instead to access these actions.
+@ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.actions.Cache
 import "../Workflow.pkl"
 
+/// Type-safe GitHub Action of the [cache](https://github.com/actions/cache) action.
 class Cache extends Workflow.Step {
   uses = "actions/cache@v4"
 
@@ -27,6 +32,7 @@ class Cache extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/save) action.
 class Save extends Workflow.Step {
   uses = "actions/cache/save@v4"
 
@@ -45,6 +51,7 @@ class Save extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
+/// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/restore) action.
 class Restore extends Workflow.Step {
   uses = "actions/cache/restore@v4"
 
