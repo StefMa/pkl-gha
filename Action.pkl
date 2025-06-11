@@ -14,11 +14,11 @@
 /// }
 @ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.Action
-import "Actions/Artifact.pkl"
-import "Actions/Cache.pkl"
-import "Actions/Common.pkl"
-import "Actions/Pages.pkl"
-import "Actions/Setup.pkl"
+import "actions/Artifact.pkl"
+import "actions/Cache.pkl"
+import "actions/Common.pkl"
+import "actions/Pages.pkl"
+import "actions/Setup.pkl"
 
 // Default Actions:
 checkout: Common.Checkout = new {}
