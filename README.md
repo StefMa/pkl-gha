@@ -25,6 +25,7 @@ is definitely YAML validated and ready to be used as your Action Workflows.
 ```pkl
 amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/Workflow.pkl"
 import "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/Context.pkl" // Optional
+import "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@[LATEST_VERSION]#/Action.pkl" // Optional
 
 name = "Test"
 
@@ -44,12 +45,8 @@ jobs {
     `runs-on` = new UbuntuLatest {} // Could also be a string like "ubuntu-latest"
     // Define your `steps`. E.g.:
     steps {
-      new {
-        name = "Checkout"
-        uses = "actions/checkout@v4"
-        with {
-          ["fetch-depth"] = 0
-        }
+      (Action.checkout) {
+        fetchDepth = 0
       }
       new {
         name = "Setup nexus credentials"
