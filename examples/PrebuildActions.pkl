@@ -1,0 +1,35 @@
+amends "../Workflow.pkl"
+import "../Action.pkl"
+
+name = "Check prebuild actions"
+
+on {
+  push {}
+}
+
+jobs {
+  ["test-various-actions"] {
+    name = "Test actions"
+    `runs-on` = "macos-latest"
+    steps {
+      Action.checkout
+      (Action.setupGo) {
+        goVersion = "1.17.7"
+      }
+      (Action.setupJava) {
+        javaVersion = 17
+        distribution = "temurin"
+      }
+      (Action.cache) {
+        path = "wiki/README.md"
+        key = "wiki-readme-${{ runner.os }}-${{ hashFiles('wiki/generateWikiToc.go') }}"
+      }
+      (Action.uploadPagesArtifact) {
+        path = "tmp-doc"
+      }
+      (Action.deployPages) {
+        id = "deployment"
+      }
+    }
+  }
+}

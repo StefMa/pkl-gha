@@ -1,4 +1,5 @@
 amends "../Workflow.pkl"
+import "../Action.pkl"
 
 name = "Matrix Test"
 
@@ -38,9 +39,8 @@ jobs {
       }
     }
     steps {
-      new {
+      (Action.checkout) {
         name = "Checkout"
-        uses = "actions/checkout@v4"
         `timeout-minutes` = 2.3
       }
       new {

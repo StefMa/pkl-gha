@@ -1,0 +1,75 @@
+/// Actions for managing cache in GitHub workflows.
+/// This module is a low-level module not indended for direct use.
+/// Use the [Action](../Action) module instead to access these actions.
+@ModuleInfo { minPklVersion = "0.25.3" }
+module com.github.action.actions.Cache
+import "../Workflow.pkl"
+
+/// Type-safe GitHub Action of the [cache](https://github.com/actions/cache) action.
+class Cache extends Workflow.Step {
+  uses = "actions/cache@v4"
+
+  hidden path: (String|Number|Boolean)?
+  hidden key: (String|Number|Boolean)?
+  hidden restoreKeys: (String|Number|Boolean)?
+  hidden uploadChunkSize: (String|Number|Boolean)?
+  hidden enableCrossOsArchive: (String|Number|Boolean)?
+  hidden failOnCacheMiss: (String|Number|Boolean)?
+  hidden lookupOnly: (String|Number|Boolean)?
+  hidden saveAlways: (String|Number|Boolean)?
+
+  local localWith = new Mapping {
+    ["path"] = path
+    ["key"] = key
+    ["restore-keys"] = restoreKeys
+    ["upload-chunk-size"] = uploadChunkSize
+    ["enableCrossOsArchive"] = enableCrossOsArchive
+    ["fail-on-cache-miss"] = failOnCacheMiss
+    ["lookup-only"] = lookupOnly
+    ["save-always"] = saveAlways
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+/// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/save) action.
+class Save extends Workflow.Step {
+  uses = "actions/cache/save@v4"
+
+  hidden path: (String|Number|Boolean)?
+  hidden key: (String|Number|Boolean)?
+  hidden uploadChunkSize: (String|Number|Boolean)?
+  hidden enableCrossOsArchive: (String|Number|Boolean)?
+
+  local localWith = new Mapping {
+    ["path"] = path
+    ["key"] = key
+    ["upload-chunk-size"] = uploadChunkSize
+    ["enableCrossOsArchive"] = enableCrossOsArchive
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+/// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/restore) action.
+class Restore extends Workflow.Step {
+  uses = "actions/cache/restore@v4"
+
+  hidden path: (String|Number|Boolean)?
+  hidden key: (String|Number|Boolean)?
+  hidden restoreKeys: (String|Number|Boolean)?
+  hidden enableCrossOsArchive: (String|Number|Boolean)?
+  hidden failOnCacheMiss: (String|Number|Boolean)?
+  hidden lookupOnly: (String|Number|Boolean)?
+
+  local localWith = new Mapping {
+    ["path"] = path
+    ["key"] = key
+    ["restore-keys"] = restoreKeys
+    ["enableCrossOsArchive"] = enableCrossOsArchive
+    ["fail-on-cache-miss"] = failOnCacheMiss
+    ["lookup-only"] = lookupOnly
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}

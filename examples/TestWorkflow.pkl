@@ -1,5 +1,6 @@
 amends "../Workflow.pkl"
 import  "../Context.pkl"
+import  "../Action.pkl"
 
 name = "PrintHelloWorld"
 
@@ -65,13 +66,10 @@ jobs {
       name = "production"
     }
     steps {
-      new {
+      (Action.checkout) {
         name = "Checkout"
-        uses = "actions/checkout@v4"
-        with = new {
-          ["ref"] = "develop"
-          ["token"] = Context.secrets("GITHUB_TOKEN")
-        }
+        ref = "develop"
+        token = Context.secrets("GITHUB_TOKEN")
       }
       new {
         id = "hello"
@@ -104,12 +102,9 @@ jobs {
         name = "date"
         run = "date"
       }
-      new {
+      (Action.checkout) {
         name = "Checkout"
-        uses = "actions/checkout@v4"
-        with = new {
-          ["ref"] = "develop"
-        }
+        ref = "develop"
       }
       new {
         name = "Slack"

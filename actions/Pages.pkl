@@ -1,0 +1,88 @@
+/// Actions for managing pages in GitHub workflows.
+/// This module is a low-level module not indended for direct use.
+/// Use the [Action](../Action) module instead to access these actions.
+@ModuleInfo { minPklVersion = "0.25.3" }
+module com.github.action.actions.Pages
+import "../Workflow.pkl"
+
+/// Type-safe GitHub Action of the [configure-pages](https://github.com/actions/configure-pages) action.
+class Configure extends Workflow.Step {
+  uses = "actions/configure-pages@v5"
+
+  hidden staticSiteGenerator: (String|Number|Boolean)?
+  hidden generatorConfigFile: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
+  hidden enablement: (String|Number|Boolean)?
+
+  local localWith = new Mapping {
+    ["static_site_generator"] = staticSiteGenerator
+    ["generator_config_file"] = generatorConfigFile
+    ["token"] = token
+    ["enablement"] = enablement
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+/// Type-safe GitHub Action of the [upload-pages-artifact](https://github.com/actions/upload-pages-artifact) action.
+class UploadArtifact extends Workflow.Step {
+  uses = "actions/upload-pages-artifact@v3"
+
+  hidden name: (String|Number|Boolean)?
+  hidden path: (String|Number|Boolean)?
+  hidden retentionDays: (String|Number|Boolean)?
+
+  local localWith = new Mapping {
+    ["name"] = name
+    ["path"] = path
+    ["retention-days"] = retentionDays
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+/// Type-safe GitHub Action of the [jekyll-build-pages](https://github.com/actions/jekyll-build-pages) action.
+class JekyllBuild extends Workflow.Step {
+  uses = "actions/jekyll-build-pages@v1"
+
+  hidden source: (String|Number|Boolean)?
+  hidden destination: (String|Number|Boolean)?
+  hidden future: (String|Number|Boolean)?
+  hidden buildRevision: (String|Number|Boolean)?
+  hidden verbose: (String|Number|Boolean)?
+  hidden token: (String|Number|Boolean)?
+
+  local localWith = new Mapping {
+    ["source"] = source
+    ["destination"] = destination
+    ["future"] = future
+    ["build_revision"] = buildRevision
+    ["verbose"] = verbose
+    ["token"] = token
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}
+
+/// Type-safe GitHub Action of the [deploy-pages](https://github.com/actions/deploy-pages) action.
+class Deploy extends Workflow.Step {
+  uses = "actions/deploy-pages@v4"
+
+  hidden token: (String|Number|Boolean)?
+  hidden timeout: (String|Number|Boolean)?
+  hidden errorCount: (String|Number|Boolean)?
+  hidden reportingInterval: (String|Number|Boolean)?
+  hidden artifactName: (String|Number|Boolean)?
+  hidden preview: (String|Number|Boolean)?
+
+  local localWith = new Mapping {
+    ["token"] = token
+    ["timeout"] = timeout
+    ["error_count"] = errorCount
+    ["reporting_interval"] = reportingInterval
+    ["artifact_name"] = artifactName
+    ["preview"] = preview
+  }
+  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
+  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
+}

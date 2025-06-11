@@ -21,6 +21,9 @@ examples {
   ["reusableWorkflow"] {
     import("../examples/ReusableWorkflow.pkl").output.text
   }
+  ["prebuildActions"] {
+    import("../examples/PrebuildActions.pkl").output.text
+  }
 }
 
 facts {
