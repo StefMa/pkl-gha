@@ -26,7 +26,7 @@ jobs:
         curl -Ls https://sh.jbang.dev | bash -s - app setup
         echo "$HOME/.jbang/bin" >> $GITHUB_PATH
     - name: Generate pkl doc
-      run: jbang run --main org.pkl.doc.Main "org.pkl-lang:pkl-doc:0.26.3"  *.pkl -o tmp-docs
+      run: jbang run --main org.pkl.doc.Main "org.pkl-lang:pkl-doc:0.26.3"  *.pkl actinos/*.pkl -o tmp-docs
     - name: Update docs in docs branch and push
       working-directory: tmp-docs
       run: |-
