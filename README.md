@@ -106,7 +106,7 @@ permissions: (*Permissions|"read-all"|"write-all")?
 jobs: Jobs
 ```
 
-The template itself as well as the `class` definitions can be found in the [GitHubAction.pkl](GitHubAction.pkl) file.
+The template itself as well as the `class` definitions can be found in the [Workflow.pkl](Workflow.pkl) file.
 
 ## Adopters
 
