@@ -40,7 +40,7 @@ jobs {
       }
       new {
         name = "Generate pkl doc"
-        run = "jbang run --main org.pkl.doc.Main \"org.pkl-lang:pkl-doc:0.26.3\"  *.pkl -o tmp-docs"
+        run = "jbang run --main org.pkl.doc.Main \"org.pkl-lang:pkl-doc:0.26.3\"  *.pkl actinos/*.pkl -o tmp-docs"
       }
       new {
         name = "Update docs in docs branch and push"

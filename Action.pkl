@@ -1,0 +1,41 @@
+module com.github.action.Actions
+import "Actions/Artifact.pkl"
+import "Actions/Cache.pkl"
+import "Actions/Common.pkl"
+import "Actions/Pages.pkl"
+import "Actions/Setup.pkl"
+
+// Default Actions:
+checkout: Common.Checkout = new {}
+addToProject: Common.AddToProject = new {}
+gitHubScript: Common.GitHubScript = new {}
+labeler: Common.Labeler = new {}
+deletePackageVersion: Common.DeletePackageVersion = new {}
+stale: Common.Stale = new {}
+dependencyReviewAction: Common.DependencyReviewAction = new {}
+goDependencySubmission: Common.GoDependencySubmission = new {}
+attestSbom: Common.AttestSbom = new {}
+aiInference: Common.AiInference = new {}
+createGitHubAppToken: Common.CreateGitHubAppToken = new {}
+
+// Artifact Actions:
+downloadArtifact: Artifact.Download = new {}
+uploadArtitact: Artifact.Upload = new {}
+uploadArtifactMerge: Artifact.UploadArtifactMerge = new {}
+
+// Page Actions:
+configurePages: Pages.Configure = new {}
+uploadPagesArtifact: Pages.UploadArtifact = new {}
+jekyllBuildPages: Pages.JekyllBuild = new {}
+deployPages: Pages.Deploy = new {}
+
+// Cache Actions:
+cache: Cache.Cache = new {}
+cacheSave: Cache.Save = new {}
+cacheRestore: Cache.Restore = new {}
+
+// Setup Actions:
+setupGo: Setup.Go = new {}
+setupNode: Setup.Node = new {}
+setupPython: Setup.Python = new {}
+setupJava: Setup.Java = new {}

@@ -1,5 +1,5 @@
-module com.github.action.ActionsSetup
-import "Workflow.pkl"
+module com.github.action.actions.Setup
+import "../Workflow.pkl"
 
 class Java extends Workflow.Step {
   uses = "actions/setup-java@v4"

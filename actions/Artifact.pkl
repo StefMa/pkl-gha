@@ -1,5 +1,5 @@
-module com.github.action.ActionsArtifact
-import "Workflow.pkl"
+module com.github.action.actions.Artifact
+import "../Workflow.pkl"
 
 class Download extends Workflow.Step {
   uses = "actions/download-artifact@v4"

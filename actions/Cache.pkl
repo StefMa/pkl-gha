@@ -1,5 +1,5 @@
-module com.github.action.ActionsCache
-import "Workflow.pkl"
+module com.github.action.actions.Cache
+import "../Workflow.pkl"
 
 class Cache extends Workflow.Step {
   uses = "actions/cache@v4"

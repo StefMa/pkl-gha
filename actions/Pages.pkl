@@ -1,5 +1,5 @@
-module com.github.action.ActionsPages
-import "Workflow.pkl"
+module com.github.action.actions.Pages
+import "../Workflow.pkl"
 
 class Configure extends Workflow.Step {
   uses = "actions/configure-pages@v5"

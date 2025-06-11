@@ -1,5 +1,5 @@
-module com.github.action.ActionsCommon
-import "Workflow.pkl"
+module com.github.action.actions.Common
+import "../Workflow.pkl"
 
 class Checkout extends Workflow.Step {
   uses = "actions/checkout@v4"
