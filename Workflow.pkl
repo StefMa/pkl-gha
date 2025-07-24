@@ -535,6 +535,7 @@ typealias EnvironmentVariables = Mapping<String, String|Boolean|Number>
 // Permissions
 class Permissions {
   actions: Permission?
+  attestations: Permission?
   checks: Permission?
   contents: Permission?
   deployments: Permission?
