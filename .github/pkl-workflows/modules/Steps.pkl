@@ -2,7 +2,7 @@ import "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0
 
 function checkout(): GitHubAction.Step = new {
   name = "checkout"
-  uses = "actions/checkout@v4"
+  uses = "actions/checkout@v5"
 }
 
 function installPkl(): GitHubAction.Step = new {
