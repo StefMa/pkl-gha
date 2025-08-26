@@ -34,7 +34,7 @@ jobs:
         git commit --amend -m "Docs for pkl-gha"
         git push --force origin docs
     - name: Upload artifact for GitHub Pages
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: tmp-docs
   deployToGitHubPages:
