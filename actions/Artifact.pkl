@@ -1,15 +1,15 @@
 /// Actions for managing artifacts in GitHub workflows.
 /// This module is a low-level module not indended for direct use.
 /// Use the [Action](../Action) module instead to access these actions.
-@ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.actions.Artifact
+
 import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [download-artifact](https://github.com/actions/download-artifact) action.
 class Download extends Workflow.Step {
   uses = "actions/download-artifact@v4"
 
-  hidden name: (String|Number|Boolean)?
+  hidden artifactName: (String|Number|Boolean)?
   hidden artifactIds: (String|Number|Boolean)?
   hidden path: (String|Number|Boolean)?
   hidden pattern: (String|Number|Boolean)?
@@ -19,7 +19,7 @@ class Download extends Workflow.Step {
   hidden runId: (String|Number|Boolean)?
 
   local localWith = new Mapping {
-    ["name"] = name
+    ["name"] = artifactName
     ["artifact-ids"] = artifactIds
     ["path"] = path
     ["pattern"] = pattern
@@ -36,7 +36,7 @@ class Download extends Workflow.Step {
 class Upload extends Workflow.Step {
   uses = "actions/upload-artifact@v4"
 
-  hidden name: (String|Number|Boolean)?
+  hidden artifactName: (String|Number|Boolean)?
   hidden path: (String|Number|Boolean)?
   hidden ifNoFilesFound: (String|Number|Boolean)?
   hidden retentionDays: (String|Number|Boolean)?
@@ -45,7 +45,7 @@ class Upload extends Workflow.Step {
   hidden includeHiddenFiles: (String|Number|Boolean)?
 
   local localWith = new Mapping {
-    ["name"] = name
+    ["name"] = artifactName
     ["path"] = path
     ["if-no-files-found"] = ifNoFilesFound
     ["retention-days"] = retentionDays
@@ -61,7 +61,7 @@ class Upload extends Workflow.Step {
 class UploadArtifactMerge extends Workflow.Step {
   uses = "actions/upload-artifact/merge@v4"
 
-  hidden name: (String|Number|Boolean)?
+  hidden artifactName: (String|Number|Boolean)?
   hidden pattern: (String|Number|Boolean)?
   hidden separateDirectories: (String|Number|Boolean)?
   hidden retentionDays: (String|Number|Boolean)?
@@ -70,7 +70,7 @@ class UploadArtifactMerge extends Workflow.Step {
   hidden includeHiddenFiles: (String|Number|Boolean)?
 
   local localWith = new Mapping {
-    ["name"] = name
+    ["name"] = artifactName
     ["pattern"] = pattern
     ["separate-directories"] = separateDirectories
     ["retention-days"] = retentionDays

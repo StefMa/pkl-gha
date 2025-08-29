@@ -1,8 +1,8 @@
 /// Actions for managing cache in GitHub workflows.
 /// This module is a low-level module not indended for direct use.
 /// Use the [Action](../Action) module instead to access these actions.
-@ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.actions.Cache
+
 import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [cache](https://github.com/actions/cache) action.
