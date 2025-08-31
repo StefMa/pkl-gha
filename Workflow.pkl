@@ -363,9 +363,11 @@ class RepositoryDispatch extends Trigger {
   types: Listing<String>?
 }
 
-class Schedule extends Trigger {
-  cron: Listing<ScheduleCron>(length > 0)
+class Schedule {
+  @SourceCode { language = "Cron" }
+  cron: String
 }
+
 typealias ScheduleCron = String
 
 /// Allows workflows to be reused by other workflows.
@@ -654,7 +656,7 @@ class On {
   /// To help you get started, there is also a list of crontab guru examples (<https://crontab.guru/examples.html>).
   ///
   /// See <https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule>
-  schedule: Schedule?
+  schedule: Listing<Schedule>?
 
   /// Runs your workflow anytime the status of a Git commit changes, which triggers the `status` event.
   ///
@@ -835,6 +837,7 @@ abstract class BaseJob {
   /// You can use any supported context and expression to create a conditional.
   /// For more information on which contexts are supported in this key, see
   /// [Contexts reference](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#context-availability).
+  @SourceCode {language = "GithubExpressionLanguage" }
   `if`: String?
 
   /// Identify any jobs that must complete successfully before this job will run.
