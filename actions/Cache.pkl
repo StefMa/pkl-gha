@@ -7,16 +7,47 @@ import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [cache](https://github.com/actions/cache) action.
 class Cache extends Workflow.Step {
-  uses = "actions/cache@v4"
+  uses: "actions/cache@v4"
 
-  hidden path: (String|Number|Boolean)?
-  hidden key: (String|Number|Boolean)?
-  hidden restoreKeys: (String|Number|Boolean)?
-  hidden uploadChunkSize: (String|Number|Boolean)?
-  hidden enableCrossOsArchive: (String|Number|Boolean)?
-  hidden failOnCacheMiss: (String|Number|Boolean)?
-  hidden lookupOnly: (String|Number|Boolean)?
-  hidden saveAlways: (String|Number|Boolean)?
+  /// A list of files, directories, and wildcard patterns to cache and restore
+  ///
+  /// Each entry should be separated by newlines.
+  ///
+  /// Example:
+  ///
+  /// ```
+  /// path =
+  ///   """
+  ///   path/to/dependencies
+  ///   some/other/dependencies
+  ///   """
+  /// ```
+  hidden path: String
+
+  /// An explicit key for restoring and saving the cache
+  hidden key: String
+
+  /// An ordered multiline string listing the prefix-matched keys, that are used for restoring stale cache if no cache
+  /// hit occurred for key.
+  ///
+  /// Note `cache-hit` returns false in this case.
+  hidden restoreKeys: String?
+
+  /// The chunk size used to split up large files during upload, in bytes
+  hidden uploadChunkSize: Int?
+
+  /// An optional boolean when enabled, allows windows runners to save or restore caches that can be restored or saved
+  /// respectively on other platforms
+  hidden enableCrossOsArchive: Boolean?
+
+  /// Fail the workflow if cache entry is not found
+  hidden failOnCacheMiss: Boolean?
+
+  /// Check if a cache entry exists for the given input(s) ([key], [restoreKeys]) without downloading the cache.
+  hidden lookupOnly: Boolean?
+
+  /// Run the post step to save the cache even if another step before fails
+  hidden saveAlways: Boolean?
 
   local localWith = new Mapping {
     ["path"] = path
@@ -34,12 +65,31 @@ class Cache extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/save) action.
 class Save extends Workflow.Step {
-  uses = "actions/cache/save@v4"
+  uses: "actions/cache/save@v4"
 
-  hidden path: (String|Number|Boolean)?
-  hidden key: (String|Number|Boolean)?
-  hidden uploadChunkSize: (String|Number|Boolean)?
-  hidden enableCrossOsArchive: (String|Number|Boolean)?
+  /// A list of files, directories, and wildcard patterns to cache and restore
+  ///
+  /// Each entry should be separated by newlines.
+  ///
+  /// Example:
+  ///
+  /// ```
+  /// path =
+  ///   """
+  ///   path/to/dependencies
+  ///   some/other/dependencies
+  ///   """
+  /// ```
+  hidden path: String
+
+  /// An explicit key for saving the cache
+  hidden key: String
+
+  /// The chunk size used to split up large files during upload, in bytes.
+  hidden uploadChunkSize: Int?
+
+  /// An optional boolean when enabled, allows windows runners to save caches that can be restored on other platforms.
+  hidden enableCrossOsArchive: Boolean?
 
   local localWith = new Mapping {
     ["path"] = path
@@ -53,14 +103,40 @@ class Save extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/restore) action.
 class Restore extends Workflow.Step {
-  uses = "actions/cache/restore@v4"
+  uses: "actions/cache/restore@v4"
 
-  hidden path: (String|Number|Boolean)?
-  hidden key: (String|Number|Boolean)?
-  hidden restoreKeys: (String|Number|Boolean)?
-  hidden enableCrossOsArchive: (String|Number|Boolean)?
-  hidden failOnCacheMiss: (String|Number|Boolean)?
-  hidden lookupOnly: (String|Number|Boolean)?
+  /// A list of files, directories, and wildcard patterns to restore
+  ///
+  /// Each entry should be separated by newlines.
+  ///
+  /// Example:
+  ///
+  /// ```
+  /// path =
+  ///   """
+  ///   path/to/dependencies
+  ///   some/other/dependencies
+  ///   """
+  /// ```
+  hidden path: String
+
+  /// An explicit key for restoring the cache
+  hidden key: String
+
+  /// An ordered multiline string listing the prefix-matched keys, that are used for restoring stale cache if no cache
+  /// hit occurred for key.
+  ///
+  /// Note `cache-hit` returns false in this case.
+  hidden restoreKeys: Boolean?
+
+  /// An optional boolean when enabled, allows windows runners to restore caches that were saved on other platforms.
+  hidden enableCrossOsArchive: Boolean?
+
+  /// Fail the workflow if cache entry is not found.
+  hidden failOnCacheMiss: Boolean?
+
+  /// Check if a cache entry exists for the given input(s) (key, restore-keys) without downloading the cache.
+  hidden lookupOnly: Boolean?
 
   local localWith = new Mapping {
     ["path"] = path
