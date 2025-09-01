@@ -837,7 +837,7 @@ abstract class BaseJob {
   /// You can use any supported context and expression to create a conditional.
   /// For more information on which contexts are supported in this key, see
   /// [Contexts reference](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#context-availability).
-  @SourceCode {language = "GithubExpressionLanguage" }
+  @SourceCode { language = "GithubExpressionLanguage" }
   `if`: String?
 
   /// Identify any jobs that must complete successfully before this job will run.
@@ -1078,6 +1078,7 @@ open class Step {
   /// However, this exception does not apply everywhere.
   ///
   /// For more information, see Evaluate expressions in workflows and actions.
+  @SourceCode { language = "GithubExpressionLanguage" }
   `if`: String?
 
   /// The maximum number of minutes to run the step before killing the process.
