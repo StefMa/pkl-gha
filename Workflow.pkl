@@ -444,7 +444,7 @@ class Watch extends Trigger
 class WorkflowCall extends Trigger {
   inputs: Mapping<String, WorkflowInput>?
   outputs: Mapping<String, WorkflowCallOutput>?
-  secrets: Listing<WorkflowCallSecrets>?
+  secrets: Mapping<String, WorkflowCallSecrets>?
 }
 class WorkflowCallOutput {
   description: String?
