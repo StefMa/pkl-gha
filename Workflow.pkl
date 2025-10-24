@@ -1293,9 +1293,6 @@ output {
     converters {
       ["runs-on"] = (runsOn: String|Machine|Listing<String|Machine>) ->
         if (runsOn is Listing<String|Machine>) convertMachinesToString(runsOn) else convertMachineToString(runsOn)
-      ["schedule"] = (schedule: Schedule?) -> schedule.ifNonNull((_) ->
-        schedule.cron.toList().map((cr) -> Map("cron", new RenderDirective { text = " " + jsonRenderer.renderValue(cr) }))
-      )
     }
   }
 }
