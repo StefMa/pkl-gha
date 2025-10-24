@@ -1284,7 +1284,6 @@ permissions: (*Permissions|"read-all"|"write-all")?
 jobs: Jobs
 
 // Output
-local jsonRenderer = new JsonRenderer {}
 output {
   text = "# Do not modify!\n# This file was generated from a template using https://github.com/StefMa/pkl-gha\n\n\(super.text)"
   renderer = new YamlRenderer {
