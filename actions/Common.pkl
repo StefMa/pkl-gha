@@ -1,34 +1,145 @@
 /// Actions for managing common things in GitHub workflows.
 /// This module is a low-level module not indended for direct use.
 /// Use the [Action](../Action) module instead to access these actions.
-@ModuleInfo { minPklVersion = "0.25.3" }
 module com.github.action.actions.Common
+
 import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [checkout](https://github.com/actions/checkout) action.
 class Checkout extends Workflow.Step {
-  uses = "actions/checkout@v4"
+  uses: "actions/checkout@v5"
 
-  hidden repository: (String|Number|Boolean)?
-  hidden ref: (String|Number|Boolean)?
-  hidden token: (String|Number|Boolean)?
-  hidden sshKey: (String|Number|Boolean)?
-  hidden sshKnownHosts: (String|Number|Boolean)?
-  hidden sshStrict: (String|Number|Boolean)?
-  hidden sshUser: (String|Number|Boolean)?
-  hidden persistCredentials: (String|Number|Boolean)?
-  hidden path: (String|Number|Boolean)?
-  hidden clean: (String|Number|Boolean)?
-  hidden filter: (String|Number|Boolean)?
-  hidden sparseCheckout: (String|Number|Boolean)?
-  hidden sparseCheckoutConeMode: (String|Number|Boolean)?
-  hidden fetchDepth: (String|Number|Boolean)?
-  hidden fetchTags: (String|Number|Boolean)?
-  hidden showProgress: (String|Number|Boolean)?
-  hidden lfs: (String|Number|Boolean)?
-  hidden submodules: (String|Number|Boolean)?
+  /// Repository name with owner.
+  ///
+  /// For example, `actions/checkout`
+  ///
+  /// Default: `${{ github.repository }}`
+  hidden repository: String?
+
+  /// The branch, tag or SHA to checkout.
+  ///
+  /// When checking out the repository that triggered a workflow, this defaults to the reference or SHA for that event.
+  /// Otherwise, uses the default branch.
+  hidden ref: String?
+
+  /// Personal access token (PAT) used to fetch the repository.
+  ///
+  /// The PAT is configured with the local git config, which enables your scripts to run authenticated git
+  /// commands. The post-job step removes the PAT.
+  ///
+  /// We recommend using a service account with the least permissions necessary. Also
+  /// when generating a new PAT, select the least scopes necessary.
+  ///
+  /// [Learn more about creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
+  ///
+  /// Default: `${{ github.token }}`
+  hidden token: String?
+
+  /// SSH key used to fetch the repository.
+  ///
+  /// The SSH key is configured with the local git config, which enables your scripts to run authenticated git commands.
+  /// The post-job step removes the SSH key.
+  ///
+  /// We recommend using a service account with the least permissions necessary.
+  ///
+  /// [Learn more about creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
+  hidden sshKey: String?
+
+  /// Known hosts in addition to the user and global host key database.
+  ///
+  /// The public SSH keys for a host may be obtained using the utility `ssh-keyscan`.
+  /// For example, `ssh-keyscan github.com`.
+  /// The public key for github.com is always implicitly added.
+  hidden sshKnownHosts: String?
+
+  /// Whether to perform strict host key checking.
+  ///
+  /// When true, adds the options `StrictHostKeyChecking=yes` and `CheckHostIP=no` to the SSH command line.
+  /// Use the input `ssh-known-hosts` to configure additional hosts.
+  ///
+  /// Default: `true`
+  hidden sshStrict: Boolean?
+
+  /// The user to use when connecting to the remote SSH host.
+  ///
+  /// By default 'git' is used.
+  ///
+  /// Default: `"git"`
+  hidden sshUser: String?
+
+  /// Whether to configure the token or SSH key with the local git config
+  ///
+  /// Default: `true`
+  hidden persistCredentials: Boolean?
+
+  /// Relative path under `$GITHUB_WORKSPACE` to place the repository
+  hidden path: String?
+
+  /// Whether to execute `git clean -ffdx && git reset --hard HEAD` before fetching
+  ///
+  /// Default: true
+  hidden clean: Boolean?
+
+  /// Partially clone against a given filter. Overrides sparse-checkout if set.
+  ///
+  /// Default: null
+  hidden filter: Boolean?
+
+  /// Do a sparse checkout on given patterns.
+  ///
+  /// Each pattern should be separated with new lines.
+  ///
+  /// Default: `null`
+  hidden sparseCheckout: Boolean?
+
+  /// Specifies whether to use cone-mode when doing a sparse checkout.
+  ///
+  /// Default: `true`
+  hidden sparseCheckoutConeMode: Boolean?
+
+  /// Number of commits to fetch.
+  ///
+  /// `0` indicates all history for all branches and tags.
+  /// Default: 1
+  hidden fetchDepth: Int?
+
+  /// Whether to fetch tags, even if [fetchDepth] > 0.
+  ///
+  /// Default: false
+  hidden fetchTags: Boolean?
+
+  /// Whether to show progress status output when fetching.
+  ///
+  /// Default: `true`
+  hidden showProgress: Boolean?
+
+  /// Whether to download Git-LFS files
+  ///
+  /// Default: `false`
+  hidden lfs: Boolean?
+
+  /// Whether to checkout submodules: `true` to checkout submodules or `recursive` to
+  /// recursively checkout submodules.
+  ///
+  /// When the `ssh-key` input is not provided, SSH URLs beginning with
+  /// `git@github.com:` are converted to HTTPS.
+  ///
+  /// Default: false
+  hidden submodules: (Boolean|"recursive")?
+
+  /// Add repository path as safe.directory for Git global config by running `git
+  /// config --global --add safe.directory <path>`
+  ///
+  /// Default: `true`
   hidden setSafeDirectory: (String|Number|Boolean)?
-  hidden githubServerUrl: (String|Number|Boolean)?
+
+  /// The base URL for the GitHub instance that you are trying to clone from, will use
+  /// environment defaults to fetch from the same instance that the workflow is
+  /// running from unless specified.
+  ///
+  /// Example URLs are `https://github.com` or `https://my-ghes-server.example.com`
+  hidden githubServerUrl: String?
+
   local localWith = new Mapping {
     ["repository"] = repository
     ["ref"] = ref
@@ -57,7 +168,7 @@ class Checkout extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [actions/add-to-project](https://github.com/actions/add-to-project) action.
 class AddToProject extends Workflow.Step {
-  uses = "actions/add-to-project@v1"
+  uses: "actions/add-to-project@v1"
 
   hidden javaVersion: (String|Number|Boolean)?
   hidden projectUrl: (String|Number|Boolean)?
@@ -77,7 +188,7 @@ class AddToProject extends Workflow.Step {
 }
 
 class GoDependencySubmission extends Workflow.Step {
-  uses = "actions/go-dependency-submission@v2"
+  uses: "actions/go-dependency-submission@v2"
 
   hidden token: (String|Number|Boolean)?
   hidden metadata: (String|Number|Boolean)?
@@ -106,7 +217,7 @@ class GoDependencySubmission extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [actions/github-script](https://github.com/actions/github-script) action.
 class GitHubScript extends Workflow.Step {
-  uses = "actions/github-script@v7"
+  uses: "actions/github-script@v7"
 
   hidden script: (String|Number|Boolean)?
   hidden githubToken: (String|Number|Boolean)?
@@ -135,7 +246,7 @@ class GitHubScript extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [actions/labeler](https://github.com/actions/labeler) action.
 class Labeler extends Workflow.Step {
-  uses = "actions/labeler@v5"
+  uses: "actions/labeler@v5"
 
   hidden repoToken: (String|Number|Boolean)?
   hidden configurationPath: (String|Number|Boolean)?
@@ -155,7 +266,7 @@ class Labeler extends Workflow.Step {
 }
 
 class AttestSbom extends Workflow.Step {
-  uses = "attest-sbom@v2"
+  uses: "attest-sbom@v2"
 
   hidden sbomPath: (String|Number|Boolean)?
 
@@ -168,7 +279,7 @@ class AttestSbom extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [actions/ai-inference](https://github.com/actions/ai-inference) action.
 class AiInference extends Workflow.Step {
-  uses = "actions/ai-inference@v1"
+  uses: "actions/ai-inference@v1"
 
   hidden prompt: (String|Number|Boolean)?
   hidden promptFile: (String|Number|Boolean)?
@@ -195,7 +306,7 @@ class AiInference extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [actions/create-github-app-token](https://github.com/actions/create-github-app-token) action.
 class CreateGitHubAppToken extends Workflow.Step {
-  uses = "actions/create-github-app-token@v2"
+  uses: "actions/create-github-app-token@v2"
 
   hidden appId: (String|Number|Boolean)?
   hidden privateKey: (String|Number|Boolean)?
@@ -314,7 +425,7 @@ class CreateGitHubAppToken extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [actions/delete-package-versions](https://github.com/actions/delete-package-versions) action.
 class DeletePackageVersion extends Workflow.Step {
-  uses = "actions/delete-package-versions@v5"
+  uses: "actions/delete-package-versions@v5"
 
   hidden packageVersionIds: (String|Number|Boolean)?
   hidden owner: (String|Number|Boolean)?
@@ -345,7 +456,7 @@ class DeletePackageVersion extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [actions/stale](https://github.com/actions/stale) action.
 class Stale extends Workflow.Step {
-  uses = "actions/stale@v9"
+  uses: "actions/stale@v9"
 
   hidden repoToken: (String|Number|Boolean)?
   hidden staleIssueMessage: (String|Number|Boolean)?
@@ -462,7 +573,7 @@ class Stale extends Workflow.Step {
 
 /// Type-safe GitHub Action of the [actions/dependency-review-action](https://github.com/actions/dependency-review-action) action.
 class DependencyReviewAction extends Workflow.Step {
-  uses = "actions/dependency-review-action@v4"
+  uses: "actions/dependency-review-action@v4"
 
   hidden repoToken: (String|Number|Boolean)?
   hidden failOnSeverity: (String|Number|Boolean)?
