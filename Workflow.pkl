@@ -368,8 +368,6 @@ class Schedule {
   cron: String
 }
 
-typealias ScheduleCron = String
-
 /// Allows workflows to be reused by other workflows.
 ///
 /// https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_call
