@@ -121,7 +121,7 @@ class Java extends Workflow.TypedStep {
   hidden mvnToolchainVendor: String?
   // endregion
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["java-version"] = javaVersion
     ["java-version-file"] = javaVersionFile
     ["distribution"] = distribution
@@ -141,10 +141,6 @@ class Java extends Workflow.TypedStep {
     ["mvn-toolchain-id"] = mvnToolchainId
     ["mvn-toolchain-vendor"] = mvnToolchainVendor
   }
-
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 typealias JavaDistribution =
@@ -176,7 +172,7 @@ class SetupDotnet extends Workflow.TypedStep {
   hidden cache: (String|Number|Boolean)?
   hidden cacheDependencyPath: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["dotnet-version"] = dotnetVersion
     ["dotnet-quality"] = dotnetQuality
     ["global-json-file"] = globalJsonFile
@@ -186,8 +182,6 @@ class SetupDotnet extends Workflow.TypedStep {
     ["cache"] = cache
     ["cache-dependency-path"] = cacheDependencyPath
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 setupDotnet: SetupDotnet = new {}
 
@@ -203,7 +197,7 @@ class Go extends Workflow.TypedStep {
   hidden cacheDependencyPath: (String|Number|Boolean)?
   hidden architecture: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["go-version"] = goVersion
     ["go-version-file"] = goVersionFile
     ["check-latest"] = checkLatest
@@ -212,8 +206,6 @@ class Go extends Workflow.TypedStep {
     ["cache-dependency-path"] = cacheDependencyPath
     ["architecture"] = architecture
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [setup-node](
@@ -233,7 +225,7 @@ class Node extends Workflow.TypedStep {
   hidden mirror: (String|Number|Boolean)?
   hidden mirrorToken: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["always-auth"] = alwaysAuth
     ["node-version"] = nodeVersion
     ["node-version-file"] = nodeVersionFile
@@ -247,8 +239,6 @@ class Node extends Workflow.TypedStep {
     ["mirror"] = mirror
     ["mirror-token"] = mirrorToken
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [setup-python](https://github.com/actions/setup-python) action.
@@ -266,7 +256,7 @@ class Python extends Workflow.TypedStep {
   hidden allowPrereleases: (String|Number|Boolean)?
   hidden freethreaded: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["python-version"] = pythonVersion
     ["python-version-file"] = pythonVersionFile
     ["cache"] = cache
@@ -278,6 +268,4 @@ class Python extends Workflow.TypedStep {
     ["allow-prereleases"] = allowPrereleases
     ["freethreaded"] = freethreaded
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }

@@ -14,14 +14,12 @@ class Configure extends Workflow.TypedStep {
   hidden token: (String|Number|Boolean)?
   hidden enablement: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["static_site_generator"] = staticSiteGenerator
     ["generator_config_file"] = generatorConfigFile
     ["token"] = token
     ["enablement"] = enablement
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [upload-pages-artifact](https://github.com/actions/upload-pages-artifact) action.
@@ -32,13 +30,11 @@ class UploadArtifact extends Workflow.TypedStep {
   hidden path: (String|Number|Boolean)?
   hidden retentionDays: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["name"] = name
     ["path"] = path
     ["retention-days"] = retentionDays
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [jekyll-build-pages](https://github.com/actions/jekyll-build-pages) action.
@@ -52,7 +48,7 @@ class JekyllBuild extends Workflow.TypedStep {
   hidden verbose: (String|Number|Boolean)?
   hidden token: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["source"] = source
     ["destination"] = destination
     ["future"] = future
@@ -60,8 +56,6 @@ class JekyllBuild extends Workflow.TypedStep {
     ["verbose"] = verbose
     ["token"] = token
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [deploy-pages](https://github.com/actions/deploy-pages) action.
@@ -75,7 +69,7 @@ class Deploy extends Workflow.TypedStep {
   hidden artifactName: (String|Number|Boolean)?
   hidden preview: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["token"] = token
     ["timeout"] = timeout
     ["error_count"] = errorCount
@@ -83,6 +77,4 @@ class Deploy extends Workflow.TypedStep {
     ["artifact_name"] = artifactName
     ["preview"] = preview
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }

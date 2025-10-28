@@ -140,7 +140,7 @@ class Checkout extends Workflow.TypedStep {
   /// Example URLs are `https://github.com` or `https://my-ghes-server.example.com`
   hidden githubServerUrl: String?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["repository"] = repository
     ["ref"] = ref
     ["token"] = token
@@ -162,8 +162,6 @@ class Checkout extends Workflow.TypedStep {
     ["set-safe-directory"] = setSafeDirectory
     ["github-server-url"] = githubServerUrl
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [actions/add-to-project](https://github.com/actions/add-to-project) action.
@@ -176,15 +174,13 @@ class AddToProject extends Workflow.TypedStep {
   hidden labeled: (String|Number|Boolean)?
   hidden labelOperator: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["java-version"] = javaVersion
     ["project-url"] = projectUrl
     ["github-token"] = githubToken
     ["labeled"] = labeled
     ["label-operator"] = labelOperator
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 class GoDependencySubmission extends Workflow.TypedStep {
@@ -200,7 +196,7 @@ class GoDependencySubmission extends Workflow.TypedStep {
   hidden detectorVersion: (String|Number|Boolean)?
   hidden detectorUrl: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["token"] = token
     ["metadata"] = metadata
     ["go-mod-path"] = goModPath
@@ -211,8 +207,6 @@ class GoDependencySubmission extends Workflow.TypedStep {
     ["detector-version"] = detectorVersion
     ["detector-url"] = detectorUrl
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [actions/github-script](https://github.com/actions/github-script) action.
@@ -229,7 +223,7 @@ class GitHubScript extends Workflow.TypedStep {
   hidden retryExemptStatusCodes: (String|Number|Boolean)?
   hidden baseUrl: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["script"] = script
     ["github-token"] = githubToken
     ["debug"] = debug
@@ -240,8 +234,6 @@ class GitHubScript extends Workflow.TypedStep {
     ["retry-exempt-status-codes"] = retryExemptStatusCodes
     ["base-url"] = baseUrl
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [actions/labeler](https://github.com/actions/labeler) action.
@@ -254,15 +246,13 @@ class Labeler extends Workflow.TypedStep {
   hidden dot: (String|Number|Boolean)?
   hidden prNumber: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["repo-token"] = repoToken
     ["configuration-path"] = configurationPath
     ["sync-labels"] = syncLabels
     ["dot"] = dot
     ["pr-number"] = prNumber
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 class AttestSbom extends Workflow.TypedStep {
@@ -270,11 +260,9 @@ class AttestSbom extends Workflow.TypedStep {
 
   hidden sbomPath: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["sbom-path"] = sbomPath
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [actions/ai-inference](https://github.com/actions/ai-inference) action.
@@ -290,7 +278,7 @@ class AiInference extends Workflow.TypedStep {
   hidden maxTokens: (String|Number|Boolean)?
   hidden token: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["prompt"] = prompt
     ["prompt-file"] = promptFile
     ["model"] = model
@@ -300,8 +288,6 @@ class AiInference extends Workflow.TypedStep {
     ["max-tokens"] = maxTokens
     ["token"] = token
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [actions/create-github-app-token](https://github.com/actions/create-github-app-token) action.
@@ -363,7 +349,7 @@ class CreateGitHubAppToken extends Workflow.TypedStep {
   hidden permissionVulnerabilityAlerts: (String|Number|Boolean)?
   hidden permissionWorkflows: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["app-id"] = appId
     ["private-key"] = privateKey
     ["owner"] = owner
@@ -419,8 +405,6 @@ class CreateGitHubAppToken extends Workflow.TypedStep {
     ["permission-vulnerability-alerts"] = permissionVulnerabilityAlerts
     ["permission-workflows"] = permissionWorkflows
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [actions/delete-package-versions](https://github.com/actions/delete-package-versions) action.
@@ -438,7 +422,7 @@ class DeletePackageVersion extends Workflow.TypedStep {
   hidden deleteOnlyUntaggedVersions: (String|Number|Boolean)?
   hidden token: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["package-version-ids"] = packageVersionIds
     ["owner"] = owner
     ["package-name"] = packageName
@@ -450,8 +434,6 @@ class DeletePackageVersion extends Workflow.TypedStep {
     ["delete-only-untagged-versions"] = deleteOnlyUntaggedVersions
     ["token"] = token
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [actions/stale](https://github.com/actions/stale) action.
@@ -512,7 +494,7 @@ class Stale extends Workflow.TypedStep {
   hidden ignorePrUpdates: (String|Number|Boolean)?
   hidden includeOnlyAssigned: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["repo-token"] = repoToken
     ["stale-issue-message"] = staleIssueMessage
     ["stale-pr-message"] = stalePrMessage
@@ -567,8 +549,6 @@ class Stale extends Workflow.TypedStep {
     ["ignore-pr-updates"] = ignorePrUpdates
     ["include-only-assigned"] = includeOnlyAssigned
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [actions/dependency-review-action](https://github.com/actions/dependency-review-action) action.
@@ -597,7 +577,7 @@ class DependencyReviewAction extends Workflow.TypedStep {
   hidden showOpenssfScorecard: (String|Number|Boolean)?
   hidden warnOnOpenssfScorecardLevel: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["repo-token"] = repoToken
     ["fail-on-severity"] = failOnSeverity
     ["fail-on-scopes"] = failOnScopes
@@ -620,6 +600,4 @@ class DependencyReviewAction extends Workflow.TypedStep {
     ["show-openssf-scorecard"] = showOpenssfScorecard
     ["warn-on-openssf-scorecard-level"] = warnOnOpenssfScorecardLevel
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }

@@ -49,7 +49,7 @@ class Cache extends Workflow.TypedStep {
   /// Run the post step to save the cache even if another step before fails
   hidden saveAlways: Boolean?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["path"] = path
     ["key"] = key
     ["restore-keys"] = restoreKeys
@@ -59,8 +59,6 @@ class Cache extends Workflow.TypedStep {
     ["lookup-only"] = lookupOnly
     ["save-always"] = saveAlways
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/save) action.
@@ -91,14 +89,12 @@ class Save extends Workflow.TypedStep {
   /// An optional boolean when enabled, allows windows runners to save caches that can be restored on other platforms.
   hidden enableCrossOsArchive: Boolean?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["path"] = path
     ["key"] = key
     ["upload-chunk-size"] = uploadChunkSize
     ["enableCrossOsArchive"] = enableCrossOsArchive
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/restore) action.
@@ -138,7 +134,7 @@ class Restore extends Workflow.TypedStep {
   /// Check if a cache entry exists for the given input(s) (key, restore-keys) without downloading the cache.
   hidden lookupOnly: Boolean?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["path"] = path
     ["key"] = key
     ["restore-keys"] = restoreKeys
@@ -146,6 +142,4 @@ class Restore extends Workflow.TypedStep {
     ["fail-on-cache-miss"] = failOnCacheMiss
     ["lookup-only"] = lookupOnly
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }

@@ -1233,8 +1233,11 @@ abstract class TypedStep {
 
   abstract fixed uses: String?
 
+  abstract hidden withNamingMapping: Mapping<String, (String|Number|Boolean)?>
+
   // The inputs for this action
-  abstract with: With?
+  local filteredWith = withNamingMapping.toMap().filter((_, value) -> value != null)
+  with: With? = if (filteredWith.isEmpty) null else filteredWith.toMapping() as With
 }
 
 const function exactlyOneSet(a: Any, b: Any) =

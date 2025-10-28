@@ -15,6 +15,7 @@ jobs {
       Action.checkout
       (Action.setupGo) {
         goVersion = "1.17.7"
+        checkLatest = true
       }
       (Action.setupJava) {
         javaVersion = "17"

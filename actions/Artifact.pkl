@@ -57,7 +57,7 @@ class Download extends Workflow.TypedStep {
   /// Optional. Default is ${{ github.run_id }}
   hidden runId: (String|Number|Boolean)?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["name"] = artifactName
     ["artifact-ids"] = artifactIds
     ["path"] = path
@@ -67,8 +67,6 @@ class Download extends Workflow.TypedStep {
     ["repository"] = repository
     ["run-id"] = runId
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [upload-artifact](https://github.com/actions/upload-artifact) action.
@@ -125,7 +123,7 @@ class Upload extends Workflow.TypedStep {
   /// Optional. Default is 'false'
   hidden includeHiddenFiles: Boolean?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["name"] = artifactName
     ["path"] = path
     ["if-no-files-found"] = ifNoFilesFound
@@ -134,8 +132,6 @@ class Upload extends Workflow.TypedStep {
     ["overwrite"] = overwrite
     ["include-hidden-files"] = includeHiddenFiles
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
 /// Type-safe GitHub Action of the [upload-artifact/merge](https://github.com/actions/upload-artifact/tree/main/merge) action.
@@ -186,7 +182,7 @@ class UploadArtifactMerge extends Workflow.TypedStep {
   /// Default is `false`
   hidden includeHiddenFiles: Boolean?
 
-  local localWith = new Mapping {
+  withNamingMapping = new Mapping {
     ["name"] = artifactName
     ["pattern"] = pattern
     ["separate-directories"] = separateDirectories
@@ -195,6 +191,4 @@ class UploadArtifactMerge extends Workflow.TypedStep {
     ["delete-merged"] = deleteMerged
     ["include-hidden-files"] = includeHiddenFiles
   }
-  local filteredWith = localWith.toMap().filter((_, value) -> value != null)
-  with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
