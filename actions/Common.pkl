@@ -6,8 +6,8 @@ module com.github.action.actions.Common
 import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [checkout](https://github.com/actions/checkout) action.
-class Checkout extends Workflow.Step {
-  uses: "actions/checkout@v5"
+class Checkout extends Workflow.TypedStep {
+  fixed uses: "actions/checkout@v5"
 
   /// Repository name with owner.
   ///
@@ -167,8 +167,8 @@ class Checkout extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [actions/add-to-project](https://github.com/actions/add-to-project) action.
-class AddToProject extends Workflow.Step {
-  uses: "actions/add-to-project@v1"
+class AddToProject extends Workflow.TypedStep {
+  fixed uses: "actions/add-to-project@v1"
 
   hidden javaVersion: (String|Number|Boolean)?
   hidden projectUrl: (String|Number|Boolean)?
@@ -187,8 +187,8 @@ class AddToProject extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
-class GoDependencySubmission extends Workflow.Step {
-  uses: "actions/go-dependency-submission@v2"
+class GoDependencySubmission extends Workflow.TypedStep {
+  fixed uses: "actions/go-dependency-submission@v2"
 
   hidden token: (String|Number|Boolean)?
   hidden metadata: (String|Number|Boolean)?
@@ -216,8 +216,8 @@ class GoDependencySubmission extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [actions/github-script](https://github.com/actions/github-script) action.
-class GitHubScript extends Workflow.Step {
-  uses: "actions/github-script@v7"
+class GitHubScript extends Workflow.TypedStep {
+  fixed uses: "actions/github-script@v7"
 
   hidden script: (String|Number|Boolean)?
   hidden githubToken: (String|Number|Boolean)?
@@ -245,8 +245,8 @@ class GitHubScript extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [actions/labeler](https://github.com/actions/labeler) action.
-class Labeler extends Workflow.Step {
-  uses: "actions/labeler@v5"
+class Labeler extends Workflow.TypedStep {
+  fixed uses: "actions/labeler@v5"
 
   hidden repoToken: (String|Number|Boolean)?
   hidden configurationPath: (String|Number|Boolean)?
@@ -265,8 +265,8 @@ class Labeler extends Workflow.Step {
   with = if (filteredWith.isEmpty) null else filteredWith.toMapping()
 }
 
-class AttestSbom extends Workflow.Step {
-  uses: "attest-sbom@v2"
+class AttestSbom extends Workflow.TypedStep {
+  fixed uses: "attest-sbom@v2"
 
   hidden sbomPath: (String|Number|Boolean)?
 
@@ -278,8 +278,8 @@ class AttestSbom extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [actions/ai-inference](https://github.com/actions/ai-inference) action.
-class AiInference extends Workflow.Step {
-  uses: "actions/ai-inference@v1"
+class AiInference extends Workflow.TypedStep {
+  fixed uses: "actions/ai-inference@v1"
 
   hidden prompt: (String|Number|Boolean)?
   hidden promptFile: (String|Number|Boolean)?
@@ -305,8 +305,8 @@ class AiInference extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [actions/create-github-app-token](https://github.com/actions/create-github-app-token) action.
-class CreateGitHubAppToken extends Workflow.Step {
-  uses: "actions/create-github-app-token@v2"
+class CreateGitHubAppToken extends Workflow.TypedStep {
+  fixed uses: "actions/create-github-app-token@v2"
 
   hidden appId: (String|Number|Boolean)?
   hidden privateKey: (String|Number|Boolean)?
@@ -424,8 +424,8 @@ class CreateGitHubAppToken extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [actions/delete-package-versions](https://github.com/actions/delete-package-versions) action.
-class DeletePackageVersion extends Workflow.Step {
-  uses: "actions/delete-package-versions@v5"
+class DeletePackageVersion extends Workflow.TypedStep {
+  fixed uses: "actions/delete-package-versions@v5"
 
   hidden packageVersionIds: (String|Number|Boolean)?
   hidden owner: (String|Number|Boolean)?
@@ -455,8 +455,8 @@ class DeletePackageVersion extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [actions/stale](https://github.com/actions/stale) action.
-class Stale extends Workflow.Step {
-  uses: "actions/stale@v9"
+class Stale extends Workflow.TypedStep {
+  fixed uses: "actions/stale@v9"
 
   hidden repoToken: (String|Number|Boolean)?
   hidden staleIssueMessage: (String|Number|Boolean)?
@@ -572,8 +572,8 @@ class Stale extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [actions/dependency-review-action](https://github.com/actions/dependency-review-action) action.
-class DependencyReviewAction extends Workflow.Step {
-  uses: "actions/dependency-review-action@v4"
+class DependencyReviewAction extends Workflow.TypedStep {
+  fixed uses: "actions/dependency-review-action@v4"
 
   hidden repoToken: (String|Number|Boolean)?
   hidden failOnSeverity: (String|Number|Boolean)?

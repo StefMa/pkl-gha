@@ -6,8 +6,8 @@ module com.github.action.actions.Pages
 import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [configure-pages](https://github.com/actions/configure-pages) action.
-class Configure extends Workflow.Step {
-  uses = "actions/configure-pages@v5"
+class Configure extends Workflow.TypedStep {
+  fixed uses = "actions/configure-pages@v5"
 
   hidden staticSiteGenerator: (String|Number|Boolean)?
   hidden generatorConfigFile: (String|Number|Boolean)?
@@ -25,8 +25,8 @@ class Configure extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [upload-pages-artifact](https://github.com/actions/upload-pages-artifact) action.
-class UploadArtifact extends Workflow.Step {
-  uses = "actions/upload-pages-artifact@v3"
+class UploadArtifact extends Workflow.TypedStep {
+  fixed uses = "actions/upload-pages-artifact@v3"
 
   hidden name: (String|Number|Boolean)?
   hidden path: (String|Number|Boolean)?
@@ -42,8 +42,8 @@ class UploadArtifact extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [jekyll-build-pages](https://github.com/actions/jekyll-build-pages) action.
-class JekyllBuild extends Workflow.Step {
-  uses = "actions/jekyll-build-pages@v1"
+class JekyllBuild extends Workflow.TypedStep {
+  fixed uses = "actions/jekyll-build-pages@v1"
 
   hidden source: (String|Number|Boolean)?
   hidden destination: (String|Number|Boolean)?
@@ -65,8 +65,8 @@ class JekyllBuild extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [deploy-pages](https://github.com/actions/deploy-pages) action.
-class Deploy extends Workflow.Step {
-  uses = "actions/deploy-pages@v4"
+class Deploy extends Workflow.TypedStep {
+  fixed uses = "actions/deploy-pages@v4"
 
   hidden token: (String|Number|Boolean)?
   hidden timeout: (String|Number|Boolean)?

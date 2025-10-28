@@ -6,8 +6,8 @@ module com.github.action.actions.Artifact
 import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [download-artifact](https://github.com/actions/download-artifact) action.
-class Download extends Workflow.Step {
-  uses: "actions/download-artifact@v4"
+class Download extends Workflow.TypedStep {
+  fixed uses: "actions/download-artifact@v4"
 
   /// Name of the artifact to download.
   ///
@@ -72,8 +72,8 @@ class Download extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [upload-artifact](https://github.com/actions/upload-artifact) action.
-class Upload extends Workflow.Step {
-  uses: "actions/upload-artifact@v4"
+class Upload extends Workflow.TypedStep {
+  fixed uses: "actions/upload-artifact@v4"
 
   /// Name of the artifact to upload.
   ///
@@ -139,8 +139,8 @@ class Upload extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [upload-artifact/merge](https://github.com/actions/upload-artifact/tree/main/merge) action.
-class UploadArtifactMerge extends Workflow.Step {
-  uses: "actions/upload-artifact/merge@v4"
+class UploadArtifactMerge extends Workflow.TypedStep {
+  fixed uses: "actions/upload-artifact/merge@v4"
 
   /// The name of the artifact that the artifacts will be merged into
   ///

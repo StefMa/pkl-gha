@@ -6,8 +6,8 @@ module com.github.action.actions.Setup
 import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [setup-java](https://github.com/actions/setup-java) action.
-class Java extends Workflow.Step {
-  uses: "actions/setup-java@v4"
+class Java extends Workflow.TypedStep {
+  fixed uses: "actions/setup-java@v4"
 
   /// The Java version that is going to be set up.
   ///
@@ -164,8 +164,8 @@ typealias JavaDistribution =
 setupJava: Java
 
 /// Type-safe GitHub Action of the [setup-dotnet](https://github.com/actions/setup-dotnet) action.
-class SetupDotnet extends Workflow.Step {
-  uses: "actions/setup-dotnet@v4"
+class SetupDotnet extends Workflow.TypedStep {
+  fixed uses: "actions/setup-dotnet@v4"
 
   hidden dotnetVersion: (String|Number|Boolean)?
   hidden dotnetQuality: (String|Number|Boolean)?
@@ -192,8 +192,8 @@ class SetupDotnet extends Workflow.Step {
 setupDotnet: SetupDotnet = new {}
 
 /// Type-safe GitHub Action of the [setup-go](https//github.com/actions/setup-go) action.
-class Go extends Workflow.Step {
-  uses: "actions/setup-go@v5"
+class Go extends Workflow.TypedStep {
+  fixed uses: "actions/setup-go@v5"
 
   hidden goVersion: (String|Number|Boolean)?
   hidden goVersionFile: (String|Number|Boolean)?
@@ -217,8 +217,8 @@ class Go extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [setup-node](
-class Node extends Workflow.Step {
-  uses: "actions/setup-node@v4"
+class Node extends Workflow.TypedStep {
+  fixed uses: "actions/setup-node@v4"
 
   hidden alwaysAuth: (String|Number|Boolean)?
   hidden nodeVersion: (String|Number|Boolean)?
@@ -252,8 +252,8 @@ class Node extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [setup-python](https://github.com/actions/setup-python) action.
-class Python extends Workflow.Step {
-  uses: "actions/setup-python@v5"
+class Python extends Workflow.TypedStep {
+  fixed uses: "actions/setup-python@v5"
 
   hidden pythonVersion: (String|Number|Boolean)?
   hidden pythonVersionFile: (String|Number|Boolean)?

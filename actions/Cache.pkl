@@ -6,8 +6,8 @@ module com.github.action.actions.Cache
 import "../Workflow.pkl"
 
 /// Type-safe GitHub Action of the [cache](https://github.com/actions/cache) action.
-class Cache extends Workflow.Step {
-  uses: "actions/cache@v4"
+class Cache extends Workflow.TypedStep {
+  fixed uses: "actions/cache@v4"
 
   /// A list of files, directories, and wildcard patterns to cache and restore
   ///
@@ -64,8 +64,8 @@ class Cache extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/save) action.
-class Save extends Workflow.Step {
-  uses: "actions/cache/save@v4"
+class Save extends Workflow.TypedStep {
+  fixed uses: "actions/cache/save@v4"
 
   /// A list of files, directories, and wildcard patterns to cache and restore
   ///
@@ -102,8 +102,8 @@ class Save extends Workflow.Step {
 }
 
 /// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/restore) action.
-class Restore extends Workflow.Step {
-  uses: "actions/cache/restore@v4"
+class Restore extends Workflow.TypedStep {
+  fixed uses: "actions/cache/restore@v4"
 
   /// A list of files, directories, and wildcard patterns to restore
   ///
