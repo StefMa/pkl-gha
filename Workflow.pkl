@@ -1016,12 +1016,12 @@ class DefaultJob extends BaseJob {
   /// within the workflow usage limits.
   ///
   /// For more information, see Billing and usage for GitHub-hosted runners and Actions limits for self-hosted runner usage limits.
-  steps: Listing<Step>
+  steps: Listing<*Step|TypedStep>
 }
 
 class ReusableJob extends BaseJob {
   uses: String(matches(Regex("(.+/)+(.+)\\.(ya?ml)(@.+)?")))?
-  with: Mapping<String, String|Number|Boolean>?
+  with: With?
   secrets: ("inherit"|*Mapping<String, String|Number|Boolean>)?
 }
 
@@ -1054,8 +1054,7 @@ class Environment {
   url: String?
 }
 
-// Step, part of Jobs
-open class Step {
+abstract class AbstractStep {
   /// A name for your step to display on GitHub.
   name: String?
 
@@ -1119,18 +1118,10 @@ open class Step {
   ///
   /// Docs: <https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell>
   shell: Shell?
+}
 
-  /// Runs command-line programs that do not exceed 21,000 characters using the operating system's shell.
-  ///
-  /// If you do not provide a name, the step name will default to the text specified in the run command.
-  ///
-  /// Commands run using non-login shells by default.
-  /// You can choose a different shell and customize the shell used to run commands.
-  /// For more information, see [shell].
-  ///
-  /// Each `run` keyword represents a new process and shell in the runner environment.
-  run: String(length < 21_000)?(exactlyOneSet(this, uses))
-
+// Step, part of Jobs
+class Step extends AbstractStep {
   /// Selects an action to run as part of a step in your job.
   /// An action is a reusable unit of code.
   /// You can use an action defined in the same repository as the workflow, a public repository, or in a published
@@ -1155,13 +1146,49 @@ open class Step {
   /// For more details, see [runs-on].
   uses: String?
 
-  /// A map of the input parameters defined by the action. Each input parameter is a key/value pair.
-  /// Input parameters are set as environment variables. The variable is prefixed with `INPUT_` and converted to upper
-  /// case.
+  /// Runs command-line programs that do not exceed 21,000 characters using the operating system's shell.
   ///
-  /// Input parameters defined for a Docker container must use args.
-  /// For more information, see [`jobs.<job_id>.steps[*].with.args`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepswithargs).
-  with: Mapping<String, String|Number|Boolean>?
+  /// If you do not provide a name, the step name will default to the text specified in the run command.
+  ///
+  /// Commands run using non-login shells by default.
+  /// You can choose a different shell and customize the shell used to run commands.
+  /// For more information, see [shell].
+  ///
+  /// Each `run` keyword represents a new process and shell in the runner environment.
+  run: String(length < 21_000)?(exactlyOneSet(this, uses))
+
+  with: With?
+}
+
+// TypedStep, part of Jobs
+// Can be used to extend Step with specific typed properties
+abstract class TypedStep extends AbstractStep {
+
+  /// Selects an action to run as part of a step in your job.
+  /// An action is a reusable unit of code.
+  /// You can use an action defined in the same repository as the workflow, a public repository, or in a published
+  /// Docker container image.
+  ///
+  /// We strongly recommend that you include the version of the action you are using by specifying a Git ref, SHA, or
+  /// Docker tag.
+  /// If you don't specify a version, it could break your workflows or cause unexpected behavior when the action owner
+  /// publishes an update.
+  ///
+  /// * Using the commit SHA of a released action version is the safest for stability and security.
+  /// * If the action publishes major version tags, you should expect to receive critical fixes and security patches
+  ///   while still retaining compatibility. Note that this behavior is at the discretion of the action's author.
+  /// * Using the default branch of an action may be convenient, but if someone releases a new major version with a
+  ///   breaking change, your workflow could break.
+  ///
+  /// Some actions require inputs that you must set using the with keyword. Review the action's README file to determine
+  /// the inputs required.
+  ///
+  /// Actions are either JavaScript files or Docker containers.
+  /// If the action you're using is a Docker container you must run the job in a Linux environment.
+  /// For more details, see [runs-on].
+  abstract fixed uses: String
+
+  abstract with: Typed
 }
 
 const function exactlyOneSet(a: Any, b: Any) =
@@ -1174,6 +1201,9 @@ typealias Shell = "pwsh"|"bash"|"sh"|"cmd"|"powershell"|"python"
 
 // Jobs top-level typealias
 typealias Jobs = Mapping<String(matches(Regex("[a-zA-Z_][a-zA-Z0-9_-]*"))), Job>(!isEmpty)
+
+// With typealias for Jobs.Step.With
+typealias With = Mapping<String, String|Number|Boolean>
 
 // Templating
 
