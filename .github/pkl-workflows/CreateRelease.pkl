@@ -1,5 +1,4 @@
 amends "@gha/Workflow.pkl"
-import "@gha/actions/Common.pkl"
 import "modules/Steps.pkl"
 
 name = "CreateRelease"
