@@ -1,4 +1,5 @@
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
+amends "@gha/Workflow.pkl"
+import "@gha/Context.pkl"
 import "modules/Steps.pkl"
 
 name = "UpdatePklWorkflows"
@@ -12,7 +13,8 @@ jobs {
     `runs-on` = new UbuntuLatest {}
     `if` = "github.event.pull_request.user.login == 'dependabot[bot]'"
     outputs {
-      ["shouldUpdatePklWorkflows"] = "${{ steps.dependabotMetadata.outputs.package-ecosystem == 'github-action' }}"
+      ["shouldUpdatePklWorkflows"] =
+        "${{ steps.dependabotMetadata.outputs.package-ecosystem == 'github-action' }}"
       ["previousDependencyName"] = "${{ steps.dependencyName.outputs.previous-dependency-name }}"
       ["newDependencyName"] = "${{ steps.dependencyName.outputs.new-dependency-name }}"
     }
@@ -25,7 +27,8 @@ jobs {
       new {
         name = "Get dependency name"
         id = "dependencyName"
-        run = """
+        run =
+          """
           echo '${{ steps.dependabotMetadata.outputs.updated-dependencies-json }}' > deps.json
           dependency_name=$(jq -r '.[0].dependencyName' deps.json)
           previous_version=$(jq -r '.[0].prevVersion' deps.json)
@@ -44,14 +47,15 @@ jobs {
       contents = "write"
     }
     steps {
-      (Steps.checkout()) {
+      (Steps.checkout) {
         with {
-          ["ref"] = "${{ github.event.pull_request.head.ref }}"
+          ref = Context.github.event("pull_request.head.ref")
         }
       }
       new {
         name = "Update dependencies in pkl files"
-        run = """
+        run =
+          """
           SEARCH_DIR=".github/pkl-workflows"
           OLD="${{ needs.checkActionUpdate.outputs.previousDependencyName }}"
           NEW="${{ needs.checkActionUpdate.outputs.newDependencyName }}"
@@ -63,7 +67,8 @@ jobs {
       }
       new {
         name = "Commit and push changes"
-        run = """
+        run =
+          """
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -am "Update pkl workflows"

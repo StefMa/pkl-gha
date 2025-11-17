@@ -14,8 +14,8 @@ jobs:
     - name: checkout
       uses: actions/checkout@v5
     - name: Install pkl
-      uses: pkl-community/setup-pkl@v0
+      uses: pkl-community/setup-pkl@0.0.8
       with:
-        pkl-version: 0.26.1
+        pkl-version: 0.30.0
     - name: Test pkl module
       run: pkl test

@@ -1,4 +1,5 @@
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
+amends "@gha/Workflow.pkl"
+import "@gha/actions/Pages.pkl"
 import "modules/Steps.pkl"
 
 name = "GeneratePklDoc"
@@ -18,14 +19,15 @@ jobs {
       contents = "write"
     }
     steps {
-      (Steps.checkout()) {
+      (Steps.checkout) {
         with {
-          ["fetch-depth"] = 0
+          `fetch-depth` = 0
         }
       }
       new {
         name = "Setup worktree for docs"
-        run = """
+        run =
+          """
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git worktree add tmp-docs docs
@@ -33,29 +35,33 @@ jobs {
       }
       new {
         name = "Install jbang"
-        run = """
-        curl -Ls https://sh.jbang.dev | bash -s - app setup
-        echo "$HOME/.jbang/bin" >> $GITHUB_PATH
-        """
+        run =
+          """
+          curl -Ls https://sh.jbang.dev | bash -s - app setup
+          echo "$HOME/.jbang/bin" >> $GITHUB_PATH
+          """
       }
       new {
         name = "Generate pkl doc"
-        run = "jbang run --main org.pkl.doc.Main \"org.pkl-lang:pkl-doc:0.26.3\"  *.pkl actions/*.pkl -o tmp-docs"
+        run =
+          """
+          jbang run --main org.pkl.doc.Main \"org.pkl-lang:pkl-doc:0.26.3\"  *.pkl actions/*.pkl -o tmp-docs
+          """
       }
       new {
         name = "Update docs in docs branch and push"
         `working-directory` = "tmp-docs"
-        run = """
+        run =
+          """
           git add .
           git commit --amend -m "Docs for pkl-gha"
           git push --force origin docs
           """
       }
-      new {
+      new Pages.UploadArtifact {
         name = "Upload artifact for GitHub Pages"
-        uses = "actions/upload-pages-artifact@v4"
         with {
-          ["path"] = "tmp-docs"
+          path = "tmp-docs"
         }
       }
     }
@@ -72,10 +78,9 @@ jobs {
       url = "${{ steps.deployment.outputs.page_url }}"
     }
     steps {
-      new {
+      new Pages.Deploy {
         name = "Deploy to GitHub Pages"
         id = "deployment"
-        uses = "actions/deploy-pages@v4"
       }
     }
   }

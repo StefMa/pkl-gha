@@ -1,19 +1,19 @@
-import "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
+import "@gha/Workflow.pkl"
+import "@gha/actions/Common.pkl"
+import "@setup.pkl/Action.pkl" as SetupPkl
 
-function checkout(): GitHubAction.Step = new {
+checkout: Common.Checkout = new {
   name = "checkout"
-  uses = "actions/checkout@v5"
 }
 
-function installPkl(): GitHubAction.Step = new {
+installPkl: SetupPkl.Action = new {
   name = "Install pkl"
-  uses = "pkl-community/setup-pkl@v0"
   with {
-    ["pkl-version"] = "0.26.1"
+    `pkl-version` = "0.30.0"
   }
 }
 
-function checkoutAndInstallPkl(): Listing<GitHubAction.Step> = new {
-  checkout()
-  installPkl()
+checkoutAndInstallPkl: Listing<Workflow.TypedStep> = new {
+  checkout
+  installPkl
 }

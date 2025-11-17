@@ -1,4 +1,5 @@
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
+amends "@gha/Workflow.pkl"
+import "@gha/actions/Common.pkl"
 import "modules/Steps.pkl"
 
 name = "Test"
@@ -16,7 +17,7 @@ jobs {
   ["test"] {
     `runs-on` = new UbuntuLatest {}
     steps {
-      ...Steps.checkoutAndInstallPkl()
+      ...Steps.checkoutAndInstallPkl
       new {
         name = "Test pkl module"
         run = "pkl test"
