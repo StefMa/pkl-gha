@@ -12,7 +12,7 @@
       "type": "remote",
       "uri": "projectpackage://pkl-gha-actions.vercel.app/pkl-community/setup-pkl@0.0.8",
       "checksums": {
-        "sha256": "ec3cc9f1e53a135e41c0eee9a04c4a0aafe99b62f2fca13140aa33121c5a389d"
+        "sha256": "cef5751a97787379aa2931235b5e9c036f96fbe149131100fbb45823cef6aba9"
       }
     }
   }
