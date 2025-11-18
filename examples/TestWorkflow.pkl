@@ -53,6 +53,13 @@ concurrency {
   `cancel-in-progress` = true
 }
 
+defaults {
+  run {
+    shell = "sh"
+    `working-directory` = "/blackhole"
+  }
+}
+
 jobs {
   ["hello_dependabot"] {
     `runs-on` = new MacOsLatest {}
@@ -64,6 +71,12 @@ jobs {
     permissions = "write-all"
     environment {
       name = "production"
+    }
+    defaults {
+      run {
+        shell = "bash"
+        `working-directory` = "/starset"
+      }
     }
     steps {
       (Action.checkout) {

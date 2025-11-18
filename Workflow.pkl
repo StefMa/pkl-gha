@@ -825,6 +825,15 @@ class Concurrency {
   `cancel-in-progress`: Boolean
 }
 
+class RunDefaults {
+  shell: Shell?
+  `working-directory`: String?
+}
+
+class Defaults {
+  run: RunDefaults?
+}
+
 // Jobs
 abstract class BaseJob {
   /// A name for the job, which is displayed in the GitHub UI
@@ -1002,6 +1011,16 @@ class DefaultJob extends BaseJob {
   ///
   /// Docs: <https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idenv>
   environment: (*Environment|String)?
+
+  /// Use jobs.<job_id>.defaults to create a map of default settings that will
+  /// apply to all steps in the job.
+  ///
+  /// You can also set default settings for the entire workflow. For more
+  /// information, see defaults. When more than one default setting is defined
+  /// with the same name, GitHub uses the most specific default setting. For
+  /// example, a default setting defined in a job will override a default
+  /// setting that has the same name defined in a workflow.
+  defaults: Defaults?
 
   /// A job contains a sequence of tasks called steps.
   ///
@@ -1296,6 +1315,17 @@ concurrency: Concurrency?
 /// For more information, see
 /// [Events that trigger workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target).
 permissions: (*Permissions|"read-all"|"write-all")?
+
+
+/// Use defaults to create a map of default settings that will apply to all jobs
+/// in the workflow. You can also set default settings that are only available to a
+/// job. For more information, see jobs.<job_id>.defaults.
+///
+/// When more than one default setting is defined with the same name, GitHub
+/// uses the most specific default setting. For example, a default setting defined
+/// in a job will override a default setting that has the same name defined in
+/// a workflow.
+defaults: Defaults?
 
 /// A workflow run is made up of one or more jobs, which run in parallel by default.
 /// To run jobs sequentially, you can define dependencies on other jobs using the [needs][BaseJob.needs] keyword.
