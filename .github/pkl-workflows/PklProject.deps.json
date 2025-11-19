@@ -8,11 +8,11 @@
         "sha256": "84365239996740252a91abab084d443aa3a3438f375b667ac16cb765461c1555"
       }
     },
-    "package://pkl-gha-actions.vercel.app/pkl-community/setup-pkl@0": {
+    "package://pkl-gha-pkgs.vercel.app/pkl-community/setup-pkl@0": {
       "type": "remote",
-      "uri": "projectpackage://pkl-gha-actions.vercel.app/pkl-community/setup-pkl@0.0.8",
+      "uri": "projectpackage://pkl-gha-pkgs.vercel.app/pkl-community/setup-pkl@0.0.8",
       "checksums": {
-        "sha256": "cef5751a97787379aa2931235b5e9c036f96fbe149131100fbb45823cef6aba9"
+        "sha256": "ac57cfd96b8db9cad3f656b5708964da40acf9276cc4ec30e26651873691b16f"
       }
     }
   }
