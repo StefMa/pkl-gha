@@ -1,4 +1,4 @@
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
+amends "@gha/Workflow.pkl"
 import "modules/Steps.pkl"
 
 name = "CheckPklWorkflowsConverted"
@@ -11,12 +11,15 @@ jobs {
   ["checkWorkflowsConverted"] {
     `runs-on` = new UbuntuLatest {}
     steps {
-      ...Steps.checkoutAndInstallPkl()
+      ...Steps.checkoutAndInstallPkl
       new {
         name = "Convert pkl workflows to yaml"
-        run = """
-        pkl eval .github/pkl-workflows/*.pkl -o ".github/workflows/%{moduleName}.generated.yml"
-        """
+        `working-directory` = ".github/pkl-workflows"
+        run =
+          """
+          pkl project resolve
+          pkl eval *.pkl -o ../workflows/%{moduleName}.generated.yml
+          """
       }
       new {
         name = "Verify if pkl actions are converted"

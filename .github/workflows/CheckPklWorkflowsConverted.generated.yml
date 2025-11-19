@@ -11,10 +11,13 @@ jobs:
     - name: checkout
       uses: actions/checkout@v5
     - name: Install pkl
-      uses: pkl-community/setup-pkl@v0
+      uses: pkl-community/setup-pkl@v0.0.8
       with:
-        pkl-version: 0.26.1
+        pkl-version: 0.30.0
     - name: Convert pkl workflows to yaml
-      run: pkl eval .github/pkl-workflows/*.pkl -o ".github/workflows/%{moduleName}.generated.yml"
+      working-directory: .github/pkl-workflows
+      run: |-
+        pkl project resolve
+        pkl eval *.pkl -o ../workflows/%{moduleName}.generated.yml
     - name: Verify if pkl actions are converted
       run: git diff --exit-code

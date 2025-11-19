@@ -1,0 +1,6 @@
+amends "pkl:Project"
+
+dependencies {
+  ["gha"] { uri = "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.6" }
+  ["setup.pkl"] { uri = "package://pkl-gha-pkgs.vercel.app/pkl-community/setup-pkl@0.0.8" }
+}

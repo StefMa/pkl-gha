@@ -1,4 +1,4 @@
-amends "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.4#/GitHubAction.pkl"
+amends "@gha/Workflow.pkl"
 import "modules/Steps.pkl"
 
 name = "CreateRelease"
@@ -19,14 +19,15 @@ jobs {
   ["createRelease"] {
     `runs-on` = new UbuntuLatest {}
     steps {
-      ...Steps.checkoutAndInstallPkl()
+      ...Steps.checkoutAndInstallPkl
       new {
         name = "Package pkl module"
         run = "pkl project package"
       }
       new {
         name = "Extract version number from tag"
-        run = """
+        run =
+          """
           VERSION_NUMBER=${{ github.ref_name }}
           VERSION_NUMBER=${VERSION_NUMBER#*@}
           echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
