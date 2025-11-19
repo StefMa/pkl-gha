@@ -4,7 +4,8 @@ package {
   name = "com.github.action"
   baseUri = "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/\(name)"
   version = "0.0.7"
-  packageZipUrl = "https://github.com/stefma/pkl-gha/releases/download/\(name)@\(version)/\(name)@\(version).zip"
+  packageZipUrl =
+    "https://github.com/stefma/pkl-gha/releases/download/\(name)@\(version)/\(name)@\(version).zip"
   description = "A Pkl template for writing GitHub Action workflows"
   authors {
     "Stefan M. <StefMaDev@outlook.com>"

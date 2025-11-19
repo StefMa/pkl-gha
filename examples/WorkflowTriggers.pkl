@@ -32,16 +32,16 @@ on {
   release {}
   repository_dispatch {}
   schedule {
-      new {
-         cron = "*/10 * * * *"
-      }
-      new {
-         cron = "5 4 * * *"
-      }
-      new {
-         cron = "* 0 * * 0"
-      }
+    new {
+      cron = "*/10 * * * *"
     }
+    new {
+      cron = "5 4 * * *"
+    }
+    new {
+      cron = "* 0 * * 0"
+    }
+  }
   status {}
   watch {}
   workflow_call {}

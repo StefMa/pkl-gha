@@ -13,13 +13,13 @@ class Configure extends Workflow.TypedStep {
 
 class ConfigureInputs {
   /// Optional static site generator to attempt to configure: "nuxt", "next", "gatsby", or "sveltekit"
-  `static_site_generator`: (String|Number|Boolean)?
+  `static_site_generator`: (String | Number | Boolean)?
   /// Optional file path to static site generator configuration file
-  generator_config_file: (String|Number|Boolean)?
+  generator_config_file: (String | Number | Boolean)?
   /// GitHub token
-  token: (String|Number|Boolean)?
+  token: (String | Number | Boolean)?
   /// Try to enable Pages for the repository if it is not already enabled. This option requires a token other than `GITHUB_TOKEN` to be provided. In the context of a Personal Access Token, the `repo` scope or Pages write permission is required. In the context of a GitHub App, the `administration:write` and `pages:write` permissions are required.
-  enablement: (String|Number|Boolean)?
+  enablement: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [upload-pages-artifact](https://github.com/actions/upload-pages-artifact) action.
@@ -29,9 +29,9 @@ class UploadArtifact extends Workflow.TypedStep {
 }
 
 class UploadArtifactInputs {
-  name: (String|Number|Boolean)?
-  path: (String|Number|Boolean)?
-  `retention-days`: (String|Number|Boolean)?
+  name: (String | Number | Boolean)?
+  path: (String | Number | Boolean)?
+  `retention-days`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [jekyll-build-pages](https://github.com/actions/jekyll-build-pages) action.
@@ -41,12 +41,12 @@ class JekyllBuild extends Workflow.TypedStep {
 }
 
 class JekyllBuildInputs {
-  source: (String|Number|Boolean)?
-  destination: (String|Number|Boolean)?
-  future: (String|Number|Boolean)?
-  build_revision: (String|Number|Boolean)?
-  verbose: (String|Number|Boolean)?
-  token: (String|Number|Boolean)?
+  source: (String | Number | Boolean)?
+  destination: (String | Number | Boolean)?
+  future: (String | Number | Boolean)?
+  build_revision: (String | Number | Boolean)?
+  verbose: (String | Number | Boolean)?
+  token: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [deploy-pages](https://github.com/actions/deploy-pages) action.
@@ -56,10 +56,10 @@ class Deploy extends Workflow.TypedStep {
 }
 
 class DeployInputs {
-  token: (String|Number|Boolean)?
-  timeout: (String|Number|Boolean)?
-  error_count: (String|Number|Boolean)?
-  reporting_interval: (String|Number|Boolean)?
-  artifact_name: (String|Number|Boolean)?
-  preview: (String|Number|Boolean)?
+  token: (String | Number | Boolean)?
+  timeout: (String | Number | Boolean)?
+  error_count: (String | Number | Boolean)?
+  reporting_interval: (String | Number | Boolean)?
+  artifact_name: (String | Number | Boolean)?
+  preview: (String | Number | Boolean)?
 }

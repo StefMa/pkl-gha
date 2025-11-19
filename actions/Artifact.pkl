@@ -58,7 +58,7 @@ class DownloadInputs {
   ///
   /// If github-token is specified, this is the run that artifacts will be downloaded from.
   /// Optional. Default is ${{ github.run_id }}
-  `run-id`: (String|Number|Boolean)?
+  `run-id`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [upload-artifact](https://github.com/actions/upload-artifact) action.
@@ -85,7 +85,7 @@ class UploadInputs {
   ///   * `ignore`: Do not output any warnings or errors, the action does not fail
   ///
   /// Optional. Default is 'warn'
-  `if-no-files-found`: ("warn"|"error"|"ignore")?
+  `if-no-files-found`: ("warn" | "error" | "ignore")?
 
   /// Duration after which artifact will expire in days.
   ///
@@ -126,7 +126,6 @@ class UploadArtifactMerge extends Workflow.TypedStep {
 }
 
 class UploadArtifactMergeInputs {
-
   /// The name of the artifact that the artifacts will be merged into
   ///
   /// Optional. Default is 'merged-artifacts'

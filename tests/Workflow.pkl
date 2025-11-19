@@ -3,6 +3,7 @@ module com.github.action.Workflow.tests
 amends "pkl:test"
 
 import "pkl:test"
+
 import "../Workflow.pkl"
 
 examples {
@@ -38,4 +39,3 @@ facts {
     test.catchOrNull(() -> createJobs("-7hisIsThrowing")) != null
   }
 }
-

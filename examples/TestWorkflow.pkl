@@ -90,7 +90,8 @@ jobs {
         id = "hello"
         name = "Hello World"
         `working-directory` = "src/"
-        run = """
+        run =
+          """
           echo Dependabot!
           echo "some_output=hello" >> "$GITHUB_OUTPUT"
           """
@@ -131,7 +132,8 @@ jobs {
         with = new {
           ["some_bool"] = true
           ["some_number"] = 5
-          ["payload"] = """
+          ["payload"] =
+            """
             {
             	"blocks": [
             		{

@@ -1,5 +1,5 @@
-import "@gha/Workflow.pkl"
 import "@gha/actions/Common.pkl"
+import "@gha/Workflow.pkl"
 import "@setup.pkl/Action.pkl" as SetupPkl
 
 checkout: Common.Checkout = new {

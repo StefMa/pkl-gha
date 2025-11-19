@@ -29,137 +29,97 @@ class BranchProtectionRule extends Trigger {
   types: Listing<BranchProtectionRuleType>?
 }
 
-typealias BranchProtectionRuleType =
-  "created"
-  |"edited"
-  |"deleted"
+typealias BranchProtectionRuleType = "created" | "edited" | "deleted"
 
 class CheckRun extends Trigger {
   types: Listing<CheckRunType>?
 }
 
-typealias CheckRunType =
-  "created"
-  |"rerequested"
-  |"completed"
-  |"requested_action"
+typealias CheckRunType = "created" | "rerequested" | "completed" | "requested_action"
 
 class CheckSuite extends Trigger {
   types: Listing<CheckSuiteType>?
 }
-typealias CheckSuiteType =
-  "completed"
-  |"requested"
-  |"rerequested"
+typealias CheckSuiteType = "completed" | "requested" | "rerequested"
 
 class Discussion extends Trigger {
   types: Listing<DiscussionType>?
 }
 typealias DiscussionType =
   "created"
-  |"edited"
-  |"deleted"
-  |"transferred"
-  |"pinned"
-  |"unpinned"
-  |"labeled"
-  |"unlabeled"
-  |"locked"
-  |"unlocked"
-  |"category_changed"
-  |"answered"
-  |"unanswered"
+    | "edited"
+    | "deleted"
+    | "transferred"
+    | "pinned"
+    | "unpinned"
+    | "labeled"
+    | "unlabeled"
+    | "locked"
+    | "unlocked"
+    | "category_changed"
+    | "answered"
+    | "unanswered"
 
 class DiscussionComment extends Trigger {
   types: Listing<DiscussionCommentType>?
 }
-typealias DiscussionCommentType =
-  "created"
-  |"edited"
-  |"deleted"
+typealias DiscussionCommentType = "created" | "edited" | "deleted"
 
 class IssueComment extends Trigger {
   types: Listing<IssueCommentType>?
 }
-typealias IssueCommentType =
-  "created"
-  |"edited"
-  |"deleted"
+typealias IssueCommentType = "created" | "edited" | "deleted"
 
 class Issues extends Trigger {
   types: Listing<IssuesType>?
 }
 typealias IssuesType =
   "opened"
-  |"edited"
-  |"deleted"
-  |"transferred"
-  |"pinned"
-  |"unpinned"
-  |"closed"
-  |"reopened"
-  |"assigned"
-  |"unassigned"
-  |"labeled"
-  |"unlabeled"
-  |"locked"
-  |"unlocked"
-  |"milestoned"
-  |"demilestoned"
+    | "edited"
+    | "deleted"
+    | "transferred"
+    | "pinned"
+    | "unpinned"
+    | "closed"
+    | "reopened"
+    | "assigned"
+    | "unassigned"
+    | "labeled"
+    | "unlabeled"
+    | "locked"
+    | "unlocked"
+    | "milestoned"
+    | "demilestoned"
 
 class Label extends Trigger {
   types: Listing<LabelType>?
 }
-typealias LabelType =
-  "created"
-  |"edited"
-  |"deleted"
+typealias LabelType = "created" | "edited" | "deleted"
 
 class MergeGroup extends Trigger {
   types: Listing<MergeGroupType>?
 }
-typealias MergeGroupType =
-  "checked_requested"
+typealias MergeGroupType = "checked_requested"
 
 class Milestone extends Trigger {
   types: Listing<MilestoneType>?
 }
-typealias MilestoneType =
-  "created"
-  |"closed"
-  |"opened"
-  |"edited"
-  |"deleted"
+typealias MilestoneType = "created" | "closed" | "opened" | "edited" | "deleted"
 
 class Project extends Trigger {
   types: Listing<ProjectType>?
 }
-typealias ProjectType =
-  "created"
-  |"updated"
-  |"closed"
-  |"reopened"
-  |"edited"
-  |"deleted"
+typealias ProjectType = "created" | "updated" | "closed" | "reopened" | "edited" | "deleted"
 
 class ProjectCard extends Trigger {
   types: Listing<ProjectCardType>?
 }
-typealias ProjectCardType =
-  "created"
-  |"moved"
-  |"converted"
-  |"edited"
-  |"deleted"
+typealias ProjectCardType = "created" | "moved" | "converted" | "edited" | "deleted"
 
 class ProjectColumn extends Trigger {
   types: Listing<ProjectColumnType>?
 }
-typealias ProjectColumnType =
-  "created"
-  |"updated"
-  |"moved"
-  |"deleted"
+typealias ProjectColumnType = "created" | "updated" | "moved" | "deleted"
 
 class PullRequest extends Trigger {
   types: Listing<PullRequestType>?
@@ -213,62 +173,56 @@ class PullRequest extends Trigger {
 
 typealias PullRequestType =
   "assigned"
-  |"unassigned"
-  |"review_requested"
-  |"review_request_removed"
-  |"labeled"
-  |"unlabeled"
-  |"opened"
-  |"edited"
-  |"closed"
-  |"reopened"
-  |"synchronize"
-  |"ready_for_review"
-  |"locked"
-  |"unlocked"
-  |"ready_for_review"
-  |"converted_to_draft"
-  |"demilestoned"
-  |"milestoned"
-  |"review_requested"
-  |"review_request_removed"
-  |"auto_merge_enabled"
-  |"auto_merge_disabled"
+    | "unassigned"
+    | "review_requested"
+    | "review_request_removed"
+    | "labeled"
+    | "unlabeled"
+    | "opened"
+    | "edited"
+    | "closed"
+    | "reopened"
+    | "synchronize"
+    | "ready_for_review"
+    | "locked"
+    | "unlocked"
+    | "ready_for_review"
+    | "converted_to_draft"
+    | "demilestoned"
+    | "milestoned"
+    | "review_requested"
+    | "review_request_removed"
+    | "auto_merge_enabled"
+    | "auto_merge_disabled"
 
 class PullRequestReview extends Trigger {
   types: Listing<PullRequestReviewType>?
 }
-typealias PullRequestReviewType =
-  "submitted"
-  |"edited"
-  |"dismissed"
+typealias PullRequestReviewType = "submitted" | "edited" | "dismissed"
 
 class PullRequestReviewComment extends Trigger {
   types: Listing<PullRequestReviewCommentType>?
 }
-typealias PullRequestReviewCommentType =
-  "created"
-  |"edited"
-  |"deleted"
+typealias PullRequestReviewCommentType = "created" | "edited" | "deleted"
 
 typealias PullRequestTargetType =
   "assigned"
-  |"unassigned"
-  |"labeled"
-  |"unlabeled"
-  |"opened"
-  |"edited"
-  |"closed"
-  |"reopened"
-  |"synchronize"
-  |"converted_to_draft"
-  |"ready_for_review"
-  |"locked"
-  |"unlocked"
-  |"review_requested"
-  |"review_request_removed"
-  |"auto_merge_enabled"
-  |"auto_merge_disabled"
+    | "unassigned"
+    | "labeled"
+    | "unlabeled"
+    | "opened"
+    | "edited"
+    | "closed"
+    | "reopened"
+    | "synchronize"
+    | "converted_to_draft"
+    | "ready_for_review"
+    | "locked"
+    | "unlocked"
+    | "review_requested"
+    | "review_request_removed"
+    | "auto_merge_enabled"
+    | "auto_merge_disabled"
 
 class Push extends Trigger {
   /// Use the `branches` filter when you want to include branch name patterns or when you want to both include and
@@ -343,21 +297,13 @@ class Push extends Trigger {
 class RegistryPackage extends Trigger {
   types: Listing<ReleaseType>?
 }
-typealias RegistryPackageType =
-  "published"
-  |"updated"
+typealias RegistryPackageType = "published" | "updated"
 
 class Release extends Trigger {
   types: Listing<ReleaseType>?
 }
 typealias ReleaseType =
-  "published"
-  |"unpublished"
-  |"created"
-  |"edited"
-  |"deleted"
-  |"prereleased"
-  |"released"
+  "published" | "unpublished" | "created" | "edited" | "deleted" | "prereleased" | "released"
 
 class RepositoryDispatch extends Trigger {
   types: Listing<String>?
@@ -398,7 +344,7 @@ class WorkflowInput {
   type: WorkflowInputType?
   options: Listing<String>?
 }
-typealias WorkflowInputType = "boolean"|"string"|"choice"|"environment"|"number"
+typealias WorkflowInputType = "boolean" | "string" | "choice" | "environment" | "number"
 
 class WorkflowRun extends Trigger {
   types: Listing<WorkflowRunType>?
@@ -406,10 +352,7 @@ class WorkflowRun extends Trigger {
   branches: Listing<String>?
   `branches-ignore`: Listing<String>?
 }
-typealias WorkflowRunType =
-  "requested"
-  |"completed"
-  |"in_progress"
+typealias WorkflowRunType = "requested" | "completed" | "in_progress"
 
 class On {
   /// Runs your workflow anytime the `branch_protection_rule` event occurs.
@@ -696,7 +639,7 @@ class On {
 // endregion
 
 // Environment Variables
-typealias EnvironmentVariables = Mapping<String, String|Boolean|Number>
+typealias EnvironmentVariables = Mapping<String, String | Boolean | Number>
 
 // Permissions
 class Permissions {
@@ -817,7 +760,7 @@ class Permissions {
   statuses: Permission?
 }
 
-typealias Permission = "read"|"write"|"none"
+typealias Permission = "read" | "write" | "none"
 
 // Concurrency
 class Concurrency {
@@ -857,7 +800,7 @@ abstract class BaseJob {
   /// did not succeed, use the `always()` conditional expression in `jobs.<job_id>.if`.
   ///
   /// See: <https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idneeds>
-  needs: (String|*Listing<String>)?
+  needs: (String | *Listing<String>)?
 
   /// Ensure that only a single job or workflow using the same concurrency group will run at a time.
   ///
@@ -914,7 +857,7 @@ abstract class BaseJob {
   /// all of those that are not specified are set to none.
   ///
   /// Docs: <https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idpermissions>
-  permissions: (*Permissions|"read-all"|"write-all")?
+  permissions: (*Permissions | "read-all" | "write-all")?
 }
 
 class DefaultJob extends BaseJob {
@@ -959,7 +902,7 @@ class DefaultJob extends BaseJob {
   ///   ```
   ///
   /// If you would like to run your workflow on multiple machines, use [strategy].
-  `runs-on`: *String|Machine|Listing<*String|Machine>
+  `runs-on`: *String | Machine | Listing<*String | Machine>
 
   /// The maximum number of minutes to run the step before killing the process.
   ///
@@ -1010,7 +953,7 @@ class DefaultJob extends BaseJob {
   /// An environment variable defined for a job will override a workflow variable with the same name, while the job executes.
   ///
   /// Docs: <https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idenv>
-  environment: (*Environment|String)?
+  environment: (*Environment | String)?
 
   /// Use jobs.<job_id>.defaults to create a map of default settings that will
   /// apply to all steps in the job.
@@ -1035,16 +978,16 @@ class DefaultJob extends BaseJob {
   /// within the workflow usage limits.
   ///
   /// For more information, see Billing and usage for GitHub-hosted runners and Actions limits for self-hosted runner usage limits.
-  steps: Listing<*Step|TypedStep>
+  steps: Listing<*Step | TypedStep>
 }
 
 class ReusableJob extends BaseJob {
   uses: String(matches(Regex("(.+/)+(.+)\\.(ya?ml)(@.+)?")))?
   with: With?
-  secrets: ("inherit"|*Mapping<String, String|Number|Boolean>)?
+  secrets: ("inherit" | *Mapping<String, String | Number | Boolean>)?
 }
 
-typealias Job = *DefaultJob|ReusableJob
+typealias Job = *DefaultJob | ReusableJob
 
 // Machines, part of Jobs
 abstract class Machine {
@@ -1062,9 +1005,9 @@ class WindowsLatest extends Machine {
 
 // Strategy, part of Jobs
 class Strategy {
-  matrix: Mapping<String, Listing<String|*Dynamic>>
+  matrix: Mapping<String, Listing<String | *Dynamic>>
   `fail-fast`: Boolean?
-  `max-parallel`: (Number|String)?
+  `max-parallel`: (Number | String)?
 }
 
 // Environment, part of Jobs
@@ -1182,7 +1125,6 @@ class Step extends AbstractStep {
 // TypedStep, part of Jobs
 // Can be used to extend Step with specific typed properties
 abstract class TypedStep extends AbstractStep {
-
   /// Selects an action to run as part of a step in your job.
   /// An action is a reusable unit of code.
   /// You can use an action defined in the same repository as the workflow, a public repository, or in a published
@@ -1211,59 +1153,62 @@ abstract class TypedStep extends AbstractStep {
 }
 
 const function exactlyOneSet(a: Any, b: Any) =
-  if (a != null) b == null
-  else if (b != null) a == null
-  else false
+  if (a != null)
+    b == null
+  else if (b != null)
+    a == null
+  else
+    false
 
 // Shell, part of Steps
-typealias Shell = "pwsh"|"bash"|"sh"|"cmd"|"powershell"|"python"
+typealias Shell = "pwsh" | "bash" | "sh" | "cmd" | "powershell" | "python"
 
 // Jobs top-level typealias
 typealias Jobs = Mapping<String(matches(Regex("[a-zA-Z_][a-zA-Z0-9_-]*"))), Job>(!isEmpty)
 
 // With typealias for Jobs.Step.With
-typealias With = Mapping<String, String|Number|Boolean>
+typealias With = Mapping<String, String | Number | Boolean>
 
 // Templating
 
 name: String
 
 local const onIsSet = (on: On) ->
-  on.branch_protection_rule != null ||
-    on.check_run != null ||
-    on.check_suite != null ||
-    on.create != null ||
-    on.`delete` != null ||
-    on.deployment != null ||
-    on.deployment_status != null ||
-    on.discussion != null ||
-    on.discussion_comment != null ||
-    on.fork != null ||
-    on.gollum != null ||
-    on.issue_comment != null ||
-    on.issues != null ||
-    on.label != null ||
-    on.merge_group != null ||
-    on.milestone != null ||
-    on.page_build != null ||
-    on.project != null ||
-    on.project_card != null ||
-    on.project_column != null ||
-    on.public != null ||
-    on.pull_request != null ||
-    on.pull_request_review != null ||
-    on.pull_request_review_comment != null ||
-    on.pull_request_target != null ||
-    on.push != null ||
-    on.registry_package != null ||
-    on.release != null ||
-    on.repository_dispatch != null ||
-    on.schedule != null ||
-    on.status != null ||
-    on.watch != null ||
-    on.workflow_call != null ||
-    on.workflow_dispatch != null ||
-    on.workflow_run != null
+  on.branch_protection_rule != null
+    || on.check_run != null
+    || on.check_suite != null
+    || on.create != null
+    || on.`delete` != null
+    || on.deployment != null
+    || on.deployment_status != null
+    || on.discussion != null
+    || on.discussion_comment != null
+    || on.fork != null
+    || on.gollum != null
+    || on.issue_comment != null
+    || on.issues != null
+    || on.label != null
+    || on.merge_group != null
+    || on.milestone != null
+    || on.page_build != null
+    || on.project != null
+    || on.project_card != null
+    || on.project_column != null
+    || on.public != null
+    || on.pull_request != null
+    || on.pull_request_review != null
+    || on.pull_request_review_comment != null
+    || on.pull_request_target != null
+    || on.push != null
+    || on.registry_package != null
+    || on.release != null
+    || on.repository_dispatch != null
+    || on.schedule != null
+    || on.status != null
+    || on.watch != null
+    || on.workflow_call != null
+    || on.workflow_dispatch != null
+    || on.workflow_run != null
 
 on: On(onIsSet)
 
@@ -1314,8 +1259,7 @@ concurrency: Concurrency?
 /// permission, even when it is triggered from a public fork.
 /// For more information, see
 /// [Events that trigger workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target).
-permissions: (*Permissions|"read-all"|"write-all")?
-
+permissions: (*Permissions | "read-all" | "write-all")?
 
 /// Use defaults to create a map of default settings that will apply to all jobs
 /// in the workflow. You can also set default settings that are only available to a
@@ -1345,18 +1289,20 @@ jobs: Jobs
 
 // Output
 output {
-  text = "# Do not modify!\n# This file was generated from a template using https://github.com/StefMa/pkl-gha\n\n\(super.text)"
+  text =
+    "# Do not modify!\n# This file was generated from a template using https://github.com/StefMa/pkl-gha\n\n\(super.text)"
   renderer = new YamlRenderer {
     converters {
-      ["runs-on"] = (runsOn: String|Machine|Listing<String|Machine>) ->
-        if (runsOn is Listing<String|Machine>) convertMachinesToString(runsOn) else convertMachineToString(runsOn)
+      ["runs-on"] = (runsOn: String | Machine | Listing<String | Machine>) ->
+        if (runsOn is Listing<String | Machine>)
+          convertMachinesToString(runsOn)
+        else
+          convertMachineToString(runsOn)
     }
   }
 }
 
-const local function convertMachinesToString(runsOn: Listing<String|Machine>): Listing<String> = runsOn
-  .toList()
-  .map((type) -> convertMachineToString(type))
-  .toListing()
-const local function convertMachineToString(machine: String|Machine): String =
+local const function convertMachinesToString(runsOn: Listing<String | Machine>): Listing<String> =
+  runsOn.toList().map((type) -> convertMachineToString(type)).toListing()
+local const function convertMachineToString(machine: String | Machine): String =
   if (machine is Machine) machine.name else machine

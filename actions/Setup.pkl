@@ -48,14 +48,14 @@ class JavaInputs {
   /// The packaging variant of the chosen distribution. Possible values: `jdk`, `jre`, `jdk+fx`, `jre+fx`.
   ///
   /// Default value: `jdk`
-  `java-package`: ("jdk"|"jre"|"jdk+fx"|"jre+fx")?
+  `java-package`: ("jdk" | "jre" | "jdk+fx" | "jre+fx")?
 
   /// The target architecture of the package.
   ///
   /// Possible values: `x86`, `x64`, `armv7`, `aarch64`, `ppc64le`.
   ///
   /// Default value: Derived from the runner machine.
-  architecture: ("x86"|"x64"|"armv7"|"aarch64"|"ppc64le")?
+  architecture: ("x86" | "x64" | "armv7" | "aarch64" | "ppc64le")?
 
   /// If a use-case requires a custom distribution setup-java uses the compressed JDK from the location pointed by this
   /// input and will take care of the installation and caching on the VM.
@@ -108,7 +108,7 @@ class JavaInputs {
   /// package managers.
   ///
   /// It can be one of "maven", "gradle" or "sbt"
-  cache: ("maven"|"gradle"|"sbt")?
+  cache: ("maven" | "gradle" | "sbt")?
 
   /// The path to a dependency file: pom.xml, build.gradle, build.sbt, etc.
   ///
@@ -134,17 +134,17 @@ class JavaInputs {
 
 typealias JavaDistribution =
   "temurin"
-  |"zulu"
-  |"adopt"
-  |"liberica"
-  |"microsoft"
-  |"corretto"
-  |"semeru"
-  |"oracle"
-  |"dragonwell"
-  |"sapmachine"
-  |"graalvm"
-  |"jetbrains"
+    | "zulu"
+    | "adopt"
+    | "liberica"
+    | "microsoft"
+    | "corretto"
+    | "semeru"
+    | "oracle"
+    | "dragonwell"
+    | "sapmachine"
+    | "graalvm"
+    | "jetbrains"
 
 /// Type-safe GitHub Action of the [setup-dotnet](https://github.com/actions/setup-dotnet) action.
 class SetupDotnet extends Workflow.TypedStep {
@@ -153,14 +153,14 @@ class SetupDotnet extends Workflow.TypedStep {
 }
 
 class SetupDotnetInputs {
-  `dotnet-version`: (String|Number|Boolean)?
-  `dotnet-quality`: (String|Number|Boolean)?
-  `global-json-file`: (String|Number|Boolean)?
-  `source-url`: (String|Number|Boolean)?
-  owner: (String|Number|Boolean)?
-  `config-file`: (String|Number|Boolean)?
-  cache: (String|Number|Boolean)?
-  `cache-dependency-path`: (String|Number|Boolean)?
+  `dotnet-version`: (String | Number | Boolean)?
+  `dotnet-quality`: (String | Number | Boolean)?
+  `global-json-file`: (String | Number | Boolean)?
+  `source-url`: (String | Number | Boolean)?
+  owner: (String | Number | Boolean)?
+  `config-file`: (String | Number | Boolean)?
+  cache: (String | Number | Boolean)?
+  `cache-dependency-path`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [setup-go](https//github.com/actions/setup-go) action.
@@ -170,13 +170,13 @@ class Go extends Workflow.TypedStep {
 }
 
 class GoInputs {
-  `go-version`: (String|Number|Boolean)?
-  `go-version-file`: (String|Number|Boolean)?
-  `check-latest`: (String|Number|Boolean)?
-  token: (String|Number|Boolean)?
-  cache: (String|Number|Boolean)?
-  `cache-dependency-path`: (String|Number|Boolean)?
-  architecture: (String|Number|Boolean)?
+  `go-version`: (String | Number | Boolean)?
+  `go-version-file`: (String | Number | Boolean)?
+  `check-latest`: (String | Number | Boolean)?
+  token: (String | Number | Boolean)?
+  cache: (String | Number | Boolean)?
+  `cache-dependency-path`: (String | Number | Boolean)?
+  architecture: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [setup-node](
@@ -186,19 +186,19 @@ class Node extends Workflow.TypedStep {
 }
 
 class NodeInputs {
-  `always-auth`: (String|Number|Boolean)?
-  `node-version`: (String|Number|Boolean)?
-  `node-version-file`: (String|Number|Boolean)?
-  architecture: (String|Number|Boolean)?
-  `check-latest`: (String|Number|Boolean)?
-  `registry-url`: (String|Number|Boolean)?
-  scope: (String|Number|Boolean)?
-  token: (String|Number|Boolean)?
-  cache: (String|Number|Boolean)?
-  `package-manager-cache`: (String|Number|Boolean)?
-  `cache-dependency-path`: (String|Number|Boolean)?
-  mirror: (String|Number|Boolean)?
-  `mirror-token`: (String|Number|Boolean)?
+  `always-auth`: (String | Number | Boolean)?
+  `node-version`: (String | Number | Boolean)?
+  `node-version-file`: (String | Number | Boolean)?
+  architecture: (String | Number | Boolean)?
+  `check-latest`: (String | Number | Boolean)?
+  `registry-url`: (String | Number | Boolean)?
+  scope: (String | Number | Boolean)?
+  token: (String | Number | Boolean)?
+  cache: (String | Number | Boolean)?
+  `package-manager-cache`: (String | Number | Boolean)?
+  `cache-dependency-path`: (String | Number | Boolean)?
+  mirror: (String | Number | Boolean)?
+  `mirror-token`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [setup-python](https://github.com/actions/setup-python) action.
@@ -208,16 +208,16 @@ class Python extends Workflow.TypedStep {
 }
 
 class PythonInputs {
-  `python-version`: (String|Number|Boolean)?
-  `python-version-file`: (String|Number|Boolean)?
-  cache: (String|Number|Boolean)?
-  architecture: (String|Number|Boolean)?
-  `check-latest`: (String|Number|Boolean)?
-  token: (String|Number|Boolean)?
-  `cache-dependency-path`: (String|Number|Boolean)?
-  `update-environment`: (String|Number|Boolean)?
-  `allow-prereleases`: (String|Number|Boolean)?
-  freethreaded: (String|Number|Boolean)?
-  `pip-version`: (String|Number|Boolean)?
-  `pip-install`: (String|Number|Boolean)?
+  `python-version`: (String | Number | Boolean)?
+  `python-version-file`: (String | Number | Boolean)?
+  cache: (String | Number | Boolean)?
+  architecture: (String | Number | Boolean)?
+  `check-latest`: (String | Number | Boolean)?
+  token: (String | Number | Boolean)?
+  `cache-dependency-path`: (String | Number | Boolean)?
+  `update-environment`: (String | Number | Boolean)?
+  `allow-prereleases`: (String | Number | Boolean)?
+  freethreaded: (String | Number | Boolean)?
+  `pip-version`: (String | Number | Boolean)?
+  `pip-install`: (String | Number | Boolean)?
 }
