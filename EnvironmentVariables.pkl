@@ -1,0 +1,3 @@
+module com.github.action.EnvironmentVariables
+
+typealias EnvironmentVariables = Mapping<String, String | Boolean | Number>

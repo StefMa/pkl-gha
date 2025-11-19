@@ -3,10 +3,10 @@
 /// Use the [Action](../Action) module instead to access these actions.
 module com.github.action.actions.Artifact
 
-import "../Workflow.pkl"
+import "../Step.pkl"
 
 /// Type-safe GitHub Action of the [download-artifact](https://github.com/actions/download-artifact) action.
-class Download extends Workflow.TypedStep {
+class Download extends Step.TypedStep {
   fixed uses: "actions/download-artifact@v6"
   with: DownloadInputs?
 }
@@ -62,7 +62,7 @@ class DownloadInputs {
 }
 
 /// Type-safe GitHub Action of the [upload-artifact](https://github.com/actions/upload-artifact) action.
-class Upload extends Workflow.TypedStep {
+class Upload extends Step.TypedStep {
   fixed uses: "actions/upload-artifact@v5"
   with: UploadInputs?
 }
@@ -120,7 +120,7 @@ class UploadInputs {
 }
 
 /// Type-safe GitHub Action of the [upload-artifact/merge](https://github.com/actions/upload-artifact/tree/main/merge) action.
-class UploadArtifactMerge extends Workflow.TypedStep {
+class UploadArtifactMerge extends Step.TypedStep {
   fixed uses: "actions/upload-artifact/merge@v4"
   with: UploadArtifactMergeInputs?
 }

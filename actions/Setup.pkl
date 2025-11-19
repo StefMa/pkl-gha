@@ -3,10 +3,10 @@
 /// Use the [Action](../Action) module instead to access these actions.
 module com.github.action.actions.Setup
 
-import "../Workflow.pkl"
+import "../Step.pkl"
 
 /// Type-safe GitHub Action of the [setup-java](https://github.com/actions/setup-java) action.
-class Java extends Workflow.TypedStep {
+class Java extends Step.TypedStep {
   fixed uses: "actions/setup-java@v5"
   with: JavaInputs?
 }
@@ -147,7 +147,7 @@ typealias JavaDistribution =
     | "jetbrains"
 
 /// Type-safe GitHub Action of the [setup-dotnet](https://github.com/actions/setup-dotnet) action.
-class SetupDotnet extends Workflow.TypedStep {
+class SetupDotnet extends Step.TypedStep {
   fixed uses: "actions/setup-dotnet@v5"
   with: SetupDotnetInputs?
 }
@@ -164,7 +164,7 @@ class SetupDotnetInputs {
 }
 
 /// Type-safe GitHub Action of the [setup-go](https//github.com/actions/setup-go) action.
-class Go extends Workflow.TypedStep {
+class Go extends Step.TypedStep {
   fixed uses: "actions/setup-go@v6"
   with: GoInputs?
 }
@@ -180,7 +180,7 @@ class GoInputs {
 }
 
 /// Type-safe GitHub Action of the [setup-node](
-class Node extends Workflow.TypedStep {
+class Node extends Step.TypedStep {
   fixed uses: "actions/setup-node@v6"
   with: NodeInputs?
 }
@@ -202,7 +202,7 @@ class NodeInputs {
 }
 
 /// Type-safe GitHub Action of the [setup-python](https://github.com/actions/setup-python) action.
-class Python extends Workflow.TypedStep {
+class Python extends Step.TypedStep {
   fixed uses: "actions/setup-python@v6"
   with: PythonInputs?
 }

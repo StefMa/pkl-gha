@@ -3,10 +3,10 @@
 /// Use the [Action](../Action) module instead to access these actions.
 module com.github.action.actions.Cache
 
-import "../Workflow.pkl"
+import "../Step.pkl"
 
 /// Type-safe GitHub Action of the [cache](https://github.com/actions/cache) action.
-class Cache extends Workflow.TypedStep {
+class Cache extends Step.TypedStep {
   fixed uses: "actions/cache@v4"
   with: CacheInputs?
 }
@@ -54,7 +54,7 @@ class CacheInputs {
 }
 
 /// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/save) action.
-class Save extends Workflow.TypedStep {
+class Save extends Step.TypedStep {
   fixed uses: "actions/cache/save@v4"
   with: SaveInputs?
 }
@@ -86,7 +86,7 @@ class SaveInputs {
 }
 
 /// Type-safe GitHub Action of the [cache/save](https://github.com/actions/cache/tree/main/restore) action.
-class Restore extends Workflow.TypedStep {
+class Restore extends Step.TypedStep {
   fixed uses: "actions/cache/restore@v4"
   with: RestoreInputs
 }

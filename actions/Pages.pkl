@@ -3,10 +3,10 @@
 /// Use the [Action](../Action) module instead to access these actions.
 module com.github.action.actions.Pages
 
-import "../Workflow.pkl"
+import "../Step.pkl"
 
 /// Type-safe GitHub Action of the [configure-pages](https://github.com/actions/configure-pages) action.
-class Configure extends Workflow.TypedStep {
+class Configure extends Step.TypedStep {
   fixed uses = "actions/configure-pages@v5"
   with: ConfigureInputs?
 }
@@ -23,7 +23,7 @@ class ConfigureInputs {
 }
 
 /// Type-safe GitHub Action of the [upload-pages-artifact](https://github.com/actions/upload-pages-artifact) action.
-class UploadArtifact extends Workflow.TypedStep {
+class UploadArtifact extends Step.TypedStep {
   fixed uses = "actions/upload-pages-artifact@v4"
   with: UploadArtifactInputs?
 }
@@ -35,7 +35,7 @@ class UploadArtifactInputs {
 }
 
 /// Type-safe GitHub Action of the [jekyll-build-pages](https://github.com/actions/jekyll-build-pages) action.
-class JekyllBuild extends Workflow.TypedStep {
+class JekyllBuild extends Step.TypedStep {
   fixed uses = "actions/jekyll-build-pages@v1"
   with: JekyllBuildInputs?
 }
@@ -50,7 +50,7 @@ class JekyllBuildInputs {
 }
 
 /// Type-safe GitHub Action of the [deploy-pages](https://github.com/actions/deploy-pages) action.
-class Deploy extends Workflow.TypedStep {
+class Deploy extends Step.TypedStep {
   fixed uses = "actions/deploy-pages@v4"
   with: DeployInputs?
 }

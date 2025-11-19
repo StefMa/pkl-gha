@@ -1,0 +1,13 @@
+abstract module com.github.action.Machine
+
+name: String
+
+class UbuntuLatest extends module {
+  name = "ubuntu-latest"
+}
+class MacOsLatest extends module {
+  name = "macos-latest"
+}
+class WindowsLatest extends module {
+  name = "windows-latest"
+}
