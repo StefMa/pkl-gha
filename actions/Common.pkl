@@ -12,7 +12,6 @@ class Checkout extends Workflow.TypedStep {
 }
 
 class CheckoutInputs {
-
   /// Repository name with owner.
   ///
   /// For example, `actions/checkout`
@@ -129,13 +128,13 @@ class CheckoutInputs {
   /// `git@github.com:` are converted to HTTPS.
   ///
   /// Default: false
-  submodules: (Boolean|"recursive")?
+  submodules: (Boolean | "recursive")?
 
   /// Add repository path as safe.directory for Git global config by running `git
   /// config --global --add safe.directory <path>`
   ///
   /// Default: `true`
-  `set-safe-directory`: (String|Number|Boolean)?
+  `set-safe-directory`: (String | Number | Boolean)?
 
   /// The base URL for the GitHub instance that you are trying to clone from, will use
   /// environment defaults to fetch from the same instance that the workflow is
@@ -145,7 +144,6 @@ class CheckoutInputs {
   `github-server-url`: String?
 }
 
-
 /// Type-safe GitHub Action of the [actions/add-to-project](https://github.com/actions/add-to-project) action.
 class AddToProject extends Workflow.TypedStep {
   fixed uses: "actions/add-to-project@v1"
@@ -153,10 +151,10 @@ class AddToProject extends Workflow.TypedStep {
 }
 
 class AddToProjectInputs {
-  `project-url`: (String|Number|Boolean)?
-  `github-token`: (String|Number|Boolean)?
-  labeled: (String|Number|Boolean)?
-  `label-operator`: (String|Number|Boolean)?
+  `project-url`: (String | Number | Boolean)?
+  `github-token`: (String | Number | Boolean)?
+  labeled: (String | Number | Boolean)?
+  `label-operator`: (String | Number | Boolean)?
 }
 
 class GoDependencySubmission extends Workflow.TypedStep {
@@ -165,15 +163,15 @@ class GoDependencySubmission extends Workflow.TypedStep {
 }
 
 class GoDependencySubmissionInputs {
-  token: (String|Number|Boolean)?
-  metadata: (String|Number|Boolean)?
-  `go-mod-path`: (String|Number|Boolean)?
-  `go-build-target`: (String|Number|Boolean)?
-  `snapshot-sha`: (String|Number|Boolean)?
-  `snapshot-ref`: (String|Number|Boolean)?
-  `detector-name`: (String|Number|Boolean)?
-  `detector-version`: (String|Number|Boolean)?
-  `detector-url`: (String|Number|Boolean)?
+  token: (String | Number | Boolean)?
+  metadata: (String | Number | Boolean)?
+  `go-mod-path`: (String | Number | Boolean)?
+  `go-build-target`: (String | Number | Boolean)?
+  `snapshot-sha`: (String | Number | Boolean)?
+  `snapshot-ref`: (String | Number | Boolean)?
+  `detector-name`: (String | Number | Boolean)?
+  `detector-version`: (String | Number | Boolean)?
+  `detector-url`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [actions/github-script](https://github.com/actions/github-script) action.
@@ -183,15 +181,15 @@ class GitHubScript extends Workflow.TypedStep {
 }
 
 class GitHubScriptInputs {
-  script: (String|Number|Boolean)?
-  `github-token`: (String|Number|Boolean)?
-  debug: (String|Number|Boolean)?
-  `user-agent`: (String|Number|Boolean)?
-  previews: (String|Number|Boolean)?
-  `result-encoding`: (String|Number|Boolean)?
-  retries: (String|Number|Boolean)?
-  `retry-exempt-status-codes`: (String|Number|Boolean)?
-  `base-url`: (String|Number|Boolean)?
+  script: (String | Number | Boolean)?
+  `github-token`: (String | Number | Boolean)?
+  debug: (String | Number | Boolean)?
+  `user-agent`: (String | Number | Boolean)?
+  previews: (String | Number | Boolean)?
+  `result-encoding`: (String | Number | Boolean)?
+  retries: (String | Number | Boolean)?
+  `retry-exempt-status-codes`: (String | Number | Boolean)?
+  `base-url`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [actions/labeler](https://github.com/actions/labeler) action.
@@ -201,11 +199,11 @@ class Labeler extends Workflow.TypedStep {
 }
 
 class LabelerInputs {
-  `repo-token`: (String|Number|Boolean)?
-  `configuration-path`: (String|Number|Boolean)?
-  `sync-labels`: (String|Number|Boolean)?
-  dot: (String|Number|Boolean)?
-  `pr-number`: (String|Number|Boolean)?
+  `repo-token`: (String | Number | Boolean)?
+  `configuration-path`: (String | Number | Boolean)?
+  `sync-labels`: (String | Number | Boolean)?
+  dot: (String | Number | Boolean)?
+  `pr-number`: (String | Number | Boolean)?
 }
 
 class AttestSbom extends Workflow.TypedStep {
@@ -214,14 +212,14 @@ class AttestSbom extends Workflow.TypedStep {
 }
 
 class AttestSbomInputs {
-  `subject-path`: (String|Number|Boolean)?
-  `subject-digest`: (String|Number|Boolean)?
-  `subject-name`: (String|Number|Boolean)?
-  `subject-checksums`: (String|Number|Boolean)?
-  `sbom-path`: (String|Number|Boolean)?
-  `push-to-registry`: (String|Number|Boolean)?
-  `show-summary`: (String|Number|Boolean)?
-  `github-token`: (String|Number|Boolean)?
+  `subject-path`: (String | Number | Boolean)?
+  `subject-digest`: (String | Number | Boolean)?
+  `subject-name`: (String | Number | Boolean)?
+  `subject-checksums`: (String | Number | Boolean)?
+  `sbom-path`: (String | Number | Boolean)?
+  `push-to-registry`: (String | Number | Boolean)?
+  `show-summary`: (String | Number | Boolean)?
+  `github-token`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [actions/ai-inference](https://github.com/actions/ai-inference) action.
@@ -231,18 +229,18 @@ class AiInference extends Workflow.TypedStep {
 }
 
 class AiInferenceInputs {
-  prompt: (String|Number|Boolean)?
-  `prompt-file`: (String|Number|Boolean)?
-  input: (String|Number|Boolean)?
-  file_input: (String|Number|Boolean)?
-  model: (String|Number|Boolean)?
-  endpoint: (String|Number|Boolean)?
-  `system-prompt`: (String|Number|Boolean)?
-  `system-prompt-file`: (String|Number|Boolean)?
-  `max-tokens`: (String|Number|Boolean)?
-  token: (String|Number|Boolean)?
-  `enable-github-mcp`: (String|Number|Boolean)?
-  `github-mcp-token`: (String|Number|Boolean)?
+  prompt: (String | Number | Boolean)?
+  `prompt-file`: (String | Number | Boolean)?
+  input: (String | Number | Boolean)?
+  file_input: (String | Number | Boolean)?
+  model: (String | Number | Boolean)?
+  endpoint: (String | Number | Boolean)?
+  `system-prompt`: (String | Number | Boolean)?
+  `system-prompt-file`: (String | Number | Boolean)?
+  `max-tokens`: (String | Number | Boolean)?
+  token: (String | Number | Boolean)?
+  `enable-github-mcp`: (String | Number | Boolean)?
+  `github-mcp-token`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [actions/create-github-app-token](https://github.com/actions/create-github-app-token) action.
@@ -252,60 +250,60 @@ class CreateGitHubAppToken extends Workflow.TypedStep {
 }
 
 class CreateGitHubAppTokenInputs {
-  `app-id`: (String|Number|Boolean)?
-  `private-key`: (String|Number|Boolean)?
-  owner: (String|Number|Boolean)?
-  repositories: (String|Number|Boolean)?
-  `skip-token-revoke`: (String|Number|Boolean)?
-  `github-api-url`: (String|Number|Boolean)?
-  `permission-actions`: (String|Number|Boolean)?
-  `permission-administration`: (String|Number|Boolean)?
-  `permission-checks`: (String|Number|Boolean)?
-  `permission-codespaces`: (String|Number|Boolean)?
-  `permission-contents`: (String|Number|Boolean)?
-  `permission-dependabot-secrets`: (String|Number|Boolean)?
-  `permission-deployments`: (String|Number|Boolean)?
-  `permission-email-addresses`: (String|Number|Boolean)?
-  `permission-environments`: (String|Number|Boolean)?
-  `permission-followers`: (String|Number|Boolean)?
-  `permission-git-ssh-keys`: (String|Number|Boolean)?
-  `permission-gpg-keys`: (String|Number|Boolean)?
-  `permission-interaction-limits`: (String|Number|Boolean)?
-  `permission-issues`: (String|Number|Boolean)?
-  `permission-members`: (String|Number|Boolean)?
-  `permission-metadata`: (String|Number|Boolean)?
-  `permission-organization-administration`: (String|Number|Boolean)?
-  `permission-organization-announcement-banners`: (String|Number|Boolean)?
-  `permission-organization-copilot-seat-management`: (String|Number|Boolean)?
-  `permission-organization-custom-org-roles`: (String|Number|Boolean)?
-  `permission-organization-custom-properties`: (String|Number|Boolean)?
-  `permission-organization-custom-roles`: (String|Number|Boolean)?
-  `permission-organization-events`: (String|Number|Boolean)?
-  `permission-organization-hooks`: (String|Number|Boolean)?
-  `permission-organization-packages`: (String|Number|Boolean)?
-  `permission-organization-personal-access-token-requests`: (String|Number|Boolean)?
-  `permission-organization-personal-access-tokens`: (String|Number|Boolean)?
-  `permission-organization-plan`: (String|Number|Boolean)?
-  `permission-organization-projects`: (String|Number|Boolean)?
-  `permission-organization-secrets`: (String|Number|Boolean)?
-  `permission-organization-self-hosted-runners`: (String|Number|Boolean)?
-  `permission-organization-user-blocking`: (String|Number|Boolean)?
-  `permission-packages`: (String|Number|Boolean)?
-  `permission-pages`: (String|Number|Boolean)?
-  `permission-profile`: (String|Number|Boolean)?
-  `permission-pull-requests`: (String|Number|Boolean)?
-  `permission-repository-custom-properties`: (String|Number|Boolean)?
-  `permission-repository-hooks`: (String|Number|Boolean)?
-  `permission-repository-projects`: (String|Number|Boolean)?
-  `permission-secret-scanning-alerts`: (String|Number|Boolean)?
-  `permission-secrets`: (String|Number|Boolean)?
-  `permission-security-events`: (String|Number|Boolean)?
-  `permission-single-file`: (String|Number|Boolean)?
-  `permission-starring`: (String|Number|Boolean)?
-  `permission-statuses`: (String|Number|Boolean)?
-  `permission-team-discussions`: (String|Number|Boolean)?
-  `permission-vulnerability-alerts`: (String|Number|Boolean)?
-  `permission-workflows`: (String|Number|Boolean)?
+  `app-id`: (String | Number | Boolean)?
+  `private-key`: (String | Number | Boolean)?
+  owner: (String | Number | Boolean)?
+  repositories: (String | Number | Boolean)?
+  `skip-token-revoke`: (String | Number | Boolean)?
+  `github-api-url`: (String | Number | Boolean)?
+  `permission-actions`: (String | Number | Boolean)?
+  `permission-administration`: (String | Number | Boolean)?
+  `permission-checks`: (String | Number | Boolean)?
+  `permission-codespaces`: (String | Number | Boolean)?
+  `permission-contents`: (String | Number | Boolean)?
+  `permission-dependabot-secrets`: (String | Number | Boolean)?
+  `permission-deployments`: (String | Number | Boolean)?
+  `permission-email-addresses`: (String | Number | Boolean)?
+  `permission-environments`: (String | Number | Boolean)?
+  `permission-followers`: (String | Number | Boolean)?
+  `permission-git-ssh-keys`: (String | Number | Boolean)?
+  `permission-gpg-keys`: (String | Number | Boolean)?
+  `permission-interaction-limits`: (String | Number | Boolean)?
+  `permission-issues`: (String | Number | Boolean)?
+  `permission-members`: (String | Number | Boolean)?
+  `permission-metadata`: (String | Number | Boolean)?
+  `permission-organization-administration`: (String | Number | Boolean)?
+  `permission-organization-announcement-banners`: (String | Number | Boolean)?
+  `permission-organization-copilot-seat-management`: (String | Number | Boolean)?
+  `permission-organization-custom-org-roles`: (String | Number | Boolean)?
+  `permission-organization-custom-properties`: (String | Number | Boolean)?
+  `permission-organization-custom-roles`: (String | Number | Boolean)?
+  `permission-organization-events`: (String | Number | Boolean)?
+  `permission-organization-hooks`: (String | Number | Boolean)?
+  `permission-organization-packages`: (String | Number | Boolean)?
+  `permission-organization-personal-access-token-requests`: (String | Number | Boolean)?
+  `permission-organization-personal-access-tokens`: (String | Number | Boolean)?
+  `permission-organization-plan`: (String | Number | Boolean)?
+  `permission-organization-projects`: (String | Number | Boolean)?
+  `permission-organization-secrets`: (String | Number | Boolean)?
+  `permission-organization-self-hosted-runners`: (String | Number | Boolean)?
+  `permission-organization-user-blocking`: (String | Number | Boolean)?
+  `permission-packages`: (String | Number | Boolean)?
+  `permission-pages`: (String | Number | Boolean)?
+  `permission-profile`: (String | Number | Boolean)?
+  `permission-pull-requests`: (String | Number | Boolean)?
+  `permission-repository-custom-properties`: (String | Number | Boolean)?
+  `permission-repository-hooks`: (String | Number | Boolean)?
+  `permission-repository-projects`: (String | Number | Boolean)?
+  `permission-secret-scanning-alerts`: (String | Number | Boolean)?
+  `permission-secrets`: (String | Number | Boolean)?
+  `permission-security-events`: (String | Number | Boolean)?
+  `permission-single-file`: (String | Number | Boolean)?
+  `permission-starring`: (String | Number | Boolean)?
+  `permission-statuses`: (String | Number | Boolean)?
+  `permission-team-discussions`: (String | Number | Boolean)?
+  `permission-vulnerability-alerts`: (String | Number | Boolean)?
+  `permission-workflows`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [actions/delete-package-versions](https://github.com/actions/delete-package-versions) action.
@@ -316,45 +314,45 @@ class DeletePackageVersion extends Workflow.TypedStep {
 
 class DeletePackageVersionInputs {
   /// Comma separated string of package version ids to delete.
-  `package-version-ids`: (String|Number|Boolean)?
+  `package-version-ids`: (String | Number | Boolean)?
 
   /// Owner of the repo containing the package version to delete.
   /// Defaults to the owner of the repo running the action.
-  owner: (String|Number|Boolean)?
+  owner: (String | Number | Boolean)?
 
   /// Name of the package containing the version to delete.
-  `package-name`: (String|Number|Boolean)?
+  `package-name`: (String | Number | Boolean)?
 
   /// Type of package. Can be one of container, maven, npm, nuget, or rubygems.
-  `package-type`: (String|Number|Boolean)?
+  `package-type`: (String | Number | Boolean)?
 
   /// Number of versions to delete starting with the oldest version.
   /// Defaults to 1.
-  `num-old-versions-to-delete`: (String|Number|Boolean)?
+  `num-old-versions-to-delete`: (String | Number | Boolean)?
 
   /// Number of versions to keep starting with the latest version.
   /// By default keeps no version. To delete all versions set this as 0.
-  `min-versions-to-keep`: (String|Number|Boolean)?
+  `min-versions-to-keep`: (String | Number | Boolean)?
 
   /// Regex pattern for package versions to ignore. Defaults to delete all versions.
-  `ignore-versions`: (String|Number|Boolean)?
+  `ignore-versions`: (String | Number | Boolean)?
 
   /// Deletes only pre-release versions. The number of pre-release versions to keep can be specified by min-versions-to-keep.
   /// When this is set num-old-versions-to-delete and ignore-versions will not be taken into account.
   /// By default this is set to false
-  `delete-only-pre-release-versions`: (String|Number|Boolean)?
+  `delete-only-pre-release-versions`: (String | Number | Boolean)?
 
   /// Deletes only untagged versions in case of a container package. Does not work for other package types.
   /// The number of untagged versions to keep can be specified by min-versions-to-keep.
   /// When this is set num-old-versions-to-delete will not be taken into account.
   /// By default this is set to false
-  `delete-only-untagged-versions`: (String|Number|Boolean)?
+  `delete-only-untagged-versions`: (String | Number | Boolean)?
 
   /// Token with the necessary scopes to delete package versions.
   /// If num-old-versions-to-delete is used the token also needs the read packages scope.
   /// Defaults to github.token scoped to the repo running the action. To delete package versions
   /// of a package outside the repo the action is running in use a Personal Access Token stored as a secret.
-  token: (String|Number|Boolean)?
+  token: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [actions/stale](https://github.com/actions/stale) action.
@@ -365,115 +363,115 @@ class Stale extends Workflow.TypedStep {
 
 class StaleInputs {
   /// Token for the repository. Can be passed in using `{{ secrets.GITHUB_TOKEN }}`.
-  `repo-token`: (String|Number|Boolean)?
+  `repo-token`: (String | Number | Boolean)?
   /// The message to post on the issue when tagging it. If none provided, will not mark issues stale.
-  `stale-issue-message`: (String|Number|Boolean)?
+  `stale-issue-message`: (String | Number | Boolean)?
   /// The message to post on the pull request when tagging it. If none provided, will not mark pull requests stale.
-  `stale-pr-message`: (String|Number|Boolean)?
+  `stale-pr-message`: (String | Number | Boolean)?
   /// The message to post on the issue when closing it. If none provided, will not comment when closing an issue.
-  `close-issue-message`: (String|Number|Boolean)?
+  `close-issue-message`: (String | Number | Boolean)?
   /// The message to post on the pull request when closing it. If none provided, will not comment when closing a pull requests.
-  `close-pr-message`: (String|Number|Boolean)?
+  `close-pr-message`: (String | Number | Boolean)?
   /// The number of days old an issue or a pull request can be before marking it stale. Set to -1 to never mark issues or pull requests as stale automatically.
-  `days-before-stale`: (String|Number|Boolean)?
+  `days-before-stale`: (String | Number | Boolean)?
   /// The number of days old an issue can be before marking it stale. Set to -1 to never mark issues as stale automatically. Override "days-before-stale" option regarding only the issues.
-  `days-before-issue-stale`: (String|Number|Boolean)?
+  `days-before-issue-stale`: (String | Number | Boolean)?
   /// The number of days old a pull request can be before marking it stale. Set to -1 to never mark pull requests as stale automatically. Override "days-before-stale" option regarding only the pull requests.
-  `days-before-pr-stale`: (String|Number|Boolean)?
+  `days-before-pr-stale`: (String | Number | Boolean)?
   /// The number of days to wait to close an issue or a pull request after it being marked stale. Set to -1 to never close stale issues or pull requests.
-  `days-before-close`: (String|Number|Boolean)?
+  `days-before-close`: (String | Number | Boolean)?
   /// The number of days to wait to close an issue after it being marked stale. Set to -1 to never close stale issues. Override "days-before-close" option regarding only the issues.
-  `days-before-issue-close`: (String|Number|Boolean)?
+  `days-before-issue-close`: (String | Number | Boolean)?
   /// The number of days to wait to close a pull request after it being marked stale. Set to -1 to never close stale pull requests. Override "days-before-close" option regarding only the pull requests.
-  `days-before-pr-close`: (String|Number|Boolean)?
+  `days-before-pr-close`: (String | Number | Boolean)?
   /// The label to apply when an issue is stale.
-  `stale-issue-label`: (String|Number|Boolean)?
+  `stale-issue-label`: (String | Number | Boolean)?
   /// The label to apply when an issue is closed.
-  `close-issue-label`: (String|Number|Boolean)?
+  `close-issue-label`: (String | Number | Boolean)?
   /// The labels that mean an issue is exempt from being marked stale. Separate multiple labels with commas (eg. "label1,label2").
-  `exempt-issue-labels`: (String|Number|Boolean)?
+  `exempt-issue-labels`: (String | Number | Boolean)?
   /// The reason to use when closing an issue.
-  `close-issue-reason`: (String|Number|Boolean)?
+  `close-issue-reason`: (String | Number | Boolean)?
   /// The label to apply when a pull request is stale.
-  `stale-pr-label`: (String|Number|Boolean)?
+  `stale-pr-label`: (String | Number | Boolean)?
   /// The label to apply when a pull request is closed.
-  `close-pr-label`: (String|Number|Boolean)?
+  `close-pr-label`: (String | Number | Boolean)?
   /// The labels that mean a pull request is exempt from being marked as stale. Separate multiple labels with commas (eg. "label1,label2").
-  `exempt-pr-labels`: (String|Number|Boolean)?
+  `exempt-pr-labels`: (String | Number | Boolean)?
   /// The milestones that mean an issue or a pull request is exempt from being marked as stale. Separate multiple milestones with commas (eg. "milestone1,milestone2").
-  `exempt-milestones`: (String|Number|Boolean)?
+  `exempt-milestones`: (String | Number | Boolean)?
   /// The milestones that mean an issue is exempt from being marked as stale. Separate multiple milestones with commas (eg. "milestone1,milestone2"). Override "exempt-milestones" option regarding only the issues.
-  `exempt-issue-milestones`: (String|Number|Boolean)?
+  `exempt-issue-milestones`: (String | Number | Boolean)?
   /// The milestones that mean a pull request is exempt from being marked as stale. Separate multiple milestones with commas (eg. "milestone1,milestone2"). Override "exempt-milestones" option regarding only the pull requests.
-  `exempt-pr-milestones`: (String|Number|Boolean)?
+  `exempt-pr-milestones`: (String | Number | Boolean)?
   /// Exempt all issues and pull requests with milestones from being marked as stale. Default to false.
-  `exempt-all-milestones`: (String|Number|Boolean)?
+  `exempt-all-milestones`: (String | Number | Boolean)?
   /// Exempt all issues with milestones from being marked as stale. Override "exempt-all-milestones" option regarding only the issues.
-  `exempt-all-issue-milestones`: (String|Number|Boolean)?
+  `exempt-all-issue-milestones`: (String | Number | Boolean)?
   /// Exempt all pull requests with milestones from being marked as stale. Override "exempt-all-milestones" option regarding only the pull requests.
-  `exempt-all-pr-milestones`: (String|Number|Boolean)?
+  `exempt-all-pr-milestones`: (String | Number | Boolean)?
   /// Only issues or pull requests with all of these labels are checked if stale. Defaults to `` (disabled) and can be a comma-separated list of labels.
-  `only-labels`: (String|Number|Boolean)?
+  `only-labels`: (String | Number | Boolean)?
   /// Only issues or pull requests with at least one of these labels are checked if stale. Defaults to `` (disabled) and can be a comma-separated list of labels.
-  `any-of-labels`: (String|Number|Boolean)?
+  `any-of-labels`: (String | Number | Boolean)?
   /// Only issues with at least one of these labels are checked if stale. Defaults to `` (disabled) and can be a comma-separated list of labels. Override "any-of-labels" option regarding only the issues.
-  `any-of-issue-labels`: (String|Number|Boolean)?
+  `any-of-issue-labels`: (String | Number | Boolean)?
   /// Only pull requests with at least one of these labels are checked if stale. Defaults to `` (disabled) and can be a comma-separated list of labels. Override "any-of-labels" option regarding only the pull requests.
-  `any-of-pr-labels`: (String|Number|Boolean)?
+  `any-of-pr-labels`: (String | Number | Boolean)?
   /// Only issues with all of these labels are checked if stale. Defaults to `[]` (disabled) and can be a comma-separated list of labels. Override "only-labels" option regarding only the issues.
-  `only-issue-labels`: (String|Number|Boolean)?
+  `only-issue-labels`: (String | Number | Boolean)?
   /// Only pull requests with all of these labels are checked if stale. Defaults to `[]` (disabled) and can be a comma-separated list of labels. Override "only-labels" option regarding only the pull requests.
-  `only-pr-labels`: (String|Number|Boolean)?
+  `only-pr-labels`: (String | Number | Boolean)?
   /// The maximum number of operations per run, used to control rate limiting (GitHub API CRUD related).
-  `operations-per-run`: (String|Number|Boolean)?
+  `operations-per-run`: (String | Number | Boolean)?
   /// Remove stale labels from issues and pull requests when they are updated or commented on.
-  `remove-stale-when-updated`: (String|Number|Boolean)?
+  `remove-stale-when-updated`: (String | Number | Boolean)?
   /// Remove stale labels from issues when they are updated or commented on. Override "remove-stale-when-updated" option regarding only the issues.
-  `remove-issue-stale-when-updated`: (String|Number|Boolean)?
+  `remove-issue-stale-when-updated`: (String | Number | Boolean)?
   /// Remove stale labels from pull requests when they are updated or commented on. Override "remove-stale-when-updated" option regarding only the pull requests.
-  `remove-pr-stale-when-updated`: (String|Number|Boolean)?
+  `remove-pr-stale-when-updated`: (String | Number | Boolean)?
   /// Run the processor in debug mode without actually performing any operations on live issues.
-  `debug-only`: (String|Number|Boolean)?
+  `debug-only`: (String | Number | Boolean)?
   /// The order to get issues or pull requests. Defaults to false, which is descending.
-  ascending: (String|Number|Boolean)?
+  ascending: (String | Number | Boolean)?
   /// What to sort results by. Valid options are `created`, `updated`, and `comments`. Defaults to `created`.
-  `sort-by`: (String|Number|Boolean)?
+  `sort-by`: (String | Number | Boolean)?
   /// Delete the git branch after closing a stale pull request.
-  `delete-branch`: (String|Number|Boolean)?
+  `delete-branch`: (String | Number | Boolean)?
   /// The date used to skip the stale action on issue/pull request created before it (ISO 8601 or RFC 2822).
-  `start-date`: (String|Number|Boolean)?
+  `start-date`: (String | Number | Boolean)?
   /// The assignees which exempt an issue or a pull request from being marked as stale. Separate multiple assignees with commas (eg. "user1,user2").
-  `exempt-assignees`: (String|Number|Boolean)?
+  `exempt-assignees`: (String | Number | Boolean)?
   /// The assignees which exempt an issue from being marked as stale. Separate multiple assignees with commas (eg. "user1,user2"). Override "exempt-assignees" option regarding only the issues.
-  `exempt-issue-assignees`: (String|Number|Boolean)?
+  `exempt-issue-assignees`: (String | Number | Boolean)?
   /// The assignees which exempt a pull request from being marked as stale. Separate multiple assignees with commas (eg. "user1,user2"). Override "exempt-assignees" option regarding only the pull requests.
-  `exempt-pr-assignees`: (String|Number|Boolean)?
+  `exempt-pr-assignees`: (String | Number | Boolean)?
   /// Exempt all issues and pull requests with assignees from being marked as stale. Default to false.
-  `exempt-all-assignees`: (String|Number|Boolean)?
+  `exempt-all-assignees`: (String | Number | Boolean)?
   /// Exempt all issues with assignees from being marked as stale. Override "exempt-all-assignees" option regarding only the issues.
-  `exempt-all-issue-assignees`: (String|Number|Boolean)?
+  `exempt-all-issue-assignees`: (String | Number | Boolean)?
   /// Exempt all pull requests with assignees from being marked as stale. Override "exempt-all-assignees" option regarding only the pull requests.
-  `exempt-all-pr-assignees`: (String|Number|Boolean)?
+  `exempt-all-pr-assignees`: (String | Number | Boolean)?
   /// Exempt draft pull requests from being marked as stale. Default to false.
-  `exempt-draft-pr`: (String|Number|Boolean)?
+  `exempt-draft-pr`: (String | Number | Boolean)?
   /// Display some statistics at the end regarding the stale workflow (only when the logs are enabled).
-  `enable-statistics`: (String|Number|Boolean)?
+  `enable-statistics`: (String | Number | Boolean)?
   /// A comma delimited list of labels to add when an issue or pull request becomes unstale.
-  `labels-to-add-when-unstale`: (String|Number|Boolean)?
+  `labels-to-add-when-unstale`: (String | Number | Boolean)?
   /// A comma delimited list of labels to remove when an issue or pull request becomes stale.
-  `labels-to-remove-when-stale`: (String|Number|Boolean)?
+  `labels-to-remove-when-stale`: (String | Number | Boolean)?
   /// A comma delimited list of labels to remove when an issue or pull request becomes unstale.
-  `labels-to-remove-when-unstale`: (String|Number|Boolean)?
+  `labels-to-remove-when-unstale`: (String | Number | Boolean)?
   /// Any update (update/comment) can reset the stale idle time on the issues and pull requests.
-  `ignore-updates`: (String|Number|Boolean)?
+  `ignore-updates`: (String | Number | Boolean)?
   /// Any update (update/comment) can reset the stale idle time on the issues. Override "ignore-updates" option regarding only the issues.
-  `ignore-issue-updates`: (String|Number|Boolean)?
+  `ignore-issue-updates`: (String | Number | Boolean)?
   /// Any update (update/comment) can reset the stale idle time on the pull requests. Override "ignore-updates" option regarding only the pull requests.
-  `ignore-pr-updates`: (String|Number|Boolean)?
+  `ignore-pr-updates`: (String | Number | Boolean)?
   /// Only the issues or the pull requests with an assignee will be marked as stale automatically.
-  `include-only-assigned`: (String|Number|Boolean)?
+  `include-only-assigned`: (String | Number | Boolean)?
   /// Only issues with a matching type are processed as stale/closed. Defaults to `[]` (disabled) and can be a comma-separated list of issue types.
-  `only-issue-types`: (String|Number|Boolean)?
+  `only-issue-types`: (String | Number | Boolean)?
 }
 
 /// Type-safe GitHub Action of the [actions/dependency-review-action](https://github.com/actions/dependency-review-action) action.
@@ -484,45 +482,45 @@ class DependencyReviewAction extends Workflow.TypedStep {
 
 class DependencyReviewActionInputs {
   /// Token for the repository. Can be passed in using `{{ secrets.GITHUB_TOKEN }}`.
-  `repo-token`: (String|Number|Boolean)?
+  `repo-token`: (String | Number | Boolean)?
   /// Don't block PRs below this severity. Possible values are `low`, `moderate`, `high`, `critical`.
-  `fail-on-severity`: (String|Number|Boolean)?
+  `fail-on-severity`: (String | Number | Boolean)?
   /// Dependency scopes to block PRs on. Comma-separated list. Possible values are 'unknown', 'runtime', and 'development' (e.g. "runtime, development")
-  `fail-on-scopes`: (String|Number|Boolean)?
+  `fail-on-scopes`: (String | Number | Boolean)?
   /// The base git ref to be used for this check. Has a default value when the workflow event is `pull_request` or `pull_request_target`. Must be provided otherwise.
-  `base-ref`: (String|Number|Boolean)?
+  `base-ref`: (String | Number | Boolean)?
   /// The head git ref to be used for this check. Has a default value when the workflow event is `pull_request` or `pull_request_target`. Must be provided otherwise.
-  `head-ref`: (String|Number|Boolean)?
+  `head-ref`: (String | Number | Boolean)?
   /// A path to the configuration file for the action.
-  `config-file`: (String|Number|Boolean)?
+  `config-file`: (String | Number | Boolean)?
   /// Comma-separated list of allowed licenses (e.g. "MIT, GPL 3.0, BSD 2 Clause")
-  `allow-licenses`: (String|Number|Boolean)?
+  `allow-licenses`: (String | Number | Boolean)?
   /// Comma-separated list of forbidden licenses (e.g. "MIT, GPL 3.0, BSD 2 Clause")
-  `deny-licenses`: (String|Number|Boolean)?
+  `deny-licenses`: (String | Number | Boolean)?
   /// Comma-separated list of dependencies in purl format (e.g. "pkg:npm/express, pkg:pypi/pycrypto"). These dependencies will be permitted to use any license, no matter what license policy[...]
-  `allow-dependencies-licenses`: (String|Number|Boolean)?
+  `allow-dependencies-licenses`: (String | Number | Boolean)?
   /// Comma-separated list of allowed GitHub Advisory IDs (e.g. "GHSA-abcd-1234-5679, GHSA-efgh-1234-5679")
-  `allow-ghsas`: (String|Number|Boolean)?
+  `allow-ghsas`: (String | Number | Boolean)?
   /// A token for fetching external configuration file if it lives in another repository. It is required if the repository is private
-  `external-repo-token`: (String|Number|Boolean)?
+  `external-repo-token`: (String | Number | Boolean)?
   /// A boolean to determine if license checks should be performed
-  `license-check`: (String|Number|Boolean)?
+  `license-check`: (String | Number | Boolean)?
   /// A boolean to determine if vulnerability checks should be performed
-  `vulnerability-check`: (String|Number|Boolean)?
+  `vulnerability-check`: (String | Number | Boolean)?
   /// Determines if the summary is posted as a comment in the PR itself. Setting this to `always` or `on-failure` requires you to give the workflow the write permissions for pull-requests
-  `comment-summary-in-pr`: (String|Number|Boolean)?
+  `comment-summary-in-pr`: (String | Number | Boolean)?
   /// A comma-separated list of package URLs to deny (e.g. "pkg:npm/express, pkg:pypi/pycrypto"). If version specified, only deny matching packages and version; else, deny all regardless of[...]
-  `deny-packages`: (String|Number|Boolean)?
+  `deny-packages`: (String | Number | Boolean)?
   /// A comma-separated list of package URLs for group(s)/namespace(s) to deny (e.g. "pkg:npm/express/, pkg:pypi/pycrypto/"). Please note that the group name must be followed by a `/`.
-  `deny-groups`: (String|Number|Boolean)?
+  `deny-groups`: (String | Number | Boolean)?
   /// Whether to retry on snapshot warnings
-  `retry-on-snapshot-warnings`: (String|Number|Boolean)?
+  `retry-on-snapshot-warnings`: (String | Number | Boolean)?
   /// Number of seconds to wait before stopping snapshot retries.
-  `retry-on-snapshot-warnings-timeout`: (String|Number|Boolean)?
+  `retry-on-snapshot-warnings-timeout`: (String | Number | Boolean)?
   /// When set to `true` this action will always complete with success, overriding the `fail-on-severity` parameter.
-  `warn-only`: (String|Number|Boolean)?
+  `warn-only`: (String | Number | Boolean)?
   /// Show a summary of the OpenSSF Scorecard scores.
-  `show-openssf-scorecard`: (String|Number|Boolean)?
+  `show-openssf-scorecard`: (String | Number | Boolean)?
   /// Numeric threshold for the OpenSSF Scorecard score. If the score is below this threshold, the action will warn you.
-  `warn-on-openssf-scorecard-level`: (String|Number|Boolean)?
+  `warn-on-openssf-scorecard-level`: (String | Number | Boolean)?
 }

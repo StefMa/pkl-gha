@@ -1,0 +1,39 @@
+amends "@gha/Workflow.pkl"
+import "modules/Steps.pkl"
+
+name = "CI"
+
+on {
+  push {
+    branches {
+      "main"
+    }
+  }
+  pull_request {}
+}
+
+jobs {
+  ["test"] {
+    `runs-on` = new UbuntuLatest {}
+    steps {
+      ...Steps.checkoutAndInstallPkl
+      new {
+        name = "Test pkl module"
+        run = "pkl test"
+      }
+    }
+  }
+  ["format"] {
+    `runs-on` = new UbuntuLatest {}
+    steps {
+      ...Steps.checkoutAndInstallPkl
+      new {
+        name = "Format pkl module"
+        // As of today, pkl format returns status code 11 if formatting is needed
+        // So CI fails. But this is in discussion.
+        // See https://github.com/apple/pkl/issues/1324
+        run = "pkl format -w ."
+      }
+    }
+  }
+}

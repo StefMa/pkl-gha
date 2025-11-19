@@ -1,5 +1,6 @@
 amends "@gha/Workflow.pkl"
 import "@gha/actions/Pages.pkl"
+
 import "modules/Steps.pkl"
 
 name = "GeneratePklDoc"

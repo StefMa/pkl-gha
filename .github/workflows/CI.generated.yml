@@ -1,7 +1,7 @@
 # Do not modify!
 # This file was generated from a template using https://github.com/StefMa/pkl-gha
 
-name: Test
+name: CI
 'on':
   pull_request: {}
   push:
@@ -19,3 +19,14 @@ jobs:
         pkl-version: 0.30.0
     - name: Test pkl module
       run: pkl test
+  format:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v5
+    - name: Install pkl
+      uses: pkl-community/setup-pkl@v0.0.8
+      with:
+        pkl-version: 0.30.0
+    - name: Format pkl module
+      run: pkl format -w .

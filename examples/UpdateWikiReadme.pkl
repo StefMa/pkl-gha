@@ -29,7 +29,8 @@ jobs {
       }
       new {
         name = "Commit changes"
-        run = """
+        run =
+          """
           git config --global user.email "StefM@IsGre.at"
           git config --global user.name "StefMa"
           git add wiki/README.md || echo "No changes to commit"

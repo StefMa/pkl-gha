@@ -83,7 +83,8 @@ class JobServices {
 
 class Jobs {
   function result(jobId: String): String = custom("\(jobId).result")
-  function output(jobId: String, outputName: String): String = custom("\(jobId).output.\(outputName)")
+  function output(jobId: String, outputName: String): String =
+    custom("\(jobId).output.\(outputName)")
 
   function custom(name: String): String = "${{ jobs.\(name) }}"
 }
@@ -91,7 +92,8 @@ class Jobs {
 class Steps {
   function conclusion(stepId: String): String = custom("\(stepId).conclusion")
   function outcome(stepId: String): String = custom("\(stepId).outcome")
-  function outputs(stepId: String, outputName: String): String = custom("\(stepId).outputs.\(outputName)")
+  function outputs(stepId: String, outputName: String): String =
+    custom("\(stepId).outputs.\(outputName)")
 
   function custom(name: String): String = "${{ steps.\(name) }}"
 }
@@ -122,7 +124,8 @@ class Strategy {
 const function matrix(propertyName: String): String = "${{ matrix.\(propertyName) }}"
 
 class Needs {
-  function output(jobId: String, ouputName: String): String = custom("\(jobId).outputs.\(ouputName)")
+  function output(jobId: String, ouputName: String): String =
+    custom("\(jobId).outputs.\(ouputName)")
   function result(jobId: String): String = custom("\(jobId).result")
 
   function custom(name: String): String = "${{ needs.\(name) }}"
