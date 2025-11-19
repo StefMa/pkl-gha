@@ -1,4 +1,5 @@
 import "@gha/actions/Common.pkl"
+import "@gha/actions/Setup.pkl"
 import "@gha/Workflow.pkl"
 import "@setup.pkl/Action.pkl" as SetupPkl
 
@@ -16,4 +17,8 @@ installPkl: SetupPkl.Action = new {
 checkoutAndInstallPkl: Listing<Workflow.TypedStep> = new {
   checkout
   installPkl
+}
+
+setupGo: Setup.Go = new {
+  name = "Setup Go"
 }

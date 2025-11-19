@@ -3,7 +3,7 @@ examples {
     #"""
     # Do not modify!
     # This file was generated from a template using https://github.com/StefMa/pkl-gha
-    
+
     name: PrintHelloWorld
     'on':
       pull_request:
@@ -45,9 +45,6 @@ examples {
     jobs:
       hello_dependabot:
         if: ${{ github.actor == 'dependabot[bot]' }}
-        needs:
-        - first_job
-        - second_job
         permissions: write-all
         runs-on: macos-latest
         outputs:
@@ -74,7 +71,7 @@ examples {
       print:
         needs: hello_dependabot
         runs-on:
-        - macos-latest
+        - self-hosted
         - windows-latest
         environment: staging
         steps:
@@ -94,14 +91,14 @@ examples {
             some_bool: true
             some_number: 5
             payload: "{\n\t\"blocks\": [\n\t\t{\n    \"type\": \"section\",\n\t\t\t\"text\": {\n\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\"text\": \":alert: Develop is broken!\"\n\t\t\t}\n\t\t}\n\t]\n}"
-    
+
     """#
   }
   ["workflowTriggers"] {
     """
     # Do not modify!
     # This file was generated from a template using https://github.com/StefMa/pkl-gha
-    
+
     name: GitHub Action Triggers
     'on':
       branch_protection_rule: {}
@@ -135,7 +132,7 @@ examples {
       schedule:
       - cron: '*/10 * * * *'
       - cron: 5 4 * * *
-      - cron: '* 0 * * 0'
+      - cron: 10,15 0 * * 0
       status: {}
       watch: {}
       workflow_call: {}
@@ -149,14 +146,14 @@ examples {
         steps:
         - name: Hello
           run: echo 'Hello, World!'
-    
+
     """
   }
   ["updateWikiReadme"] {
     """
     # Do not modify!
     # This file was generated from a template using https://github.com/StefMa/pkl-gha
-    
+
     name: Update Wiki Readme
     'on':
       push:
@@ -181,14 +178,14 @@ examples {
             git add wiki/README.md || echo "No changes to commit"
             git commit -m 'Re-build TOC in README.md' || echo "No changes to commit"
             git push origin || echo "No changes to commit"
-    
+
     """
   }
   ["matrixTest"] {
     """
     # Do not modify!
     # This file was generated from a template using https://github.com/StefMa/pkl-gha
-    
+
     name: Matrix Test
     'on':
       push:
@@ -217,14 +214,14 @@ examples {
           uses: actions/checkout@v5
         - name: Run on ${{ matrix.os }}
           run: echo Hello World
-    
+
     """
   }
   ["reusableWorkflow"] {
     """
     # Do not modify!
     # This file was generated from a template using https://github.com/StefMa/pkl-gha
-    
+
     name: Reusable Workflow
     'on':
       push:
@@ -245,14 +242,14 @@ examples {
         secrets:
           SECRET TOKEN: TOKEN
           ANOTHER SECRET: 42
-    
+
     """
   }
   ["prebuildActions"] {
     """
     # Do not modify!
     # This file was generated from a template using https://github.com/StefMa/pkl-gha
-    
+
     name: Check prebuild actions
     'on':
       push: {}
@@ -279,7 +276,7 @@ examples {
             path: tmp-doc
         - id: deployment
           uses: actions/deploy-pages@v4
-    
+
     """
   }
 }

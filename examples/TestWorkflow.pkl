@@ -64,10 +64,6 @@ jobs {
   ["hello_dependabot"] {
     `runs-on` = new MacOsLatest {}
     `if` = Context.github.custom("actor == 'dependabot[bot]'")
-    needs {
-      "first_job"
-      "second_job"
-    }
     permissions = "write-all"
     environment {
       name = "production"
@@ -104,7 +100,7 @@ jobs {
   }
   ["print"] {
     `runs-on` = new Listing {
-      "macos-latest"
+      "self-hosted"
       new WindowsLatest {}
     }
     environment = "staging"
