@@ -1,0 +1,43 @@
+amends "@gha/Workflow.pkl"
+import "modules/Steps.pkl"
+
+name = "CheckActionlintExamples"
+
+on {
+  push {}
+}
+
+jobs {
+  ["actionlintWorkflows"] {
+    `runs-on` = new UbuntuLatest {}
+
+    steps {
+      ...Steps.checkoutAndInstallPkl
+      new {
+        name = "Convert pkl examples to yaml"
+        `working-directory` = "examples"
+        run =
+          """
+          pkl eval *.pkl -o yaml/%{moduleName}.generated.yml
+          """
+      }
+      Steps.setupGo
+      new {
+        name = "Install actionlint CLI"
+        `working-directory` = "examples"
+        run =
+          """
+          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          """
+      }
+      new {
+        name = "Run actionlint on examples"
+        `working-directory` = "examples"
+        run =
+          """
+          ./actionlint -ignore 'could not read reusable workflow file' yaml/*.generated.yml
+          """
+      }
+    }
+  }
+}

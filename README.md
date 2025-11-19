@@ -77,12 +77,12 @@ For other platforms, please follow the [official installation guide](https://pkl
 **3. Convert the Pkl file to Yaml**
 
 ```bash
-pkl eval path/to/your/pkl/file.pkl -o path/to/your/pkl/file.yaml
+pkl eval path/to/your/pkl/file.pkl -o path/to/output/yml/file.yaml
 ```
 
 *Or alternatively for all files in the `.github/workflows` directory*:
 ```bash
-pkl eval path/to/your/pkl/files/*.pkl -o path/to/your/pkl/files/%{moduleName}.yml
+pkl eval path/to/your/pkl/files/*.pkl -o path/to/output/yml/files/%{moduleName}.yml
 ```
 
 ## Why?
