@@ -38,6 +38,10 @@ examples {
       contents: read
       issues: write
       pull-requests: write
+    defaults:
+      run:
+        shell: sh
+        working-directory: /blackhole
     jobs:
       hello_dependabot:
         if: ${{ github.actor == 'dependabot[bot]' }}
@@ -51,6 +55,10 @@ examples {
           another_output: 'true'
         environment:
           name: production
+        defaults:
+          run:
+            shell: bash
+            working-directory: /starset
         steps:
         - name: Checkout
           uses: actions/checkout@v5
