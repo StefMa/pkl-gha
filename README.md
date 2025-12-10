@@ -1,3 +1,20 @@
+> [!CAUTION]
+> The Pkl maintainers reached out to me to let me know they were creating an official GitHub Actions package
+> in the [`apple/pkl-pantry`](https://github.com/apple/pkl-pantry/) repository and invited me to have this project included there.
+> 
+> The package now lives in the official [`apple/pkl-pantry`](https://github.com/apple/pkl-pantry/tree/main/packages/com.github.actions) repository.<br/>
+> As a result, **this project is no longer maintained** and users are encouraged to switch to the official version.
+>
+> Since the code is almost identical, migrating should be as simple as updating the package URL:
+>
+> ```diff
+> - "package://pkg.pkl-lang.org/github.com/stefma/pkl-gha/com.github.action@0.0.6"
+> + "package://pkg.pkl-lang.org/pkl-pantry/com.github.actions@1.2.0"
+> ```
+>
+> Thank you all for your support so far.<br/>
+> Happy Pkl!
+
 [![GitHub Release](https://img.shields.io/github/v/release/stefma/pkl-gha?include_prereleases)](https://github.com/StefMa/pkl-gha/releases/latest)
 [![GitHub License](https://img.shields.io/github/license/stefma/pkl-gha)](https://github.com/StefMa/pkl-gha/blob/main/LICENSE)
 
