@@ -1,5 +1,6 @@
 amends "../Workflow.pkl"
 import "../Action.pkl"
+import "../Machine.pkl"
 
 name = "Update Wiki Readme"
 
@@ -15,7 +16,7 @@ on {
 jobs {
   ["update-wiki-readme"] {
     name = "Update Wiki Readme"
-    `runs-on` = new UbuntuLatest {}
+    `runs-on` = new Machine.UbuntuLatest {}
     steps {
       Action.checkout
       (Action.setupGo) {

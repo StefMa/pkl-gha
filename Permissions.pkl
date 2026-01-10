@@ -1,0 +1,119 @@
+module com.github.action.Permissions
+
+typealias Permission = "read" | "write" | "none"
+
+/// Work with GitHub Actions.
+///
+/// For example, `actions = "write"` permits an action to cancel a workflow run.
+///
+/// For more information, see
+/// [Permissions required for GitHub Apps](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-actions).
+actions: Permission?
+
+/// Work with artifact attestations.
+///
+/// For example, `attestations = "write"` permits an action to generate an artifact attestation for a build.
+///
+/// For more information, see
+/// [Using artifact attestations to establish provenance for builds](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations).
+attestations: Permission?
+
+/// Work with check runs and check suites.
+///
+/// For example, `checks = "write"` permits an action to create a check run.
+///
+/// For more information, see
+/// [Permissions required for GitHub Apps](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-actions).
+checks: Permission?
+
+/// Work with the contents of the repository.
+///
+/// For example, contents: read permits an action to list the commits, and `contents = "write"` allows the action to
+/// create a release.
+///
+/// For more information, see
+/// [Permissions required for GitHub Apps](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-actions).
+contents: Permission?
+
+/// Work with deployments.
+///
+/// For example, deployments: write permits an action to create a new deployment.
+///
+/// For more information, see
+/// [Permissions required for GitHub Apps](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-actions).
+deployments: Permission?
+
+/// Work with GitHub Discussions.
+///
+/// For example, `discussions = "write"` permits an action to close or delete a discussion.
+///
+/// For more information, see [Using the GraphQL API for Discussions](https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions).
+discussions: Permission?
+
+/// Fetch an OpenID Connect (OIDC) token.
+///
+/// This requires `id-token = "write"`.
+///
+/// For more information, see [OpenID Connect](https://docs.github.com/en/actions/concepts/security/openid-connect#updating-your-actions-for-oidc).
+`id-token`: Permission?
+
+/// Work with issues.
+///
+/// For example, issues: write permits an action to add a comment to an issue.
+///
+/// For more information, see
+/// [Permissions required for GitHub Apps](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-actions).
+issues: Permission?
+
+/// Generate AI inference responses with GitHub Models.
+///
+/// For example, `models = "read"` permits an action to use the GitHub Models inference API.
+///
+/// See [Prototyping with AI models](https://docs.github.com/en/github-models/use-github-models/prototyping-with-ai-models).
+models: Permission?
+
+/// Work with GitHub Packages.
+///
+/// For example, `packages = "write"` permits an action to upload and publish packages on GitHub Packages.
+///
+/// For more information, see
+/// [About permissions for GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries).
+packages: Permission?
+
+/// Work with GitHub Pages.
+///
+/// For example, `pages = "write"` permits an action to request a GitHub Pages build.
+///
+/// For more information, see
+/// [Permissions required for GitHub Apps](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-actions).
+pages: Permission?
+
+/// Work with pull requests.
+///
+/// For example, `pull-requests = "write"` permits an action to add a label to a pull request.
+///
+/// For more information, see
+/// [Permissions required for GitHub Apps](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-actions).
+`pull-requests`: Permission?
+
+/// Work with GitHub code scanning alerts.
+///
+/// For example, `security-events = "read"` permits an action to list the code scanning alerts for the repository, and
+/// `security-events = "write"` allows an action to update the status of a code scanning alert.
+///
+/// For more information, see [Repository permissions for 'Code scanning alerts'](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-code-scanning-alerts).
+///
+/// Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal
+/// access token.
+/// For more information, see [Repository permissions for 'Dependabot alerts'](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-dependabot-alerts)
+/// and [Repository permissions for 'Secret scanning alerts'](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-secret-scanning-alerts)
+/// in "Permissions required for GitHub Apps."
+`security-events`: Permission?
+
+/// Work with commit statuses.
+///
+/// For example, `statuses = "read"` permits an action to list the commit statuses for a given reference.
+///
+/// For more information, see
+/// [Permissions required for GitHub Apps](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-actions).
+statuses: Permission?

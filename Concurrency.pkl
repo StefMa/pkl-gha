@@ -1,0 +1,4 @@
+module com.github.action.Concurrency
+
+group: String
+`cancel-in-progress`: Boolean

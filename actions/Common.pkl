@@ -3,10 +3,10 @@
 /// Use the [Action](../Action) module instead to access these actions.
 module com.github.action.actions.Common
 
-import "../Workflow.pkl"
+import "../Step.pkl"
 
 /// Type-safe GitHub Action of the [checkout](https://github.com/actions/checkout) action.
-class Checkout extends Workflow.TypedStep {
+class Checkout extends Step.TypedStep {
   fixed uses: "actions/checkout@v5"
   with: CheckoutInputs?
 }
@@ -145,7 +145,7 @@ class CheckoutInputs {
 }
 
 /// Type-safe GitHub Action of the [actions/add-to-project](https://github.com/actions/add-to-project) action.
-class AddToProject extends Workflow.TypedStep {
+class AddToProject extends Step.TypedStep {
   fixed uses: "actions/add-to-project@v1"
   with: AddToProjectInputs?
 }
@@ -157,7 +157,7 @@ class AddToProjectInputs {
   `label-operator`: (String | Number | Boolean)?
 }
 
-class GoDependencySubmission extends Workflow.TypedStep {
+class GoDependencySubmission extends Step.TypedStep {
   fixed uses: "actions/go-dependency-submission@v2"
   with: GoDependencySubmissionInputs?
 }
@@ -175,7 +175,7 @@ class GoDependencySubmissionInputs {
 }
 
 /// Type-safe GitHub Action of the [actions/github-script](https://github.com/actions/github-script) action.
-class GitHubScript extends Workflow.TypedStep {
+class GitHubScript extends Step.TypedStep {
   fixed uses: "actions/github-script@v8"
   with: GitHubScriptInputs?
 }
@@ -193,7 +193,7 @@ class GitHubScriptInputs {
 }
 
 /// Type-safe GitHub Action of the [actions/labeler](https://github.com/actions/labeler) action.
-class Labeler extends Workflow.TypedStep {
+class Labeler extends Step.TypedStep {
   fixed uses: "actions/labeler@v6"
   with: LabelerInputs?
 }
@@ -206,7 +206,7 @@ class LabelerInputs {
   `pr-number`: (String | Number | Boolean)?
 }
 
-class AttestSbom extends Workflow.TypedStep {
+class AttestSbom extends Step.TypedStep {
   fixed uses: "attest-sbom@v2"
   with: AttestSbomInputs?
 }
@@ -223,7 +223,7 @@ class AttestSbomInputs {
 }
 
 /// Type-safe GitHub Action of the [actions/ai-inference](https://github.com/actions/ai-inference) action.
-class AiInference extends Workflow.TypedStep {
+class AiInference extends Step.TypedStep {
   fixed uses: "actions/ai-inference@v2"
   with: AiInferenceInputs?
 }
@@ -244,7 +244,7 @@ class AiInferenceInputs {
 }
 
 /// Type-safe GitHub Action of the [actions/create-github-app-token](https://github.com/actions/create-github-app-token) action.
-class CreateGitHubAppToken extends Workflow.TypedStep {
+class CreateGitHubAppToken extends Step.TypedStep {
   fixed uses: "actions/create-github-app-token@v2"
   with: CreateGitHubAppTokenInputs?
 }
@@ -307,7 +307,7 @@ class CreateGitHubAppTokenInputs {
 }
 
 /// Type-safe GitHub Action of the [actions/delete-package-versions](https://github.com/actions/delete-package-versions) action.
-class DeletePackageVersion extends Workflow.TypedStep {
+class DeletePackageVersion extends Step.TypedStep {
   fixed uses: "actions/delete-package-versions@v5"
   with: DeletePackageVersionInputs?
 }
@@ -356,7 +356,7 @@ class DeletePackageVersionInputs {
 }
 
 /// Type-safe GitHub Action of the [actions/stale](https://github.com/actions/stale) action.
-class Stale extends Workflow.TypedStep {
+class Stale extends Step.TypedStep {
   fixed uses: "actions/stale@v10"
   with: StaleInputs?
 }
@@ -475,7 +475,7 @@ class StaleInputs {
 }
 
 /// Type-safe GitHub Action of the [actions/dependency-review-action](https://github.com/actions/dependency-review-action) action.
-class DependencyReviewAction extends Workflow.TypedStep {
+class DependencyReviewAction extends Step.TypedStep {
   fixed uses: "actions/dependency-review-action@v4"
   with: DependencyReviewActionInputs?
 }

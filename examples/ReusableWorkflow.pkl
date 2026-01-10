@@ -1,5 +1,7 @@
 amends "../Workflow.pkl"
 
+import "../Job.pkl"
+
 name = "Reusable Workflow"
 
 on {
@@ -15,11 +17,11 @@ on {
 }
 
 jobs {
-  ["reusable_workflow"] = new ReusableJob {
+  ["reusable_workflow"] = new Job.ReusableJob {
     uses = "./something.yaml"
     secrets = "inherit"
   }
-  ["reusable_workflow_repo"] = new ReusableJob {
+  ["reusable_workflow_repo"] = new Job.ReusableJob {
     uses = "octo-org/another-repo/.github/workflows/workflow.yml@v1"
     with {
       ["some_input"] = "some value"

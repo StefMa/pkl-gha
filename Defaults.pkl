@@ -1,0 +1,10 @@
+module com.github.action.Defaults
+
+import "Shell.pkl"
+
+run: RunDefaults?
+
+class RunDefaults {
+  shell: Shell.Shell?
+  `working-directory`: String?
+}

@@ -1,6 +1,7 @@
 amends "../Workflow.pkl"
 import "../Action.pkl"
 import "../Context.pkl"
+import "../Machine.pkl"
 
 name = "PrintHelloWorld"
 
@@ -62,7 +63,7 @@ defaults {
 
 jobs {
   ["hello_dependabot"] {
-    `runs-on` = new MacOsLatest {}
+    `runs-on` = new Machine.MacOsLatest {}
     `if` = Context.github.custom("actor == 'dependabot[bot]'")
     needs {
       "first_job"
@@ -105,7 +106,7 @@ jobs {
   ["print"] {
     `runs-on` = new Listing {
       "macos-latest"
-      new WindowsLatest {}
+      new Machine.WindowsLatest {}
     }
     environment = "staging"
     needs = "hello_dependabot"
